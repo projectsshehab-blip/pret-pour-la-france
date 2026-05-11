@@ -1,0 +1,245 @@
+'use strict';
+
+const TRANSLATIONS = {
+  fr: {
+    // Site
+    site_name: 'Prêt pour la France',
+    site_tagline: 'Préparez-vous à l\'examen civique',
+
+    // Nav
+    nav_home: 'Accueil',
+    nav_study: 'Cours',
+    nav_exam: 'Examen',
+    nav_tc: 'CGU',
+
+    // Home
+    home_welcome: 'Bienvenue',
+    home_subtitle: 'Préparez l\'examen civique du Contrat d\'Intégration Républicaine',
+    home_card_study_title: 'Cours',
+    home_card_study_desc: 'Révisez les 5 thèmes officiels du programme de formation civique.',
+    home_card_exam_title: 'Examen',
+    home_card_exam_desc: 'Entraînez-vous avec 40 questions à choix multiples.',
+    home_card_study_btn: 'Commencer à réviser',
+    home_card_exam_btn: 'Passer un examen',
+    home_tip_title: 'Conseil',
+    home_tip_text: 'Les QCM sont toujours en français, comme lors du vrai examen. Le score de réussite est de 32/40.',
+
+    // Study
+    study_title: 'Cours',
+    study_subtitle: 'Cliquez sur un thème pour le développer.',
+    study_source: 'Source :',
+
+    // Exam setup
+    exam_setup_title: 'Choisissez votre niveau',
+    exam_setup_csp_title: 'CSP — Carte de Séjour Pluriannuelle',
+    exam_setup_csp_desc: 'Niveau carte de séjour pluriannuelle. 40 questions tirées du programme officiel.',
+    exam_setup_cr_title: 'CR — Carte de Résident',
+    exam_setup_cr_desc: 'Niveau carte de résident. Questions plus avancées incluant toutes les questions CSP.',
+    exam_setup_btn: 'Commencer l\'examen',
+    exam_setup_info: '40 questions • 4 pages • 1 seule bonne réponse par question',
+
+    // Exam
+    exam_page_label: 'Page',
+    exam_page_of: 'sur',
+    exam_topic_label: 'Thème',
+    exam_prev: 'Précédent',
+    exam_next: 'Suivant',
+    exam_submit: 'Soumettre',
+    exam_submit_confirm: 'Êtes-vous sûr de vouloir soumettre ? Vous ne pourrez plus modifier vos réponses.',
+    exam_unanswered: 'Veuillez répondre à toutes les questions avant de soumettre.',
+    exam_progress: 'Questions répondues :',
+    exam_time_left: 'Temps restant',
+    exam_time_up: 'Temps écoulé — examen soumis automatiquement.',
+    exam_leave_title: 'Examen en cours',
+    exam_leave_confirm: 'Vous avez un examen en cours. Si vous quittez maintenant, toutes vos réponses et le temps restant seront perdus.\n\nVoulez-vous vraiment quitter l\'examen ?',
+
+    // Results
+    results_title: 'Résultats',
+    results_score: 'Score',
+    results_passed: 'REÇU',
+    results_failed: 'ÉCHOUÉ',
+    results_pass_msg: 'Félicitations ! Vous avez réussi l\'examen blanc.',
+    results_fail_msg: 'Continuez à réviser, vous y arriverez !',
+    results_pass_threshold: 'Seuil de réussite : 32/40',
+    results_review_title: 'Révision des réponses',
+    results_your_answer: 'Votre réponse :',
+    results_correct_answer: 'Bonne réponse :',
+    results_explanation: 'Explication :',
+    results_correct_badge: 'Correct',
+    results_incorrect_badge: 'Incorrect',
+    results_retry: 'Nouvel examen',
+    results_back_home: 'Accueil',
+
+    // Topics
+    topic_1: 'Principes et valeurs de la République',
+    topic_2: 'Système institutionnel et politique',
+    topic_3: 'Droits et devoirs',
+    topic_4: 'Histoire, géographie et culture',
+    topic_5: 'Vivre dans la société française',
+
+    // T&C
+    tc_title: 'Conditions Générales d\'Utilisation',
+
+    // Footer
+    footer_attribution: 'Contenu éducatif adapté de formation-civique.interieur.gouv.fr — Ministère de l\'Intérieur, sous Licence Ouverte 2.0 (Etalab).',
+    footer_unofficial: 'Application non officielle — non affiliée au gouvernement français.',
+    footer_tc: 'CGU',
+  },
+
+  en: {
+    site_name: 'Prêt pour la France',
+    site_tagline: 'Prepare for the French civic exam',
+
+    nav_home: 'Home',
+    nav_study: 'Study',
+    nav_exam: 'Exam',
+    nav_tc: 'Terms',
+
+    home_welcome: 'Welcome',
+    home_subtitle: 'Prepare for the civic exam required for the Contrat d\'Intégration Républicaine',
+    home_card_study_title: 'Study Materials',
+    home_card_study_desc: 'Review the 5 official topics of the civic education programme.',
+    home_card_exam_title: 'Practice Exam',
+    home_card_exam_desc: 'Train yourself with 40 multiple-choice questions.',
+    home_card_study_btn: 'Start Studying',
+    home_card_exam_btn: 'Take an Exam',
+    home_tip_title: 'Tip',
+    home_tip_text: 'All MCQ questions are always in French, just like the real exam. The pass score is 32/40.',
+
+    study_title: 'Study Materials',
+    study_subtitle: 'Click on a topic to expand it.',
+    study_source: 'Source:',
+
+    exam_setup_title: 'Choose your level',
+    exam_setup_csp_title: 'CSP — Multi-year Residence Permit',
+    exam_setup_csp_desc: 'Multi-year residence permit level. 40 questions from the official programme.',
+    exam_setup_cr_title: 'CR — Resident Card',
+    exam_setup_cr_desc: 'Resident card level. More advanced questions including all CSP questions.',
+    exam_setup_btn: 'Start Exam',
+    exam_setup_info: '40 questions • 4 pages • 1 correct answer per question',
+
+    exam_page_label: 'Page',
+    exam_page_of: 'of',
+    exam_topic_label: 'Topic',
+    exam_prev: 'Previous',
+    exam_next: 'Next',
+    exam_submit: 'Submit',
+    exam_submit_confirm: 'Are you sure you want to submit? You will not be able to change your answers.',
+    exam_unanswered: 'Please answer all questions before submitting.',
+    exam_progress: 'Questions answered:',
+    exam_time_left: 'Time remaining',
+    exam_time_up: 'Time is up — exam submitted automatically.',
+    exam_leave_title: 'Exam in progress',
+    exam_leave_confirm: 'You have an exam in progress. If you leave now, all your answers and remaining time will be lost.\n\nAre you sure you want to exit the exam?',
+
+    results_title: 'Results',
+    results_score: 'Score',
+    results_passed: 'PASSED',
+    results_failed: 'FAILED',
+    results_pass_msg: 'Congratulations! You passed the practice exam.',
+    results_fail_msg: 'Keep studying — you\'ll get there!',
+    results_pass_threshold: 'Pass threshold: 32/40',
+    results_review_title: 'Answer Review',
+    results_your_answer: 'Your answer:',
+    results_correct_answer: 'Correct answer:',
+    results_explanation: 'Explanation:',
+    results_correct_badge: 'Correct',
+    results_incorrect_badge: 'Incorrect',
+    results_retry: 'New Exam',
+    results_back_home: 'Home',
+
+    topic_1: 'Principles and Values of the Republic',
+    topic_2: 'Institutional and Political System',
+    topic_3: 'Rights and Duties',
+    topic_4: 'History, Geography and Culture',
+    topic_5: 'Living in French Society',
+
+    tc_title: 'Terms & Conditions',
+
+    footer_attribution: 'Educational content adapted from formation-civique.interieur.gouv.fr — Ministère de l\'Intérieur, under Licence Ouverte 2.0 (Etalab).',
+    footer_unofficial: 'Unofficial application — not affiliated with the French government.',
+    footer_tc: 'Terms',
+  },
+
+  zh: {
+    site_name: 'Prêt pour la France',
+    site_tagline: '准备法国公民考试',
+
+    nav_home: '首页',
+    nav_study: '学习',
+    nav_exam: '考试',
+    nav_tc: '条款',
+
+    home_welcome: '欢迎',
+    home_subtitle: '准备共和国融合合同（CIR）所需的公民考试',
+    home_card_study_title: '学习材料',
+    home_card_study_desc: '复习公民教育计划的5个官方主题。',
+    home_card_exam_title: '模拟考试',
+    home_card_exam_desc: '通过40道选择题进行练习。',
+    home_card_study_btn: '开始学习',
+    home_card_exam_btn: '参加考试',
+    home_tip_title: '提示',
+    home_tip_text: '所有选择题均为法语，与真实考试相同。通过分数为32/40。',
+
+    study_title: '学习材料',
+    study_subtitle: '点击主题展开内容。',
+    study_source: '来源：',
+
+    exam_setup_title: '选择您的级别',
+    exam_setup_csp_title: 'CSP — 多年居留证',
+    exam_setup_csp_desc: '多年居留证级别。40道来自官方课程的题目。',
+    exam_setup_cr_title: 'CR — 居民卡',
+    exam_setup_cr_desc: '居民卡级别。包含所有CSP题目在内的更高难度题目。',
+    exam_setup_btn: '开始考试',
+    exam_setup_info: '40道题 • 4页 • 每题1个正确答案',
+
+    exam_page_label: '第',
+    exam_page_of: '页，共',
+    exam_topic_label: '主题',
+    exam_prev: '上一页',
+    exam_next: '下一页',
+    exam_submit: '提交',
+    exam_submit_confirm: '确定要提交吗？提交后将无法修改答案。',
+    exam_unanswered: '请回答所有问题后再提交。',
+    exam_progress: '已回答题数：',
+    exam_time_left: '剩余时间',
+    exam_time_up: '时间到 — 考试已自动提交。',
+    exam_leave_title: '考试进行中',
+    exam_leave_confirm: '您正在进行考试。如果现在离开，您的所有答案和剩余时间将会丢失。\n\n确定要退出考试吗？',
+
+    results_title: '考试结果',
+    results_score: '分数',
+    results_passed: '通过',
+    results_failed: '未通过',
+    results_pass_msg: '恭喜！您通过了模拟考试。',
+    results_fail_msg: '继续努力，您一定能成功！',
+    results_pass_threshold: '通过分数线：32/40',
+    results_review_title: '答案回顾',
+    results_your_answer: '您的答案：',
+    results_correct_answer: '正确答案：',
+    results_explanation: '解析：',
+    results_correct_badge: '正确',
+    results_incorrect_badge: '错误',
+    results_retry: '新考试',
+    results_back_home: '返回首页',
+
+    topic_1: '共和国的原则与价值观',
+    topic_2: '政治制度',
+    topic_3: '权利与义务',
+    topic_4: '历史、地理与文化',
+    topic_5: '法国社会生活',
+
+    tc_title: '使用条款',
+
+    footer_attribution: '教育内容改编自 formation-civique.interieur.gouv.fr — 法国内政部，依据 Licence Ouverte 2.0 (Etalab)。',
+    footer_unofficial: '非官方应用 — 与法国政府无关联。',
+    footer_tc: '条款',
+  }
+};
+
+function t(key) {
+  const lang = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
+  return (TRANSLATIONS[lang] && TRANSLATIONS[lang][key])
+    ? TRANSLATIONS[lang][key]
+    : (TRANSLATIONS['fr'][key] || key);
+}

@@ -1,0 +1,15 @@
+# Dev / planning files
+.claude/
+CLAUDE.md
+
+# Source reference documents (content already extracted into JS)
+Education_Material/
+terms_and_conditions.docx
+
+# Screenshots taken during development
+screenshot_*.png
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
