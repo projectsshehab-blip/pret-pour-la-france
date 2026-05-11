@@ -560,7 +560,12 @@ const TC_FR = `
 <h2>6. Droit applicable</h2>
 <p>Les présentes CGU sont régies par le droit français. Tout litige sera soumis aux juridictions compétentes de France.</p>
 <h2>7. Contact</h2>
-<p>Pour toute question relative aux présentes CGU : <strong>projects.shehab@gmail.com</strong> — ProjMSP</p>
+<p>Pour toute question relative aux présentes CGU :</p>
+<ul>
+  <li><strong>Développeur :</strong> ProjMSP</li>
+  <li><strong>Email :</strong> projects.shehab@gmail.com</li>
+  <li><strong>Site web :</strong> https://projectsshehab-blip.github.io/pret-pour-la-france</li>
+</ul>
 <div style="margin-top:1.5rem;padding:1rem;background:var(--surface);border-radius:6px;font-size:.82rem;color:var(--text-muted)">
   <strong>Attribution :</strong> Contenu éducatif adapté de formation-civique.interieur.gouv.fr — Ministère de l'Intérieur, Parcours d'Intégration Républicaine, sous Licence Ouverte 2.0 (Etalab). Dernière révision du contenu : avril 2026. Cette application est un outil d'étude indépendant, non affilié au gouvernement français.
 </div>`;
@@ -586,7 +591,12 @@ const TC_EN = `
 <h2>6. Governing Law</h2>
 <p>These Terms are governed by French law. Any dispute shall be submitted to the competent courts of France.</p>
 <h2>7. Contact</h2>
-<p>For any questions regarding these Terms: <strong>projects.shehab@gmail.com</strong> — ProjMSP</p>
+<p>For any questions regarding these Terms:</p>
+<ul>
+  <li><strong>Developer:</strong> ProjMSP</li>
+  <li><strong>Email:</strong> projects.shehab@gmail.com</li>
+  <li><strong>Website:</strong> https://projectsshehab-blip.github.io/pret-pour-la-france</li>
+</ul>
 <div style="margin-top:1.5rem;padding:1rem;background:var(--surface);border-radius:6px;font-size:.82rem;color:var(--text-muted)">
   <strong>Attribution:</strong> Educational content adapted from formation-civique.interieur.gouv.fr — Ministère de l'Intérieur, Parcours d'Intégration Républicaine, under Licence Ouverte 2.0 (Etalab). Last content review: April 2026. This application is an independent study tool, not affiliated with the French government.
 </div>`;
@@ -612,7 +622,12 @@ const TC_ZH = `
 <h2>6. 适用法律</h2>
 <p>本条款受法国法律管辖。任何争议应提交法国有管辖权的法院解决。</p>
 <h2>7. 联系方式</h2>
-<p>如有关于本条款的任何问题：<strong>projects.shehab@gmail.com</strong> — ProjMSP</p>
+<p>如有关于本条款的任何问题：</p>
+<ul>
+  <li><strong>开发者：</strong>ProjMSP</li>
+  <li><strong>电子邮件：</strong>projects.shehab@gmail.com</li>
+  <li><strong>网站：</strong>https://projectsshehab-blip.github.io/pret-pour-la-france</li>
+</ul>
 <div style="margin-top:1.5rem;padding:1rem;background:var(--surface);border-radius:6px;font-size:.82rem;color:var(--text-muted)">
   <strong>版权声明：</strong>教育内容改编自 formation-civique.interieur.gouv.fr — 法国内政部，共和国融合路径，依据 Licence Ouverte 2.0 (Etalab)。内容最后审查：2026年4月。本应用是独立学习工具，与法国政府无关联。
 </div>`;
