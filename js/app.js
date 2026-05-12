@@ -224,8 +224,7 @@ function renderStudy(preserveOpen) {
     <div class="page-title">${t('study_title')}</div>
     <div class="page-subtitle">${t('study_subtitle')}</div>
     <div class="study-lang-toggle">
-      <span class="study-lang-toggle__label">${t('study_lang_label')||'Langue :'}</span>
-      ${['fr','en','zh','ar'].map(l => `
+${['fr','en','zh','ar'].map(l => `
         <button class="study-lang-btn ${getStudyLang()===l?'active':''}" data-slang="${l}" dir="${l==='ar'?'rtl':'ltr'}">${langNames[l]}</button>
       `).join('')}
     </div>
