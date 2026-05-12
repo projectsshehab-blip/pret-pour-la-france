@@ -359,6 +359,8 @@ function renderExamPage() {
         : `<button class="btn btn--primary" id="btn-next">${t('exam_next')} →</button>`}
     </div>`;
 
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
   // Dot navigation
   el.querySelectorAll('.q-dot').forEach(d => d.addEventListener('click', () => {
     examPage = +d.dataset.gotoPage; renderExamPage();
