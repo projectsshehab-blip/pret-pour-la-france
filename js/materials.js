@@ -1,5 +1,8 @@
 'use strict';
 
+// Each section heading and content support 4 languages: fr, en, zh, ar
+// French is always the fallback. MCQ questions remain in French only.
+
 const MATERIALS = [
   // ─── TOPIC 1 ─────────────────────────────────────────────────────────────────
   {
@@ -7,70 +10,210 @@ const MATERIALS = [
     icon: '🏛️',
     sections: [
       {
-        heading: 'La laïcité — Définition et principes',
-        content: [
-          '<strong>Définition :</strong> La laïcité garantit la liberté de conscience pour tous — chaque personne est libre d\'avoir ou non une religion, d\'en changer ou de ne plus en avoir.',
-          '<strong>Article 1er de la Constitution (1958) :</strong> "La France est une République indivisible, <em>laïque</em>, démocratique et sociale."',
-          '<strong>L\'État est neutre :</strong> L\'État français ne reconnaît aucune religion, ne salarie ni ne subventionne aucun culte, et ne participe pas au fonctionnement interne des organisations religieuses.',
-          '<strong>Liberté de pratiquer :</strong> Toute personne peut pratiquer sa religion dans le respect de l\'ordre public. Personne ne peut être obligé de respecter les prescriptions d\'une religion.',
-          '<strong>Loi de 1905 :</strong> La loi de séparation des Églises et de l\'État du 9 décembre 1905 est le fondement de la laïcité française.',
-          '<strong>La laïcité n\'est pas une opinion :</strong> C\'est un principe constitutionnel qui s\'impose à tous.',
-        ]
+        heading: {
+          fr: 'La laïcité — Définition et principes',
+          en: 'Secularism — Definition and principles',
+          zh: '世俗主义——定义与原则',
+          ar: 'العلمانية — التعريف والمبادئ'
+        },
+        content: {
+          fr: [
+            '<strong>Définition :</strong> La laïcité garantit la liberté de conscience pour tous — chaque personne est libre d\'avoir ou non une religion, d\'en changer ou de ne plus en avoir.',
+            '<strong>Article 1er de la Constitution (1958) :</strong> "La France est une République indivisible, <em>laïque</em>, démocratique et sociale."',
+            '<strong>L\'État est neutre :</strong> L\'État français ne reconnaît aucune religion, ne salarie ni ne subventionne aucun culte.',
+            '<strong>Liberté de pratiquer :</strong> Toute personne peut pratiquer sa religion dans le respect de l\'ordre public. Personne ne peut être obligé de respecter les prescriptions d\'une religion.',
+            '<strong>Loi de 1905 :</strong> La loi de séparation des Églises et de l\'État du 9 décembre 1905 est le fondement de la laïcité française.',
+            '<strong>La laïcité n\'est pas une opinion :</strong> C\'est un principe constitutionnel qui s\'impose à tous.',
+          ],
+          en: [
+            '<strong>Definition:</strong> Secularism (laïcité) guarantees freedom of conscience for all — everyone is free to have or not have a religion, to change it or abandon it.',
+            '<strong>Article 1 of the Constitution (1958):</strong> "France is an indivisible, <em>secular</em>, democratic and social Republic."',
+            '<strong>The State is neutral:</strong> The French State does not recognise any religion and does not fund any religious institution.',
+            '<strong>Freedom to practise:</strong> Anyone may practise their religion within the bounds of public order. No one can be forced to follow religious rules.',
+            '<strong>Law of 1905:</strong> The law separating Churches and State (9 December 1905) is the foundation of French secularism.',
+            '<strong>Secularism is not an opinion:</strong> It is a constitutional principle binding on everyone.',
+          ],
+          zh: [
+            '<strong>定义：</strong>世俗主义（laïcité）保障所有人的良心自由——每个人都有权信仰或不信仰某种宗教，可以改变或放弃宗教信仰。',
+            '<strong>1958年宪法第1条：</strong>"法国是一个不可分割的、<em>世俗的</em>、民主的和社会的共和国。"',
+            '<strong>国家保持中立：</strong>法国国家不承认任何宗教，不资助任何宗教机构。',
+            '<strong>宗教自由：</strong>任何人都可以在不扰乱公共秩序的前提下信仰宗教。任何人都不能被强迫遵守宗教规定。',
+            '<strong>1905年法律：</strong>《政教分离法》是法国世俗主义的基础。',
+            '<strong>世俗主义不是意见：</strong>它是对所有人具有约束力的宪法原则。',
+          ],
+          ar: [
+            '<strong>التعريف:</strong> تضمن العلمانية (laïcité) حرية الضمير للجميع — فكل شخص حر في اعتناق دين أو عدمه، وتغييره أو التخلي عنه.',
+            '<strong>المادة 1 من الدستور (1958):</strong> "فرنسا جمهورية غير قابلة للتجزئة، <em>علمانية</em>، ديمقراطية واجتماعية."',
+            '<strong>الدولة محايدة:</strong> لا تعترف الدولة الفرنسية بأي دين ولا تموّل أي مؤسسة دينية.',
+            '<strong>حرية الممارسة الدينية:</strong> يحق لكل شخص ممارسة دينه ضمن حدود النظام العام. لا يمكن إجبار أحد على اتباع تعاليم دينية.',
+            '<strong>قانون 1905:</strong> قانون الفصل بين الكنائس والدولة (9 ديسمبر 1905) هو أساس العلمانية الفرنسية.',
+            '<strong>العلمانية ليست رأياً:</strong> إنها مبدأ دستوري يلزم الجميع.',
+          ]
+        }
       },
       {
-        heading: 'Histoire de la laïcité — Dates clés',
-        content: [
-          '<strong>1539 :</strong> Le français remplace le latin dans les textes administratifs (Ordonnance de Villers-Cotterêts).',
-          '<strong>1789 :</strong> La Déclaration des droits de l\'homme et du citoyen crée le principe de liberté de conscience et de religion.',
-          '<strong>1801 :</strong> Le Concordat organise les relations entre l\'État et l\'Église catholique.',
-          '<strong>1882 :</strong> Jules Ferry rend l\'école primaire publique obligatoire, gratuite et indépendante de l\'Église.',
-          '<strong>1905 :</strong> Loi de séparation de l\'Église et de l\'État — l\'État est désormais indépendant des religions.',
-          '<strong>2004 :</strong> Loi interdisant les signes religieux ostensibles dans les écoles, collèges et lycées publics.',
-          '<strong>2010 :</strong> Loi interdisant la dissimulation du visage (cagoule, voile intégral...) dans l\'espace public.',
-          '<strong>2021 :</strong> Loi renforçant la laïcité et la neutralité dans les services publics et les associations.',
-        ]
+        heading: {
+          fr: 'Histoire de la laïcité — Dates clés',
+          en: 'History of secularism — Key dates',
+          zh: '世俗主义历史——重要日期',
+          ar: 'تاريخ العلمانية — التواريخ الرئيسية'
+        },
+        content: {
+          fr: [
+            '<strong>1789 :</strong> La DDHC crée le principe de liberté de conscience et de religion.',
+            '<strong>1882 :</strong> Jules Ferry rend l\'école primaire publique obligatoire, gratuite et indépendante de l\'Église.',
+            '<strong>1905 :</strong> Loi de séparation de l\'Église et de l\'État — l\'État est indépendant des religions.',
+            '<strong>2004 :</strong> Loi interdisant les signes religieux ostensibles dans les écoles, collèges et lycées publics.',
+            '<strong>2010 :</strong> Loi interdisant la dissimulation du visage dans l\'espace public.',
+            '<strong>2021 :</strong> Loi renforçant la laïcité et la neutralité dans les services publics.',
+          ],
+          en: [
+            '<strong>1789:</strong> The Declaration of Human Rights establishes freedom of conscience and religion.',
+            '<strong>1882:</strong> Jules Ferry makes public primary school compulsory, free, and independent of the Church.',
+            '<strong>1905:</strong> Law separating Church and State — the State is independent of all religions.',
+            '<strong>2004:</strong> Law banning conspicuous religious symbols in public schools (primary, secondary, lycée).',
+            '<strong>2010:</strong> Law banning face coverings in public spaces.',
+            '<strong>2021:</strong> Law strengthening secularism and neutrality in public services.',
+          ],
+          zh: [
+            '<strong>1789年：</strong>《人权宣言》确立良心与宗教自由原则。',
+            '<strong>1882年：</strong>茹费理使公立小学义务化、免费化，并与教会分离。',
+            '<strong>1905年：</strong>《政教分离法》——国家独立于所有宗教。',
+            '<strong>2004年：</strong>禁止在公立学校佩戴明显宗教符号的法律。',
+            '<strong>2010年：</strong>禁止在公共场所遮盖面部的法律。',
+            '<strong>2021年：</strong>加强公共服务领域世俗主义和中立性的法律。',
+          ],
+          ar: [
+            '<strong>1789:</strong> أرسى إعلان حقوق الإنسان والمواطن مبدأ حرية الضمير والدين.',
+            '<strong>1882:</strong> جعل جول فيري التعليم الابتدائي إلزامياً ومجانياً ومستقلاً عن الكنيسة.',
+            '<strong>1905:</strong> قانون الفصل بين الكنائس والدولة — الدولة مستقلة عن جميع الأديان.',
+            '<strong>2004:</strong> قانون يحظر الرموز الدينية الظاهرة في المدارس العامة.',
+            '<strong>2010:</strong> قانون يحظر إخفاء الوجه في الأماكن العامة.',
+            '<strong>2021:</strong> قانون يعزز العلمانية والحياد في الخدمات العامة.',
+          ]
+        }
       },
       {
-        heading: 'La laïcité dans la vie quotidienne',
-        content: [
-          '<strong>Espace public :</strong> Toute personne peut porter des signes religieux (voile, kippa, croix, turban...) dans les rues, restaurants, transports et lieux ouverts à tous.',
-          '<strong>Services publics :</strong> Les agents de la fonction publique ne peuvent pas exprimer leurs convictions religieuses dans le cadre de leur travail. La neutralité est obligatoire.',
-          '<strong>Usagers des services publics :</strong> Les usagers peuvent exprimer leur religion, mais ne peuvent pas demander une adaptation du service au nom d\'une religion.',
-          '<strong>Travail privé :</strong> Un salarié peut exprimer ses convictions, sauf si cela perturbe le fonctionnement de l\'entreprise. L\'employeur peut imposer des limites pour des raisons d\'hygiène, de sécurité ou de contact clientèle.',
-          '<strong>École publique :</strong> Les élèves ne peuvent pas porter de signes religieux ostensibles. Les enseignants sont soumis au principe de neutralité absolue. Aucun cours ne peut être refusé pour motif religieux.',
-          '<strong>Prosélytisme :</strong> Autorisé en France mais interdit dans les écoles publiques, services publics et hôpitaux. Le harcèlement religieux est interdit.',
-          '<strong>Blasphème :</strong> Non interdit en France (liberté d\'expression). Cependant, l\'incitation à la haine, les insultes envers des personnes pour leur religion, et la négationnisme de la Shoah sont punis par la loi.',
-        ]
+        heading: {
+          fr: 'La laïcité dans la vie quotidienne',
+          en: 'Secularism in daily life',
+          zh: '日常生活中的世俗主义',
+          ar: 'العلمانية في الحياة اليومية'
+        },
+        content: {
+          fr: [
+            '<strong>Espace public :</strong> Toute personne peut porter des signes religieux (voile, kippa, croix...) dans les rues, restaurants, transports.',
+            '<strong>Services publics :</strong> Les agents de la fonction publique ne peuvent pas exprimer leurs convictions religieuses dans le cadre de leur travail.',
+            '<strong>Travail privé :</strong> Un salarié peut exprimer ses convictions, sauf si cela perturbe le fonctionnement de l\'entreprise.',
+            '<strong>École publique :</strong> Les élèves ne peuvent pas porter de signes religieux ostensibles. Les enseignants sont soumis au principe de neutralité absolue.',
+            '<strong>Prosélytisme :</strong> Autorisé en France mais interdit dans les écoles publiques, services publics et hôpitaux.',
+            '<strong>Blasphème :</strong> Non interdit en France. Cependant, l\'incitation à la haine religieuse et la négation de la Shoah sont punies par la loi.',
+          ],
+          en: [
+            '<strong>Public space:</strong> Anyone may wear religious symbols (veil, kippa, cross…) in streets, restaurants and transport.',
+            '<strong>Public services:</strong> Civil servants may not express religious beliefs while on duty.',
+            '<strong>Private sector:</strong> Employees may express beliefs unless it disrupts the company\'s operations.',
+            '<strong>Public school:</strong> Pupils may not wear conspicuous religious symbols. Teachers must maintain strict neutrality.',
+            '<strong>Proselytism:</strong> Permitted in France, but banned in public schools, public services and hospitals.',
+            '<strong>Blasphemy:</strong> Not illegal in France. However, inciting religious hatred and denying the Holocaust are criminal offences.',
+          ],
+          zh: [
+            '<strong>公共场所：</strong>任何人都可以在街道、餐厅、交通工具等地方佩戴宗教符号（头巾、基帕、十字架等）。',
+            '<strong>公共服务：</strong>公务员在工作期间不得表达宗教信仰。',
+            '<strong>私营部门：</strong>员工可以表达信仰，除非这会妨碍公司运营。',
+            '<strong>公立学校：</strong>学生不得佩戴明显的宗教符号。教师必须保持绝对中立。',
+            '<strong>传教：</strong>在法国允许，但在公立学校、公共服务机构和医院禁止。',
+            '<strong>亵渎：</strong>在法国不违法。但煽动宗教仇恨和否认大屠杀是刑事犯罪。',
+          ],
+          ar: [
+            '<strong>الفضاء العام:</strong> يحق لأي شخص ارتداء رموز دينية (حجاب، كيبا، صليب...) في الشوارع والمطاعم والمواصلات.',
+            '<strong>الخدمات العامة:</strong> لا يجوز للموظفين العموميين التعبير عن قناعاتهم الدينية أثناء العمل.',
+            '<strong>القطاع الخاص:</strong> يمكن للموظف التعبير عن قناعاته ما لم يُخل ذلك بسير العمل.',
+            '<strong>المدرسة العامة:</strong> لا يحق للتلاميذ ارتداء رموز دينية ظاهرة. يلتزم المعلمون بالحياد المطلق.',
+            '<strong>التبشير:</strong> مسموح به في فرنسا لكنه محظور في المدارس والخدمات العامة والمستشفيات.',
+            '<strong>التجديف:</strong> ليس مخالفاً للقانون في فرنسا. أما التحريض على الكراهية الدينية وإنكار المحرقة فهما جريمتان جنائيتان.',
+          ]
+        }
       },
       {
-        heading: 'Les symboles de la République',
-        content: [
-          '<strong>Drapeau tricolore :</strong> Bleu, blanc, rouge. Né en 1789 (bleu et rouge = Paris, blanc = royauté). Officiel depuis 1794. Insulter ou détruire le drapeau en public est un délit.',
-          '<strong>Marianne :</strong> Symbole féminin de la République depuis la Révolution. Porte le bonnet phrygien (symbole de liberté). Présente dans toutes les mairies, sur les timbres et pièces de monnaie.',
-          '<strong>La Marseillaise :</strong> Hymne national composé en 1792. Déclaré hymne national en 1879. Joué lors des cérémonies officielles et événements sportifs internationaux.',
-          '<strong>Le coq gaulois :</strong> Symbole non officiel mais emblématique. Utilisé sur les maillots des équipes nationales et la diplomatie culturelle.',
-          '<strong>Fête nationale — 14 juillet :</strong> Commémore la prise de la Bastille (14 juillet 1789) et la Fête de la Fédération (14 juillet 1790). Défilé militaire sur les Champs-Élysées. Feux d\'artifice dans tout le pays.',
-        ]
+        heading: {
+          fr: 'Les symboles de la République',
+          en: 'Symbols of the Republic',
+          zh: '共和国的象征',
+          ar: 'رموز الجمهورية'
+        },
+        content: {
+          fr: [
+            '<strong>Drapeau tricolore :</strong> Bleu, blanc, rouge. Né en 1789. Officiel depuis 1794. Insulter ou détruire le drapeau en public est un délit.',
+            '<strong>Marianne :</strong> Symbole féminin de la République depuis la Révolution. Porte le bonnet phrygien. Présente dans toutes les mairies, sur les timbres et pièces de monnaie.',
+            '<strong>La Marseillaise :</strong> Hymne national composé en 1792. Déclaré hymne national en 1879.',
+            '<strong>Le coq gaulois :</strong> Symbole non officiel mais emblématique. Utilisé sur les maillots des équipes nationales.',
+            '<strong>Fête nationale — 14 juillet :</strong> Commémore la prise de la Bastille (1789). Défilé militaire sur les Champs-Élysées. Feux d\'artifice partout en France.',
+          ],
+          en: [
+            '<strong>Tricolour flag:</strong> Blue, white, red. Born in 1789, official since 1794. Publicly insulting or destroying the flag is a criminal offence.',
+            '<strong>Marianne:</strong> Female symbol of the Republic since the Revolution. Wears the Phrygian cap. Found in all town halls, on stamps and coins.',
+            '<strong>La Marseillaise:</strong> National anthem composed in 1792, officially adopted in 1879.',
+            '<strong>The Gallic rooster:</strong> Unofficial but iconic symbol. Used on national sports team jerseys.',
+            '<strong>National Day — 14 July:</strong> Commemorates the storming of the Bastille (1789). Military parade on the Champs-Élysées. Fireworks across France.',
+          ],
+          zh: [
+            '<strong>三色旗：</strong>蓝、白、红色。诞生于1789年，1794年正式确立。在公共场所侮辱或破坏国旗是违法行为。',
+            '<strong>玛丽安娜：</strong>自大革命以来的共和国女性象征。戴弗里吉亚帽。出现在所有市政厅、邮票和硬币上。',
+            '<strong>马赛曲：</strong>1792年创作的国歌，1879年正式采用。',
+            '<strong>高卢雄鸡：</strong>非官方但具有代表性的象征。用于国家体育队球衣。',
+            '<strong>国庆节——7月14日：</strong>纪念攻占巴士底狱（1789年）。香榭丽舍大道阅兵。全国烟花表演。',
+          ],
+          ar: [
+            '<strong>العلم الثلاثي الألوان:</strong> أزرق، أبيض، أحمر. وُلد عام 1789، رسمي منذ 1794. إهانة العلم أو تدميره علناً جريمة جنائية.',
+            '<strong>ماريان:</strong> الرمز الأنثوي للجمهورية منذ الثورة. ترتدي القبعة الفريجية. موجودة في جميع دور البلدية والطوابع والعملات.',
+            '<strong>لا مارسييز:</strong> النشيد الوطني المؤلَّف عام 1792، اعتُمد رسمياً عام 1879.',
+            '<strong>الديك الغالي:</strong> رمز غير رسمي لكنه بارز. يُستخدم على قمصان المنتخبات الوطنية.',
+            '<strong>العيد الوطني — 14 يوليو:</strong> يحيي ذكرى اقتحام الباستيل (1789). عرض عسكري على الشانزليزيه. ألعاب نارية في كل أنحاء فرنسا.',
+          ]
+        }
       },
       {
-        heading: 'La devise : Liberté, Égalité, Fraternité',
-        content: [
-          '<strong>Origine :</strong> Née pendant la Révolution française (1789). Adoptée officiellement en 1848. Inscrite dans la Constitution de 1958.',
-          '<strong>Liberté :</strong> Chaque personne peut penser, s\'exprimer et vivre comme elle le souhaite. Deux types : libertés individuelles (religion, expression, déplacement) et libertés collectives (association, manifestation, syndicats).',
-          '<strong>Égalité :</strong> La loi est la même pour tous. Égalité devant la loi, les droits civiques, les droits sociaux et les services publics. Plus de <strong>26 critères de discrimination</strong> interdits par la loi (origine, sexe, handicap, religion, orientation sexuelle, âge, apparence physique...).',
-          '<strong>Égalité femmes-hommes :</strong> Inscrite dans le Préambule de la Constitution de 1946. Des inégalités persistent (écart salarial, sous-représentation dans les postes de direction). Loi de 2000 sur la parité politique.',
-          '<strong>Fraternité :</strong> Solidarité entre les citoyens. Formes : solidarité collective (Sécurité sociale, RSA, aide au logement), solidarité entre générations (retraites), engagement associatif.',
-          '<strong>Engagement citoyen :</strong> Toute personne (française ou étrangère) peut créer ou rejoindre une association (loi 1901 : minimum 2 personnes, but non lucratif). Engagement associatif, syndical ou politique est garanti.',
-        ]
-      },
-      {
-        heading: 'La langue française et le contrat républicain',
-        content: [
-          '<strong>Langue officielle :</strong> Le français est la seule langue officielle (article 2 de la Constitution depuis 1992). Il est utilisé dans les écoles, l\'administration, la justice et la vie publique.',
-          '<strong>Langues régionales :</strong> Le breton, le corse, l\'alsacien, le basque, le créole peuvent être enseignés mais ne sont pas langues officielles.',
-          '<strong>Le français évolue :</strong> Il s\'enrichit de mots étrangers (banque = italien, week-end = anglais, chiffre = arabe).',
-          '<strong>Contrat d\'engagement républicain :</strong> Tout étranger doit le signer lors d\'une demande de titre de séjour. Il engage à respecter : la liberté personnelle, la liberté d\'expression, l\'égalité femmes-hommes, la dignité humaine, la devise, les symboles, les frontières nationales et la laïcité. Sans ce contrat signé, aucun titre de séjour ne peut être délivré.',
-        ]
+        heading: {
+          fr: 'La devise et l\'engagement républicain',
+          en: 'The motto and republican commitment',
+          zh: '国家格言与共和国承诺',
+          ar: 'الشعار والالتزام الجمهوري'
+        },
+        content: {
+          fr: [
+            '<strong>Devise :</strong> "Liberté, Égalité, Fraternité" — officielle depuis 1848, inscrite dans la Constitution de 1958.',
+            '<strong>Liberté :</strong> Chaque personne peut penser, s\'exprimer et vivre comme elle le souhaite dans le respect des lois.',
+            '<strong>Égalité :</strong> La loi est la même pour tous. Plus de 26 critères de discrimination interdits (origine, sexe, religion, handicap, âge...).',
+            '<strong>Égalité femmes-hommes :</strong> Inscrite dans le Préambule de la Constitution de 1946. Loi de 2000 sur la parité politique.',
+            '<strong>Fraternité :</strong> Solidarité collective (Sécurité sociale, RSA), entre générations (retraites), et engagement associatif.',
+            '<strong>Contrat d\'engagement républicain :</strong> Doit être signé par tout étranger lors d\'une demande de titre de séjour. Engage à respecter laïcité, égalité, dignité, symboles et frontières de la République.',
+          ],
+          en: [
+            '<strong>Motto:</strong> "Liberty, Equality, Fraternity" — official since 1848, enshrined in the 1958 Constitution.',
+            '<strong>Liberty:</strong> Everyone may think, speak and live as they wish within the bounds of the law.',
+            '<strong>Equality:</strong> The law is the same for all. Over 26 grounds of discrimination are prohibited (origin, sex, religion, disability, age…).',
+            '<strong>Gender equality:</strong> Enshrined in the Preamble of the 1946 Constitution. A 2000 law requires gender parity in political candidacies.',
+            '<strong>Fraternity:</strong> Collective solidarity (Social Security, RSA benefits), intergenerational solidarity (pensions), and voluntary associations.',
+            '<strong>Republican Engagement Contract:</strong> Every foreign national must sign this when applying for a residence permit. It commits the signatory to respect secularism, equality, dignity, and the symbols and borders of the Republic.',
+          ],
+          zh: [
+            '<strong>格言：</strong>"自由、平等、博爱"——1848年正式确立，载入1958年宪法。',
+            '<strong>自由：</strong>每个人都可以在法律允许的范围内自由思考、表达和生活。',
+            '<strong>平等：</strong>法律对所有人一视同仁。超过26种歧视行为被明令禁止（包括种族、性别、宗教、残疾、年龄等）。',
+            '<strong>性别平等：</strong>载入1946年宪法序言。2000年通过法律要求政治候选人性别均等。',
+            '<strong>博爱：</strong>集体团结（社会保障、RSA补贴）、代际团结（养老金）和志愿协会活动。',
+            '<strong>共和国承诺合同：</strong>所有外国人申请居留证时必须签署。承诺尊重世俗主义、平等、尊严以及共和国的象征和边界。',
+          ],
+          ar: [
+            '<strong>الشعار:</strong> "الحرية، المساواة، الأخوة" — رسمي منذ 1848، مكرَّس في دستور 1958.',
+            '<strong>الحرية:</strong> لكل شخص الحق في التفكير والتعبير والعيش كما يشاء ضمن حدود القانون.',
+            '<strong>المساواة:</strong> القانون واحد للجميع. أكثر من 26 معياراً للتمييز محظورة (الأصل، الجنس، الدين، الإعاقة، السن...).',
+            '<strong>المساواة بين الجنسين:</strong> مكرَّسة في مقدمة دستور 1946. قانون 2000 يُلزم بالمناصفة في الترشح السياسي.',
+            '<strong>الأخوة:</strong> التضامن الجماعي (الضمان الاجتماعي)، التضامن بين الأجيال (معاشات التقاعد)، والعمل التطوعي.',
+            '<strong>عقد الالتزام الجمهوري:</strong> يجب أن يوقّعه كل أجنبي عند طلب تصريح الإقامة. يلتزم بموجبه باحترام العلمانية والمساواة والكرامة ورموز الجمهورية وحدودها.',
+          ]
+        }
       },
     ]
   },
@@ -81,74 +224,128 @@ const MATERIALS = [
     icon: '⚖️',
     sections: [
       {
-        heading: 'La démocratie et la République',
-        content: [
-          '<strong>Démocratie :</strong> Du grec "Demos Kratos" = "Pouvoir du peuple". Régime où le pouvoir appartient au peuple sans distinction de sexe, religion, richesse ou origine. La Constitution de 1958 dit : "gouvernement du peuple, par le peuple et pour le peuple".',
-          '<strong>République :</strong> Du latin "Res Publica" = "chose publique". Le pouvoir est exercé par des représentants élus. S\'oppose à la monarchie (pouvoir héréditaire).',
-          '<strong>La France :</strong> République démocratique — les citoyens élisent leurs représentants au suffrage universel. Pour voter : nationalité française + 18 ans + droits civiques + inscrit sur les listes électorales.',
-          '<strong>Ve République :</strong> Fondée en 1958 par le général de Gaulle. Constitution adoptée par référendum à 82% des voix le 28 septembre 1958. Toujours en vigueur aujourd\'hui.',
-        ]
+        heading: { fr:'La démocratie et la République', en:'Democracy and the Republic', zh:'民主与共和国', ar:'الديمقراطية والجمهورية' },
+        content: {
+          fr: [
+            '<strong>Démocratie :</strong> Du grec "Demos Kratos" = "Pouvoir du peuple". Régime où le pouvoir appartient au peuple. La Constitution de 1958 dit : "gouvernement du peuple, par le peuple et pour le peuple".',
+            '<strong>République :</strong> Du latin "Res Publica" = "chose publique". Pouvoir exercé par des représentants élus. S\'oppose à la monarchie.',
+            '<strong>Ve République :</strong> Fondée en 1958 par le général de Gaulle. Constitution adoptée par référendum à 82%. Toujours en vigueur.',
+            '<strong>Pour voter :</strong> Nationalité française + 18 ans + droits civiques + inscrit sur les listes électorales.',
+          ],
+          en: [
+            '<strong>Democracy:</strong> From Greek "Demos Kratos" = "People Power". A system where power belongs to the people. The 1958 Constitution states: "government of the people, by the people, for the people."',
+            '<strong>Republic:</strong> From Latin "Res Publica" = "public thing". Power is exercised by elected representatives. Opposite of monarchy.',
+            '<strong>Fifth Republic:</strong> Founded in 1958 by General de Gaulle. Constitution approved by referendum (82%). Still in force today.',
+            '<strong>To vote:</strong> French nationality + 18 years old + civic rights + registered on electoral rolls.',
+          ],
+          zh: [
+            '<strong>民主：</strong>来自希腊语"Demos Kratos"，意为"人民的权力"。1958年宪法规定："民有、民治、民享的政府。"',
+            '<strong>共和国：</strong>来自拉丁语"Res Publica"，意为"公共事务"。权力由民选代表行使，与君主制相对。',
+            '<strong>第五共和国：</strong>1958年由戴高乐将军创立。宪法经全民公投（82%赞成）通过，至今有效。',
+            '<strong>投票资格：</strong>法国国籍 + 年满18岁 + 具有公民权利 + 已在选民名册上登记。',
+          ],
+          ar: [
+            '<strong>الديمقراطية:</strong> من اليونانية "Demos Kratos" = "سلطة الشعب". نظام يُملك فيه السلطة للشعب. ينص دستور 1958: "حكومة الشعب، بالشعب، للشعب."',
+            '<strong>الجمهورية:</strong> من اللاتينية "Res Publica" = "الشأن العام". السلطة تمارَس من قِبَل ممثلين منتخَبين. تقابل الملكية.',
+            '<strong>الجمهورية الخامسة:</strong> أسسها الجنرال ديغول عام 1958. اعتُمد الدستور باستفتاء (82%). لا يزال سارياً حتى اليوم.',
+            '<strong>شروط التصويت:</strong> الجنسية الفرنسية + 18 سنة + الحقوق المدنية + التسجيل في قوائم الناخبين.',
+          ]
+        }
       },
       {
-        heading: 'L\'État de droit et la séparation des pouvoirs',
-        content: [
-          '<strong>État de droit :</strong> Système dans lequel la loi est la même pour tous, y compris pour l\'État. Fondé sur 6 principes : primauté du droit, égalité devant la loi, séparation des pouvoirs, légalité, sécurité juridique, protection juridictionnelle effective.',
-          '<strong>Pouvoir LÉGISLATIF :</strong> Le Parlement (Assemblée nationale + Sénat). Vote les lois et contrôle le gouvernement.',
-          '<strong>Pouvoir EXÉCUTIF :</strong> Le président de la République (chef de l\'État, réside au palais de l\'Élysée) + le gouvernement (Premier ministre + ministres, résidence à l\'Hôtel de Matignon). Applique et fait respecter les lois.',
-          '<strong>Autorité JUDICIAIRE :</strong> Les juges et magistrats. Indépendante. Juge et rend la justice. Justice civile (litiges entre citoyens), pénale (infractions à la loi) et administrative (litiges citoyen/État).',
-          '<strong>Un ministre qui ne respecte pas la loi :</strong> peut être sanctionné comme tout citoyen — nul n\'est au-dessus des lois.',
-        ]
+        heading: { fr:'L\'État de droit et la séparation des pouvoirs', en:'Rule of law and separation of powers', zh:'法治与权力分立', ar:'دولة القانون وفصل السلطات' },
+        content: {
+          fr: [
+            '<strong>État de droit :</strong> La loi est la même pour tous, y compris pour l\'État. Fondé sur 6 principes : primauté du droit, égalité devant la loi, séparation des pouvoirs, légalité, sécurité juridique, protection juridictionnelle.',
+            '<strong>Pouvoir LÉGISLATIF :</strong> Le Parlement (Assemblée nationale + Sénat). Vote les lois et contrôle le gouvernement.',
+            '<strong>Pouvoir EXÉCUTIF :</strong> Le président de la République (palais de l\'Élysée) + le gouvernement (Premier ministre à l\'Hôtel de Matignon). Applique et fait respecter les lois.',
+            '<strong>Autorité JUDICIAIRE :</strong> Juges et magistrats indépendants. Rend la justice. Nul n\'est au-dessus des lois.',
+          ],
+          en: [
+            '<strong>Rule of law:</strong> The law is the same for everyone, including the State. Based on 6 principles: supremacy of law, equality before the law, separation of powers, legality, legal certainty, judicial protection.',
+            '<strong>LEGISLATIVE power:</strong> Parliament (National Assembly + Senate). Votes laws and oversees the government.',
+            '<strong>EXECUTIVE power:</strong> The President (Élysée Palace) + the government (Prime Minister at the Hôtel de Matignon). Implements and enforces the laws.',
+            '<strong>JUDICIAL authority:</strong> Independent judges and magistrates. Administers justice. No one is above the law.',
+          ],
+          zh: [
+            '<strong>法治：</strong>法律对所有人（包括国家）一视同仁。基于六项原则：法律至上、法律面前人人平等、权力分立、合法性、法律确定性、司法保护。',
+            '<strong>立法权：</strong>议会（国民议会+参议院）。投票通过法律并监督政府。',
+            '<strong>行政权：</strong>总统（爱丽舍宫）+ 政府（总理在马提尼翁宾馆）。执行和实施法律。',
+            '<strong>司法权：</strong>独立的法官和司法官员。主持司法。没有人凌驾于法律之上。',
+          ],
+          ar: [
+            '<strong>دولة القانون:</strong> القانون واحد للجميع بما فيهم الدولة. يقوم على 6 مبادئ: سيادة القانون، المساواة أمام القانون، الفصل بين السلطات، المشروعية، الأمن القانوني، الحماية القضائية.',
+            '<strong>السلطة التشريعية:</strong> البرلمان (الجمعية الوطنية + مجلس الشيوخ). يُصوّت على القوانين ويُراقب الحكومة.',
+            '<strong>السلطة التنفيذية:</strong> رئيس الجمهورية (قصر الإليزيه) + الحكومة (رئيس الوزراء في فندق ماتينيون). تُطبِّق القوانين وتُنفِّذها.',
+            '<strong>السلطة القضائية:</strong> قضاة ومحاكم مستقلة. تُقيم العدل. لا أحد فوق القانون.',
+          ]
+        }
       },
       {
-        heading: 'Les élections et le vote en France',
-        content: [
-          '<strong>Suffrage universel :</strong> Tous les citoyens français (18 ans, droits civiques, inscrits sur les listes) peuvent voter sans distinction de sexe, d\'origine ou de religion.',
-          '<strong>Le vote est personnel, libre et secret.</strong> Il n\'est pas obligatoire en France — c\'est un droit et non un devoir. Le vote par procuration est possible.',
-          '<strong>Types d\'élections :</strong> Présidentielles (tous les 5 ans), législatives (5 ans), municipales (6 ans), départementales (6 ans), régionales (6 ans), européennes (5 ans — citoyens UE résidant en France).',
-          '<strong>Sénatoriales :</strong> Élection au suffrage universel indirect — uniquement par les grands électeurs (maires, conseillers municipaux, députés). Renouvellement par moitié tous les 3 ans.',
-          '<strong>Ressortissants UE :</strong> Peuvent voter aux élections municipales (résidence de plus de 6 mois) et européennes.',
-        ]
+        heading: { fr:'Les institutions et les élections', en:'Institutions and elections', zh:'机构与选举', ar:'المؤسسات والانتخابات' },
+        content: {
+          fr: [
+            '<strong>Président :</strong> Élu pour 5 ans au suffrage universel direct (depuis 1962). Nomme le Premier ministre. Chef des armées. Réside au palais de l\'Élysée.',
+            '<strong>Parlement :</strong> 577 députés (élus 5 ans) + 348 sénateurs (élus 6 ans). Vote les lois.',
+            '<strong>Types d\'élections :</strong> Présidentielles (5 ans), législatives (5 ans), municipales/départementales/régionales (6 ans), européennes (5 ans).',
+            '<strong>Suffrage universel :</strong> Tous les citoyens français de 18 ans, ayant leurs droits civiques et inscrits sur les listes électorales, peuvent voter. Le vote est personnel, libre et secret.',
+            '<strong>Ressortissants UE :</strong> Peuvent voter aux élections municipales (résidence >6 mois) et européennes.',
+          ],
+          en: [
+            '<strong>President:</strong> Elected for 5 years by direct universal suffrage (since 1962). Appoints the Prime Minister. Commander-in-chief of the armed forces. Resides at the Élysée Palace.',
+            '<strong>Parliament:</strong> 577 deputies (5-year term) + 348 senators (6-year term). Votes laws.',
+            '<strong>Types of elections:</strong> Presidential (every 5 years), legislative (5 years), municipal/departmental/regional (6 years), European (5 years).',
+            '<strong>Universal suffrage:</strong> All French citizens aged 18+, with civil rights and registered on electoral rolls, can vote. Voting is personal, free and secret.',
+            '<strong>EU nationals:</strong> May vote in municipal elections (after 6 months\' residence) and European elections.',
+          ],
+          zh: [
+            '<strong>总统：</strong>通过直接普选每5年选出一次（自1962年起）。任命总理。武装力量总司令。住在爱丽舍宫。',
+            '<strong>议会：</strong>577名国民议会代表（5年任期）+ 348名参议员（6年任期）。投票通过法律。',
+            '<strong>选举类型：</strong>总统选举（5年）、立法选举（5年）、市政/省级/地区选举（6年）、欧洲选举（5年）。',
+            '<strong>普选权：</strong>所有年满18岁、具有公民权利并已在选民名册上登记的法国公民均可投票。投票是个人的、自由的和秘密的。',
+            '<strong>欧盟公民：</strong>可参加市政选举（居住>6个月）和欧洲选举投票。',
+          ],
+          ar: [
+            '<strong>الرئيس:</strong> يُنتخَب لمدة 5 سنوات بالاقتراع العام المباشر (منذ 1962). يُعيِّن رئيس الوزراء. القائد الأعلى للقوات المسلحة. يقيم في قصر الإليزيه.',
+            '<strong>البرلمان:</strong> 577 نائباً (5 سنوات) + 348 شيخاً (6 سنوات). يُصوِّت على القوانين.',
+            '<strong>أنواع الانتخابات:</strong> رئاسية (كل 5 سنوات)، تشريعية (5 سنوات)، بلدية/إقليمية (6 سنوات)، أوروبية (5 سنوات).',
+            '<strong>الاقتراع العام:</strong> جميع المواطنين الفرنسيين من 18 سنة فأكثر، المتمتعين بحقوقهم المدنية والمسجَّلين في القوائم الانتخابية، يحق لهم التصويت. التصويت شخصي وحر وسري.',
+            '<strong>مواطنو الاتحاد الأوروبي:</strong> يمكنهم التصويت في الانتخابات البلدية (بعد 6 أشهر إقامة) والانتخابات الأوروبية.',
+          ]
+        }
       },
       {
-        heading: 'Les institutions et les élus',
-        content: [
-          '<strong>Président de la République :</strong> Élu pour 5 ans au suffrage universel direct (depuis 1962). Nomme le Premier ministre. Chef des armées. Réside au palais de l\'Élysée.',
-          '<strong>Parlement :</strong> Assemblée nationale (577 députés, élus pour 5 ans au suffrage direct) + Sénat (348 sénateurs, élus pour 6 ans au suffrage indirect). Vote les lois.',
-          '<strong>Gouvernement :</strong> Premier ministre + ministres. Le Premier ministre dirige l\'action du gouvernement depuis l\'Hôtel de Matignon.',
-          '<strong>Élus locaux :</strong> Conseillers municipaux + maire (6 ans) ; conseillers départementaux (6 ans) ; conseillers régionaux (6 ans).',
-          '<strong>Partis politiques :</strong> La pluralité des partis est un principe fondamental. Ils proposent des programmes et sélectionnent des candidats. Les médias ont l\'obligation d\'être équitables entre les partis (loi de 1986).',
-        ]
-      },
-      {
-        heading: 'Comment est votée une loi ?',
-        content: [
-          '<strong>Étape 1 — Initiative :</strong> Le gouvernement (projet de loi) ou le Parlement (proposition de loi) propose un texte.',
-          '<strong>Étape 2 — Examen :</strong> Une commission parlementaire examine, amende et rédige un rapport.',
-          '<strong>Étape 3 — Navette parlementaire :</strong> Le texte est voté article par article à l\'Assemblée nationale puis au Sénat. Les deux chambres doivent adopter le même texte.',
-          '<strong>Étape 4 — Désaccord :</strong> Si désaccord → commission mixte paritaire (7 députés + 7 sénateurs). Si toujours pas d\'accord → l\'Assemblée nationale a le dernier mot.',
-          '<strong>Étape 5 — Promulgation :</strong> Le Conseil constitutionnel peut être saisi pour vérifier la conformité. Le président signe dans un délai de 15 jours. La loi est publiée au Journal officiel.',
-        ]
-      },
-      {
-        heading: 'L\'organisation administrative de la France',
-        content: [
-          '<strong>Décentralisation :</strong> L\'État transfère des compétences aux collectivités territoriales (communes, départements, régions).',
-          '<strong>Communes :</strong> ~35 000 communes en France. Gèrent l\'urbanisme, les écoles primaires et maternelles, les services de proximité. Dirigées par le maire.',
-          '<strong>Départements :</strong> 101 au total (96 métropolitains + 5 outre-mer). Compétences : aide sociale, RSA, gestion des collèges, routes. <strong>Le préfet</strong> représente l\'État dans le département.',
-          '<strong>Régions :</strong> 18 au total (13 métropolitaines + 5 outre-mer). Gèrent les lycées, le développement économique, l\'aménagement du territoire.',
-          '<strong>Rôle du préfet :</strong> Représentant de l\'État dans le département. Organise la sécurité, délivre les titres administratifs, vérifie que les collectivités respectent les lois.',
-        ]
-      },
-      {
-        heading: 'L\'Union européenne',
-        content: [
-          '<strong>Étapes clés :</strong> 1951 — Traité de Paris : CECA (6 pays fondateurs : France, Allemagne, Italie, Belgique, Pays-Bas, Luxembourg). 1957 — Traité de Rome : CEE. 1992 — Traité de Maastricht : UE. 2007 — Traité de Lisbonne. 2020 — Brexit (Royaume-Uni quitte l\'UE).',
-          '<strong>27 États membres</strong> (au 1er janvier 2025). Devise : "Unie dans la diversité". Hymne : <em>L\'Ode à la joie</em> (Beethoven). Drapeau : 12 étoiles dorées sur fond bleu. Journée de l\'Europe : 9 mai.',
-          '<strong>Monnaie :</strong> L\'euro est utilisé en France depuis le 1er janvier 2002.',
-          '<strong>Institutions :</strong> Conseil européen (Bruxelles — 27 chefs d\'État), Conseil de l\'UE (ministres), Commission européenne (Bruxelles — 27 commissaires), Parlement européen (Strasbourg et Bruxelles — 720 députés dont 81 Français), Cour de justice (Luxembourg).',
-          '<strong>Élections européennes :</strong> Tous les 5 ans. Tout citoyen UE résidant en France peut voter et être candidat (18 ans minimum, inscrit sur les listes).',
-          '<strong>Siège du Parlement européen :</strong> Strasbourg (siège officiel) et Bruxelles. <strong>Siège de la Commission :</strong> Bruxelles.',
-        ]
+        heading: { fr:'L\'organisation administrative et l\'Union européenne', en:'Administrative organisation and the European Union', zh:'行政组织与欧盟', ar:'التنظيم الإداري والاتحاد الأوروبي' },
+        content: {
+          fr: [
+            '<strong>Communes :</strong> ~35 000 en France. Gèrent l\'urbanisme, les écoles primaires et maternelles. Dirigées par le maire.',
+            '<strong>Départements :</strong> 101 au total. Gèrent l\'aide sociale, les collèges, les routes. Le préfet représente l\'État.',
+            '<strong>Régions :</strong> 18 au total (13 métro + 5 outre-mer). Gèrent les lycées et le développement économique.',
+            '<strong>Union européenne :</strong> 27 États membres. Fondée par le traité de Maastricht (1992). Devise : "Unie dans la diversité". Hymne : L\'Ode à la joie. Journée de l\'Europe : 9 mai. L\'euro utilisé en France depuis 2002.',
+            '<strong>Institutions UE :</strong> Conseil européen (Bruxelles — 27 chefs d\'État), Commission européenne (Bruxelles — 27 commissaires), Parlement européen (Strasbourg — 720 députés), Cour de justice (Luxembourg).',
+          ],
+          en: [
+            '<strong>Municipalities:</strong> ~35,000 in France. Manage urban planning and primary/nursery schools. Led by the mayor.',
+            '<strong>Departments:</strong> 101 in total. Manage social services, secondary schools (collèges) and roads. The prefect represents the State.',
+            '<strong>Regions:</strong> 18 in total (13 metropolitan + 5 overseas). Manage high schools (lycées) and economic development.',
+            '<strong>European Union:</strong> 27 member states. Founded by the Maastricht Treaty (1992). Motto: "United in Diversity". Anthem: Ode to Joy. Europe Day: 9 May. Euro in use in France since 2002.',
+            '<strong>EU institutions:</strong> European Council (Brussels — 27 heads of state), European Commission (Brussels — 27 commissioners), European Parliament (Strasbourg — 720 MEPs), Court of Justice (Luxembourg).',
+          ],
+          zh: [
+            '<strong>市镇：</strong>法国约35,000个。管理城市规划和小学/幼儿园。由市长领导。',
+            '<strong>省：</strong>共101个。管理社会服务、初中和道路。省长代表国家。',
+            '<strong>大区：</strong>共18个（13个本土+5个海外）。管理高中和经济发展。',
+            '<strong>欧盟：</strong>27个成员国。由《马斯特里赫特条约》（1992年）创立。格言："在多样性中统一"。颂歌：《欢乐颂》。欧洲日：5月9日。欧元自2002年起在法国使用。',
+            '<strong>欧盟机构：</strong>欧洲理事会（布鲁塞尔——27位国家元首）、欧盟委员会（布鲁塞尔——27位委员）、欧洲议会（斯特拉斯堡——720名议员）、欧洲法院（卢森堡）。',
+          ],
+          ar: [
+            '<strong>البلديات:</strong> نحو 35,000 في فرنسا. تُدير التعمير والمدارس الابتدائية ورياض الأطفال. يقودها العمدة.',
+            '<strong>الأقسام الإدارية:</strong> 101 قسماً إجمالاً. تُدير الخدمات الاجتماعية والمتوسطات والطرق. يمثِّل المحافظُ الدولةَ فيها.',
+            '<strong>الجهات:</strong> 18 جهة (13 في البر الرئيسي + 5 في ما وراء البحار). تُدير الثانويات والتنمية الاقتصادية.',
+            '<strong>الاتحاد الأوروبي:</strong> 27 دولة عضو. أُسِّس بموجب معاهدة ماستريخت (1992). الشعار: "متحدون في التنوع". النشيد: نشيد الفرح. يوم أوروبا: 9 مايو. اليورو مستخدَم في فرنسا منذ 2002.',
+            '<strong>مؤسسات الاتحاد الأوروبي:</strong> المجلس الأوروبي (بروكسل — 27 رئيس دولة)، المفوضية الأوروبية (بروكسل — 27 مفوضاً)، البرلمان الأوروبي (ستراسبورغ — 720 نائباً)، محكمة العدل (لوكسمبورغ).',
+          ]
+        }
       },
     ]
   },
@@ -159,77 +356,83 @@ const MATERIALS = [
     icon: '📜',
     sections: [
       {
-        heading: 'Les droits fondamentaux — Trois catégories',
-        content: [
-          '<strong>Catégorie 1 — Droits liés à la personne :</strong> Droits naturels de tout être humain. Comprennent : l\'égalité devant la loi, la liberté, la sûreté, la résistance à l\'oppression, la présomption d\'innocence, le droit à un procès équitable, le droit à un avocat, la liberté d\'expression, de culte, de grève et le droit de propriété.',
-          '<strong>Catégorie 2 — Droits économiques et sociaux :</strong> Garantissent des conditions de vie dignes. Comprennent : droit à l\'emploi, à la santé, à l\'éducation gratuite, au logement, à la sécurité sociale. Ces droits nécessitent l\'intervention de l\'État.',
-          '<strong>Catégorie 3 — Droits de "troisième génération" :</strong> Droits collectifs fondés sur la solidarité. Comprennent : le droit à la paix, à un environnement sain, à l\'aide humanitaire. Ils concernent les générations futures.',
-        ]
+        heading: { fr:'Les droits fondamentaux — Trois catégories', en:'Fundamental rights — Three categories', zh:'基本权利——三种类别', ar:'الحقوق الأساسية — ثلاث فئات' },
+        content: {
+          fr: [
+            '<strong>Catégorie 1 — Droits liés à la personne :</strong> Égalité devant la loi, liberté, sûreté, résistance à l\'oppression, présomption d\'innocence, droit à un avocat, liberté d\'expression, de culte, de grève, droit de propriété.',
+            '<strong>Catégorie 2 — Droits économiques et sociaux :</strong> Droit à l\'emploi, à la santé, à l\'éducation gratuite, au logement, à la sécurité sociale. Ces droits nécessitent l\'intervention de l\'État.',
+            '<strong>Catégorie 3 — Droits de "troisième génération" :</strong> Droits collectifs : droit à la paix, à un environnement sain, aide aux générations futures.',
+          ],
+          en: [
+            '<strong>Category 1 — Personal rights:</strong> Equality before the law, liberty, security, resistance to oppression, presumption of innocence, right to a lawyer, freedom of expression, of worship, to strike, right to property.',
+            '<strong>Category 2 — Economic and social rights:</strong> Right to work, health, free education, housing, social security. These rights require State intervention.',
+            '<strong>Category 3 — "Third generation" rights:</strong> Collective rights: right to peace, a healthy environment, aid for future generations.',
+          ],
+          zh: [
+            '<strong>第一类——个人权利：</strong>法律面前平等、自由、安全、反抗压迫、无罪推定、获得律师帮助的权利、言论自由、宗教自由、罢工权、财产权。',
+            '<strong>第二类——经济和社会权利：</strong>工作权、健康权、免费教育权、住房权、社会保障权。这些权利需要国家干预。',
+            '<strong>第三类——"第三代"权利：</strong>集体权利：和平权、健康环境权、为子孙后代提供援助。',
+          ],
+          ar: [
+            '<strong>الفئة 1 — الحقوق الشخصية:</strong> المساواة أمام القانون، الحرية، الأمن، مقاومة الاضطهاد، قرينة البراءة، الحق في محامٍ، حرية التعبير والعبادة والإضراب، حق الملكية.',
+            '<strong>الفئة 2 — الحقوق الاقتصادية والاجتماعية:</strong> الحق في العمل والصحة والتعليم المجاني والسكن والضمان الاجتماعي. تستلزم هذه الحقوق تدخل الدولة.',
+            '<strong>الفئة 3 — حقوق "الجيل الثالث":</strong> حقوق جماعية: الحق في السلام، البيئة الصحية، والمساعدة للأجيال القادمة.',
+          ]
+        }
       },
       {
-        heading: 'Les grands textes fondateurs',
-        content: [
-          '<strong>DDHC 1789 :</strong> La Déclaration des droits de l\'homme et du citoyen du 26 août 1789. Texte fondateur. 17 articles. Affirme : "Les Hommes naissent et demeurent libres et égaux en droits" (art. 1). Droits naturels = liberté, propriété, sûreté, résistance à l\'oppression (art. 2). Liberté d\'opinion et d\'expression (art. 10-11).',
-          '<strong>Constitution de la Ve République (1958) :</strong> Loi fondamentale. 108 articles. Adoptée le 4 octobre 1958 par référendum (82% des voix). Le <strong>bloc de constitutionnalité</strong> = Constitution 1958 + Préambule de 1946 + DDHC de 1789 + Charte de l\'environnement 2004. Toutes les lois françaises doivent le respecter.',
-          '<strong>Charte de l\'environnement (2004) :</strong> Intégrée à la Constitution en 2005. Affirme que "chacun a le droit de vivre dans un environnement équilibré et respectueux de la santé" (art. 1). Le développement durable ne doit pas compromettre les besoins des générations futures.',
-          '<strong>Autres textes :</strong> Code civil (1804), Préambule de la Constitution de 1946, Convention européenne des droits de l\'homme (1959), Charte des droits fondamentaux de l\'UE (2000).',
-        ]
+        heading: { fr:'Les grands textes fondateurs', en:'The founding texts', zh:'重要创始文件', ar:'النصوص التأسيسية الكبرى' },
+        content: {
+          fr: [
+            '<strong>DDHC 1789 :</strong> 17 articles. "Les Hommes naissent et demeurent libres et égaux en droits" (art. 1). Droits naturels = liberté, propriété, sûreté, résistance à l\'oppression (art. 2). Liberté d\'expression (art. 10-11).',
+            '<strong>Constitution de 1958 :</strong> Le <strong>bloc de constitutionnalité</strong> = Constitution 1958 + Préambule de 1946 + DDHC 1789 + Charte de l\'environnement 2004. Toutes les lois françaises doivent le respecter.',
+            '<strong>Charte de l\'environnement (2004) :</strong> "Chacun a le droit de vivre dans un environnement équilibré et respectueux de la santé." Intégrée à la Constitution en 2005.',
+          ],
+          en: [
+            '<strong>DDHC 1789:</strong> 17 articles. "Men are born and remain free and equal in rights" (art. 1). Natural rights = liberty, property, security, resistance to oppression (art. 2). Freedom of expression (art. 10-11).',
+            '<strong>1958 Constitution:</strong> The <strong>constitutional block</strong> = 1958 Constitution + 1946 Preamble + 1789 DDHC + 2004 Environmental Charter. All French laws must comply.',
+            '<strong>Environmental Charter (2004):</strong> "Everyone has the right to live in a balanced environment that is respectful of health." Incorporated into the Constitution in 2005.',
+          ],
+          zh: [
+            '<strong>1789年《人权宣言》：</strong>17条。"人生而自由，在权利上一律平等"（第1条）。自然权利 = 自由、财产、安全、反抗压迫（第2条）。言论自由（第10-11条）。',
+            '<strong>1958年宪法：</strong><strong>宪法典</strong> = 1958年宪法 + 1946年序言 + 1789年《人权宣言》 + 2004年环境宪章。所有法国法律必须遵守。',
+            '<strong>2004年环境宪章：</strong>"每个人都有权生活在有利于健康的均衡环境中。" 2005年纳入宪法。',
+          ],
+          ar: [
+            '<strong>إعلان حقوق الإنسان والمواطن 1789:</strong> 17 مادة. "يولد الناس ويظلون أحراراً ومتساوين في الحقوق" (المادة 1). الحقوق الطبيعية = الحرية والملكية والأمن ومقاومة الاضطهاد (المادة 2). حرية التعبير (المادتان 10-11).',
+            '<strong>دستور 1958:</strong> يتألف <strong>الكتلة الدستورية</strong> من دستور 1958 + مقدمة دستور 1946 + إعلان 1789 + ميثاق البيئة 2004. يجب أن تمتثل جميع القوانين الفرنسية لها.',
+            '<strong>ميثاق البيئة (2004):</strong> "لكل شخص الحق في العيش في بيئة متوازنة تحترم الصحة." أُدرج في الدستور عام 2005.',
+          ]
+        }
       },
       {
-        heading: 'Les droits individuels',
-        content: [
-          '<strong>Dignité humaine :</strong> Chaque personne mérite le respect inconditionnel, quels que soient son âge, sexe, santé, religion ou origine. Interdiction de la torture, de l\'esclavage, des traitements inhumains. Le corps humain ne peut être une source de profit (trafic d\'organes interdit).',
-          '<strong>Liberté conjugale :</strong> Chacun est libre de choisir son conjoint (quel que soit son sexe). Consentement libre = condition essentielle du mariage. Liberté de mettre fin à l\'union (divorce, dissolution du PACS, séparation du concubinage).',
-          '<strong>Contraception et IVG :</strong> La contraception est accessible à tous, sans autorisation du partenaire. Remboursée pour les femmes de moins de 26 ans. L\'IVG (Interruption Volontaire de Grossesse) est légale jusqu\'à 14 semaines de grossesse depuis 2022. Inscrite dans la Constitution depuis le 4 mars 2024. Prise en charge à 100% par l\'Assurance Maladie.',
-          '<strong>PMA :</strong> Procréation Médicalement Assistée — ouverte à toutes les femmes (en couple ou seules) depuis la loi bioéthique du 2 août 2021.',
-          '<strong>Limites des libertés :</strong> "La liberté consiste à faire tout ce qui ne nuit pas à autrui" (DDHC art. 4). Nos droits sont limités par : l\'intérêt général, les libertés des autres, l\'ordre public, la dignité humaine.',
-        ]
-      },
-      {
-        heading: 'Les obligations des résidents et citoyens',
-        content: [
-          '<strong>Obligations de tout résident :</strong> Payer des impôts (l\'impôt est inscrit dans la DDHC de 1789), être en situation régulière (titre de séjour valide), assister toute personne en danger (non-assistance est un délit), défendre l\'environnement (tri des déchets, consommation responsable).',
-          '<strong>Obligations du citoyen français :</strong> En plus des obligations des résidents : respecter et faire respecter la loi, participer à la vie politique (vote), défense du pays (Journée Défense et Citoyenneté — JDC), participer au fonctionnement de la justice (jurer lors d\'un procès d\'assises possible à partir de 23 ans).',
-          '<strong>Les 3 types d\'infractions pénales :</strong>',
-          '• <strong>Contravention</strong> (la moins grave) : amende max 3 000 €, pas de prison. Exemples : excès de vitesse, tapage nocturne. Jugée par le tribunal de police.',
-          '• <strong>Délit</strong> : amende ≥ 3 750 € + 2 mois à 10 ans de prison. Exemples : vol, fraude fiscale, harcèlement, ne pas scolariser son enfant. Jugé par le tribunal correctionnel.',
-          '• <strong>Crime</strong> (la plus grave) : amende ≥ 3 750 € + 15 ans à la perpétuité. Exemples : assassinat (prémédité), meurtre, viol, terrorisme. Jugé par la cour d\'assises.',
-        ]
-      },
-      {
-        heading: 'La protection contre les violences',
-        content: [
-          '<strong>Types de violences interdites :</strong> Psychologiques (insultes, menaces, confiscation de documents), physiques (gifle, coup, tirer par les cheveux), économiques (contrôle total des finances), sexuelles (harcèlement sexuel, agression sexuelle, viol). Toutes sont strictement interdites, y compris au sein du couple.',
-          '<strong>Consentement :</strong> Tout rapprochement physique doit être validé par les 2 personnes. Le silence n\'est pas un consentement. Le consentement peut être retiré à tout moment.',
-          '<strong>Violences envers les enfants :</strong> La maltraitance physique, psychologique ou sexuelle est interdite et punissable. Les gifles et fessées sont interdites. Harcèlement scolaire = délit.',
-          '<strong>Mutilations sexuelles féminines :</strong> Strictement interdites et sévèrement punies en France, y compris si commises à l\'étranger.',
-          '<strong>Traite des êtres humains :</strong> Recruter, transporter ou héberger une personne pour l\'exploiter (prostitution, esclavage, travail forcé) est un crime grave.',
-          '<strong>Que faire en cas de violence :</strong> Parler à une personne de confiance, contacter une association spécialisée, déposer plainte auprès de la police ou gendarmerie, envoyer un signalement au procureur.',
-        ]
-      },
-      {
-        heading: 'Numéros d\'urgence',
-        content: [
-          '<strong>15 — SAMU</strong> : Urgences médicales.',
-          '<strong>17 — Police secours</strong> : Urgences sécurité.',
-          '<strong>18 — Sapeurs-pompiers</strong> : Incendie, accidents.',
-          '<strong>112</strong> : Numéro d\'urgence européen (depuis tout téléphone, gratuit).',
-          '<strong>115</strong> : Hébergement d\'urgence.',
-          '<strong>119</strong> : Enfance maltraitée — Allô Enfance en Danger (gratuit 24h/24).',
-          '<strong>3919</strong> : Violences conjugales (femmes).',
-          '<strong>3018</strong> : Harcèlement scolaire.',
-          '<strong>3114</strong> : Numéro national de prévention du suicide.',
-          '<strong>114</strong> : Par SMS pour les personnes malentendantes.',
-        ]
-      },
-      {
-        heading: 'Protection de l\'environnement',
-        content: [
-          '"Chacun a le droit de vivre dans un environnement équilibré et respectueux de la santé" — Article 1 de la Charte de l\'environnement (2004).',
-          '"Toute personne a le devoir de prendre part à la préservation et à l\'amélioration de l\'environnement" — Article 2.',
-          '<strong>Actions concrètes :</strong> Trier ses déchets, réduire les plastiques, éviter le gaspillage alimentaire et énergétique, privilégier les transports en commun et le vélo, respecter les espaces communs, participer aux actions locales (nettoyage collectif).',
-          '<strong>Ne pas jeter ses déchets</strong> dans la rue ou un cours d\'eau est une obligation légale — c\'est une infraction passible d\'amende.',
-        ]
+        heading: { fr:'Obligations, infractions et numéros d\'urgence', en:'Obligations, offences and emergency numbers', zh:'义务、违法行为和急救号码', ar:'الالتزامات والمخالفات وأرقام الطوارئ' },
+        content: {
+          fr: [
+            '<strong>Obligations de tout résident :</strong> Payer des impôts, être en situation régulière, assister toute personne en danger, défendre l\'environnement.',
+            '<strong>Les 3 types d\'infractions :</strong> Contravention (amende max 3 000 €, pas de prison — tribunal de police) | Délit (amende ≥ 3 750 € + 2 mois à 10 ans de prison — tribunal correctionnel) | Crime (≥ 15 ans à perpétuité — cour d\'assises).',
+            '<strong>15 — SAMU</strong> (urgences médicales) | <strong>17 — Police</strong> | <strong>18 — Pompiers</strong> | <strong>112</strong> (européen universel)',
+            '<strong>115</strong> (hébergement d\'urgence) | <strong>119</strong> (enfance maltraitée) | <strong>3919</strong> (violences conjugales) | <strong>3114</strong> (prévention suicide)',
+          ],
+          en: [
+            '<strong>Obligations of all residents:</strong> Pay taxes, maintain legal status, assist anyone in danger, protect the environment.',
+            '<strong>The 3 types of criminal offences:</strong> Minor offence/contravention (max €3,000 fine, no prison — police court) | Offence/délit (fine ≥ €3,750 + 2 months to 10 years — criminal court) | Crime (15 years to life — criminal assizes).',
+            '<strong>15 — SAMU</strong> (medical emergencies) | <strong>17 — Police</strong> | <strong>18 — Fire brigade</strong> | <strong>112</strong> (universal European emergency)',
+            '<strong>115</strong> (emergency shelter) | <strong>119</strong> (child protection) | <strong>3919</strong> (domestic violence) | <strong>3114</strong> (suicide prevention)',
+          ],
+          zh: [
+            '<strong>所有居民的义务：</strong>纳税、保持合法身份、救助处于危险中的人、保护环境。',
+            '<strong>三种刑事违法类型：</strong>轻罪（最高罚款3,000欧元，无监禁——警察法庭）| 中等罪行（罚款≥3,750欧元 + 2个月至10年监禁——刑事法庭）| 重罪（15年至无期徒刑——重罪法庭）。',
+            '<strong>15 — SAMU</strong>（医疗急救）| <strong>17 — 警察</strong> | <strong>18 — 消防队</strong> | <strong>112</strong>（欧洲通用急救）',
+            '<strong>115</strong>（紧急庇护所）| <strong>119</strong>（儿童保护）| <strong>3919</strong>（家庭暴力）| <strong>3114</strong>（自杀预防）',
+          ],
+          ar: [
+            '<strong>التزامات جميع المقيمين:</strong> دفع الضرائب، الإقامة القانونية، مساعدة أي شخص في خطر، حماية البيئة.',
+            '<strong>أنواع المخالفات الجنائية الثلاثة:</strong> مخالفة بسيطة (غرامة قصوى 3,000 يورو، بدون سجن — محكمة الشرطة) | جنحة (غرامة ≥ 3,750 يورو + شهرين إلى 10 سنوات سجناً — المحكمة الجنائية) | جريمة (15 سنة إلى السجن المؤبد — محكمة الجنايات).',
+            '<strong>15 — SAMU</strong> (الطوارئ الطبية) | <strong>17 — الشرطة</strong> | <strong>18 — المطافئ</strong> | <strong>112</strong> (الطوارئ الأوروبية)',
+            '<strong>115</strong> (الإيواء الطارئ) | <strong>119</strong> (حماية الطفولة) | <strong>3919</strong> (العنف الزوجي) | <strong>3114</strong> (الوقاية من الانتحار)',
+          ]
+        }
       },
     ]
   },
@@ -240,95 +443,115 @@ const MATERIALS = [
     icon: '🗺️',
     sections: [
       {
-        heading: 'Chronologie des régimes politiques',
-        content: [
-          '<strong>Avant 1789 — Ancien Régime :</strong> Monarchie absolue. Le roi détient tous les pouvoirs (droit divin). Société divisée en 3 ordres : Clergé, Noblesse, Tiers État (paysans = 80% de la population).',
-          '<strong>1789 — Révolution française :</strong> Prise de la Bastille (14 juillet). DDHC (26 août). Fin de la monarchie absolue.',
-          '<strong>1792-1804 — Ire République :</strong> 1ère République française. Période agitée : la Terreur (Robespierre), le Directoire, le Consulat (Napoléon Bonaparte). Suffrage universel masculin proclamé.',
-          '<strong>1804-1815 — 1er Empire :</strong> Napoléon Ier Empereur. Code civil (1804), préfets, lycées, Banque de France. Victoire d\'Austerlitz (1805). Défaite de Waterloo (1815).',
-          '<strong>1815-1848 — Restauration :</strong> Retour des Bourbons (Louis XVIII, Charles X). Révolution de 1830 → Louis-Philippe (Monarchie de Juillet).',
-          '<strong>1848-1851 — IIe République :</strong> Suffrage universel masculin. Abolition définitive de l\'esclavage (27 avril 1848 — Schoelcher). Coup d\'État de Louis-Napoléon Bonaparte.',
-          '<strong>1852-1870 — 2nd Empire :</strong> Napoléon III. Modernisation économique. Défaite contre la Prusse (1870).',
-          '<strong>1870-1940 — IIIe République :</strong> La plus longue (70 ans). Lois Jules Ferry (1881-1882). Séparation Église-État (1905). Guerre 14-18. Front populaire (1936).',
-          '<strong>1940-1944 — État français (Vichy) :</strong> Maréchal Pétain. Collaboration avec l\'Allemagne nazie. Période noire.',
-          '<strong>1946-1958 — IVe République :</strong> Instabilité (21 gouvernements en 12 ans). Décolonisation. Début de la construction européenne.',
-          '<strong>1958 → Ve République :</strong> Constitution du 4 octobre 1958 sous de Gaulle. Toujours en vigueur. Président élu au suffrage universel direct depuis 1962.',
-        ]
+        heading: { fr:'Chronologie des régimes politiques', en:'Chronology of political regimes', zh:'政治体制年表', ar:'تسلسل الأنظمة السياسية' },
+        content: {
+          fr: [
+            '<strong>Avant 1789 — Ancien Régime :</strong> Monarchie absolue. Société en 3 ordres : Clergé, Noblesse, Tiers État (paysans = 80%).',
+            '<strong>1789 — Révolution française :</strong> Prise de la Bastille (14 juillet). DDHC (26 août). Fin de la monarchie absolue.',
+            '<strong>1792-1804 — Ire République :</strong> Terreur (Robespierre), Directoire, Consulat (Napoléon).',
+            '<strong>1804 — 1er Empire :</strong> Napoléon Ier Empereur. Code civil, préfets, Banque de France. Défaite de Waterloo (1815).',
+            '<strong>1848 — IIe République :</strong> Suffrage universel masculin. Abolition de l\'esclavage (27 avril 1848).',
+            '<strong>1870-1940 — IIIe République :</strong> Lois Jules Ferry (1881-1882). Séparation Église-État (1905). Guerre 14-18. Front populaire (1936).',
+            '<strong>1940-1944 — Vichy :</strong> Maréchal Pétain. Collaboration avec l\'Allemagne nazie. Rafle du Vél d\'Hiv (16-17 juillet 1942).',
+            '<strong>1958 → Ve République :</strong> Constitution du 4 octobre 1958. Président élu au suffrage universel direct depuis 1962. Toujours en vigueur.',
+          ],
+          en: [
+            '<strong>Before 1789 — Ancien Régime:</strong> Absolute monarchy. Society divided into 3 orders: Clergy, Nobility, Third Estate (peasants = 80%).',
+            '<strong>1789 — French Revolution:</strong> Storming of the Bastille (14 July). Declaration of Human Rights (26 August). End of absolute monarchy.',
+            '<strong>1792-1804 — 1st Republic:</strong> The Terror (Robespierre), the Directory, the Consulate (Napoleon).',
+            '<strong>1804 — 1st Empire:</strong> Napoleon I as Emperor. Civil Code, prefects, Bank of France. Defeat at Waterloo (1815).',
+            '<strong>1848 — 2nd Republic:</strong> Male universal suffrage. Abolition of slavery (27 April 1848).',
+            '<strong>1870-1940 — 3rd Republic:</strong> Jules Ferry laws (1881-1882). Church-State separation (1905). WWI. Popular Front (1936).',
+            '<strong>1940-1944 — Vichy regime:</strong> Marshal Pétain. Collaboration with Nazi Germany. Vél d\'Hiv Roundup (16-17 July 1942).',
+            '<strong>1958 → 5th Republic:</strong> Constitution of 4 October 1958. President elected by direct universal suffrage since 1962. Still in force.',
+          ],
+          zh: [
+            '<strong>1789年以前——旧制度：</strong>绝对君主制。社会分为3个等级：神职人员、贵族、第三等级（农民占80%）。',
+            '<strong>1789年——法国大革命：</strong>攻占巴士底狱（7月14日）。《人权宣言》（8月26日）。绝对君主制终结。',
+            '<strong>1792-1804年——第一共和国：</strong>恐怖统治（罗伯斯庇尔）、督政府、执政府（拿破仑）。',
+            '<strong>1804年——第一帝国：</strong>拿破仑一世称帝。《民法典》、省长制度、法兰西银行。滑铁卢惨败（1815年）。',
+            '<strong>1848年——第二共和国：</strong>男性普选权。废除奴隶制（1848年4月27日）。',
+            '<strong>1870-1940年——第三共和国：</strong>茹费理法律（1881-1882年）。政教分离（1905年）。一战。人民阵线（1936年）。',
+            '<strong>1940-1944年——维希政权：</strong>贝当元帅。与纳粹德国合作。冬季自行车赛场大逮捕（1942年7月16-17日）。',
+            '<strong>1958年至今——第五共和国：</strong>1958年10月4日宪法。总统自1962年起由直接普选产生。至今有效。',
+          ],
+          ar: [
+            '<strong>قبل 1789 — النظام القديم:</strong> ملكية مطلقة. المجتمع مقسَّم إلى 3 طبقات: رجال الدين، النبلاء، الطبقة الثالثة (الفلاحون = 80%).',
+            '<strong>1789 — الثورة الفرنسية:</strong> اقتحام الباستيل (14 يوليو). إعلان حقوق الإنسان (26 أغسطس). نهاية الملكية المطلقة.',
+            '<strong>1792-1804 — الجمهورية الأولى:</strong> عهد الإرهاب (روبسبير)، الإدارة، القنصلية (نابليون).',
+            '<strong>1804 — الإمبراطورية الأولى:</strong> نابليون الأول إمبراطوراً. القانون المدني، المحافظون، بنك فرنسا. هزيمة واترلو (1815).',
+            '<strong>1848 — الجمهورية الثانية:</strong> الاقتراع العام للذكور. إلغاء العبودية (27 أبريل 1848).',
+            '<strong>1870-1940 — الجمهورية الثالثة:</strong> قوانين جول فيري (1881-1882). الفصل بين الكنيسة والدولة (1905). الحرب العالمية الأولى. الجبهة الشعبية (1936).',
+            '<strong>1940-1944 — نظام فيشي:</strong> المارشال بيتان. التعاون مع ألمانيا النازية. مداهمة Vél d\'Hiv (16-17 يوليو 1942).',
+            '<strong>1958 ← الجمهورية الخامسة:</strong> دستور 4 أكتوبر 1958. انتخاب الرئيس بالاقتراع العام المباشر منذ 1962. لا يزال سارياً.',
+          ]
+        }
       },
       {
-        heading: 'La Ve République — Présidents et grandes dates',
-        content: [
-          '<strong>Charles de Gaulle</strong> (1959-1969) — Fondateur de la Ve République.',
-          '<strong>Georges Pompidou</strong> (1969-1974) — Mort en fonction.',
-          '<strong>Valéry Giscard d\'Estaing</strong> (1974-1981) — Âge du vote abaissé à 18 ans (1974).',
-          '<strong>François Mitterrand</strong> (1981-1995) — Abolition de la peine de mort (9 octobre 1981 — loi Badinter).',
-          '<strong>Jacques Chirac</strong> (1995-2007) — Charte de l\'environnement (2004). Reconnaissance de la responsabilité de la France dans la Rafle du Vel d\'Hiv (1995).',
-          '<strong>Nicolas Sarkozy</strong> (2007-2012).',
-          '<strong>François Hollande</strong> (2012-2017) — Mariage pour tous (17 mai 2013 — loi Taubira). La France = 14ème pays à légaliser le mariage homosexuel.',
-          '<strong>Emmanuel Macron</strong> (2017- ) — IVG inscrite dans la Constitution (4 mars 2024). La France = 1er pays au monde à constitutionnaliser ce droit.',
-          '<strong>Loi Veil — 17 janvier 1975 :</strong> Simone Veil légalise l\'IVG. Délai allongé à 14 semaines en 2022.',
-        ]
+        heading: { fr:'La Ve République et les conflits mondiaux', en:'The Fifth Republic and the world wars', zh:'第五共和国与世界大战', ar:'الجمهورية الخامسة والحروب العالمية' },
+        content: {
+          fr: [
+            '<strong>Présidents notables :</strong> de Gaulle (fondateur 1959-1969), Mitterrand (abolition peine de mort 1981), Hollande (mariage pour tous 2013), Macron (IVG dans la Constitution 2024).',
+            '<strong>1ère Guerre mondiale (1914-1918) :</strong> Armistice le 11 novembre 1918. ~10 millions de soldats morts. La France récupère l\'Alsace-Lorraine.',
+            '<strong>2ème Guerre mondiale (1939-1945) :</strong> Appel du 18 juin 1940 (de Gaulle à Londres). Débarquement en Normandie (6 juin 1944). Libération de Paris (25 août 1944). Capitulation de l\'Allemagne (8 mai 1945).',
+            '<strong>La Shoah :</strong> Génocide de 6 millions de Juifs d\'Europe organisé par les nazis (1941-1945). La négation de la Shoah est un délit en France (loi Gayssot 1990).',
+            '<strong>Jean Moulin :</strong> Figure emblématique de la Résistance française, mort sous la torture en 1943.',
+          ],
+          en: [
+            '<strong>Notable presidents:</strong> de Gaulle (founder 1959-1969), Mitterrand (abolished death penalty 1981), Hollande (same-sex marriage 2013), Macron (abortion right in Constitution 2024).',
+            '<strong>WWI (1914-1918):</strong> Armistice on 11 November 1918. ~10 million soldiers killed. France regained Alsace-Lorraine.',
+            '<strong>WWII (1939-1945):</strong> De Gaulle\'s appeal of 18 June 1940 (from London). D-Day landing in Normandy (6 June 1944). Liberation of Paris (25 August 1944). German surrender (8 May 1945).',
+            '<strong>The Holocaust (Shoah):</strong> Genocide of 6 million European Jews organised by the Nazis (1941-1945). Denying the Holocaust is a criminal offence in France (Gayssot law, 1990).',
+            '<strong>Jean Moulin:</strong> Iconic figure of the French Resistance, died under torture in 1943.',
+          ],
+          zh: [
+            '<strong>著名总统：</strong>戴高乐（创始人，1959-1969年）、密特朗（1981年废除死刑）、奥朗德（2013年同性婚姻）、马克龙（2024年堕胎权入宪）。',
+            '<strong>一战（1914-1918年）：</strong>1918年11月11日停战。约1000万士兵牺牲。法国收回阿尔萨斯-洛林。',
+            '<strong>二战（1939-1945年）：</strong>戴高乐1940年6月18日在伦敦发出呼吁。诺曼底登陆（1944年6月6日）。巴黎解放（1944年8月25日）。德国投降（1945年5月8日）。',
+            '<strong>大屠杀（Shoah）：</strong>纳粹组织的对欧洲600万犹太人的种族灭绝（1941-1945年）。否认大屠杀在法国是刑事犯罪（1990年戈索法）。',
+            '<strong>让·穆兰：</strong>法国抵抗运动的标志性人物，1943年在酷刑中牺牲。',
+          ],
+          ar: [
+            '<strong>رؤساء بارزون:</strong> ديغول (المؤسس 1959-1969)، ميتران (إلغاء عقوبة الإعدام 1981)، هولاند (زواج المثليين 2013)، ماكرون (حق الإجهاض في الدستور 2024).',
+            '<strong>الحرب العالمية الأولى (1914-1918):</strong> الهدنة في 11 نوفمبر 1918. نحو 10 ملايين جندي قتيل. استعادت فرنسا الألزاس واللورين.',
+            '<strong>الحرب العالمية الثانية (1939-1945):</strong> نداء ديغول من لندن في 18 يونيو 1940. إنزال النورماندي (6 يونيو 1944). تحرير باريس (25 أغسطس 1944). استسلام ألمانيا (8 مايو 1945).',
+            '<strong>المحرقة (الشواه):</strong> إبادة جماعية لـ6 ملايين يهودي أوروبي نظَّمها النازيون (1941-1945). إنكار المحرقة جريمة جنائية في فرنسا (قانون غاسو 1990).',
+            '<strong>جان مولان:</strong> الرمز الأبرز للمقاومة الفرنسية، لقي حتفه تحت التعذيب عام 1943.',
+          ]
+        }
       },
       {
-        heading: 'Les conflits mondiaux',
-        content: [
-          '<strong>Première Guerre mondiale (1914-1918) :</strong> Triple Entente (France, Royaume-Uni, Russie) vs Triple Alliance (Allemagne, Autriche-Hongrie, Italie). Déclenchée par l\'assassinat de l\'archiduc François-Ferdinand (28 juin 1914). Batailles de Verdun et de la Somme (1916). Armistice le 11 novembre 1918 à 11h. Bilan : ~10 millions de soldats morts. Traité de Versailles (1919). La France récupère l\'Alsace-Lorraine.',
-          '<strong>Seconde Guerre mondiale (1939-1945) :</strong> Hitler au pouvoir en 1933. Invasion de la Pologne le 1er septembre 1939. La France envahie en mai-juin 1940. Armistice franco-allemand (22 juin 1940). État français (Vichy) : collaboration. Appel du 18 juin 1940 depuis Londres (de Gaulle). Débarquement en Normandie (6 juin 1944 — Jour J). Libération de Paris (25 août 1944). Capitulation de l\'Allemagne (8 mai 1945). Bilan : 60 millions de morts dans le monde dont 6 millions de Juifs (Shoah).',
-          '<strong>La Rafle du Vél d\'Hiv (16-17 juillet 1942) :</strong> La police française (Vichy) arrête 13 152 Juifs à Paris. Déportés vers les camps d\'extermination. Jacques Chirac reconnaît officiellement la responsabilité de la France en 1995.',
-          '<strong>La Shoah :</strong> Génocide de 6 millions de Juifs d\'Europe organisé par l\'Allemagne nazie (1941-1945). La négation de la Shoah est un délit en France (loi Gayssot 1990). Mémorial de la Shoah à Paris.',
-          '<strong>La Résistance :</strong> Mouvement de refus de l\'occupation et du régime de Vichy. Jean Moulin = figure emblématique (mort sous la torture en 1943). France libre (de Gaulle à Londres), maquis, réseaux de renseignements.',
-          '<strong>Création de l\'ONU (1945) :</strong> Pour maintenir la paix mondiale. Procès de Nuremberg (1945-1946) : crimes contre l\'humanité.',
-        ]
-      },
-      {
-        heading: 'Géographie de la France',
-        content: [
-          '<strong>France métropolitaine :</strong> Superficie = 551 695 km² (3ème pays d\'Europe). Forme hexagonale → "l\'Hexagone". Population ≈ 68 millions d\'habitants (2024). Capitale : Paris.',
-          '<strong>Frontières terrestres :</strong> 8 pays voisins. Nord-est : Belgique, Luxembourg, Allemagne. Est : Suisse, Italie. Sud : Monaco, Espagne, Andorre.',
-          '<strong>Frontières maritimes :</strong> La Manche (nord — France/Royaume-Uni), l\'Atlantique (ouest), la Méditerranée (sud), la mer du Nord (nord-ouest).',
-          '<strong>Les 5 grands fleuves :</strong> Loire (1 013 km — le plus long, Atlantique), Seine (775 km — traverse Paris, Manche), Rhône (812 km — Méditerranée, traverse Lyon), Garonne (650 km — Atlantique, traverse Toulouse/Bordeaux), Rhin (1 230 km — mer du Nord, frontière Strasbourg).',
-          '<strong>Découpage :</strong> 13 régions métropolitaines + 5 régions d\'outre-mer (DROM). 101 départements (96 métro + 5 outre-mer). ~35 000 communes.',
-          '<strong>Territoires d\'outre-mer :</strong> DROM : Guadeloupe (Caraïbes), Martinique (Caraïbes — "l\'île aux fleurs"), Guyane (Amérique du Sud — Centre spatial de Kourou), La Réunion (océan Indien — Piton de la Fournaise), Mayotte (océan Indien — 101ème département depuis 2011).',
-        ]
-      },
-      {
-        heading: 'La France dans le monde',
-        content: [
-          '<strong>Puissance économique :</strong> 7ème économie mondiale (PIB ~3 000 milliards €). Membre du G7 et du G20. 1er pays agricole de l\'UE. 2ème exportateur mondial de produits agricoles. Secteurs clés : aéronautique (Airbus/Toulouse), automobile (Renault, Stellantis), énergie nucléaire (75% de l\'électricité), luxe (LVMH, Hermès, Chanel, L\'Oréal).',
-          '<strong>Tourisme :</strong> 1er pays touristique mondial — ~90 millions de visiteurs/an. Principales attractions : Tour Eiffel, Louvre, Riviera, Châteaux de la Loire, Mont-Saint-Michel, Alpes.',
-          '<strong>Puissance militaire et diplomatique :</strong> Puissance nucléaire (bombe atomique). Armée de ~200 000 militaires. Membre de l\'OTAN depuis 1949. Membre permanent du Conseil de sécurité de l\'ONU avec droit de veto. ~160 ambassades dans le monde.',
-          '<strong>Puissance maritime :</strong> 2ème Zone Économique Exclusive (ZEE) du monde — 11 millions de km². Présence dans tous les océans.',
-          '<strong>Francophonie :</strong> Le français est parlé par ~300 millions de personnes dans le monde. 5ème langue la plus parlée. 29 pays francophones. L\'OIF (Organisation internationale de la Francophonie) = 54 États membres. Journée internationale de la Francophonie : 20 mars.',
-        ]
-      },
-      {
-        heading: 'Les 13 régions métropolitaines',
-        content: [
-          '<strong>Île-de-France</strong> (Paris) — 12,2 M hab. Capitale, densité maximale.',
-          '<strong>Auvergne-Rhône-Alpes</strong> (Lyon) — 8,1 M hab. Alpes, Mont-Blanc (4 810 m).',
-          '<strong>Hauts-de-France</strong> (Lille) — 6 M hab. Frontière belge, industrie.',
-          '<strong>Nouvelle-Aquitaine</strong> (Bordeaux) — 6,1 M hab. Plus grande région de France.',
-          '<strong>Occitanie</strong> (Toulouse) — 6,1 M hab. Aéronautique (Airbus).',
-          '<strong>Grand Est</strong> (Strasbourg) — 5,6 M hab. Alsace-Lorraine, Parlement européen.',
-          '<strong>Provence-Alpes-Côte d\'Azur</strong> (Marseille) — 5,1 M hab. Riviera, 1er port méditerranéen.',
-          '<strong>Pays de la Loire</strong> (Nantes) — 3,9 M hab. Tourisme vert.',
-          '<strong>Bretagne</strong> (Rennes) — 3,4 M hab. Péninsule, culture celte.',
-          '<strong>Normandie</strong> (Rouen) — 3,3 M hab. Plages du Débarquement.',
-          '<strong>Bourgogne-Franche-Comté</strong> (Dijon) — 2,8 M hab. Vignobles.',
-          '<strong>Centre-Val de Loire</strong> (Orléans) — 2,6 M hab. Châteaux de la Loire (UNESCO).',
-          '<strong>Corse</strong> (Ajaccio) — 0,35 M hab. Île, statut particulier.',
-        ]
-      },
-      {
-        heading: 'Culture française et patrimoine',
-        content: [
-          '<strong>52 sites UNESCO</strong> (2024) parmi les plus nombreux au monde. Sites emblématiques : Tour Eiffel, Notre-Dame de Paris (incendie 2019 — en restauration), Musée du Louvre (plus grand musée du monde — abrite la Joconde), Mont-Saint-Michel, Versailles, Pont du Gard.',
-          '<strong>Gastronomie :</strong> Classée au patrimoine culturel immatériel de l\'UNESCO (2010). Spécialités : baguette, fromages (>1 200 variétés), vins (Bordeaux, Bourgogne, Champagne), cassoulet, bouillabaisse, crêpes bretonnes, choucroute alsacienne.',
-          '<strong>Cinéma :</strong> La France est l\'un des plus gros producteurs de films. Festival de Cannes = festival le plus prestigieux au monde.',
-          '<strong>Littérature :</strong> La France a reçu le plus de Prix Nobel de littérature. Grands auteurs : Molière, Victor Hugo, Albert Camus, Simone de Beauvoir, Marguerite Yourcenar (1ère femme élue à l\'Académie française — 1980).',
-          '<strong>Mode et luxe :</strong> Paris = capitale mondiale de la mode. LVMH, Hermès, Chanel, L\'Oréal = marques françaises mondiales.',
-          '<strong>Artistes célèbres :</strong> Paul Cézanne, Marc Chagall, Auguste Rodin (Le Penseur, Le Baiser), Auguste Renoir. Écrivains : Jean de la Fontaine, Charles Baudelaire, George Sand, Albert Camus. Chanteuses : Édith Piaf, Joséphine Baker.',
-        ]
+        heading: { fr:'Géographie et culture françaises', en:'French geography and culture', zh:'法国地理与文化', ar:'الجغرافيا والثقافة الفرنسية' },
+        content: {
+          fr: [
+            '<strong>France métropolitaine :</strong> 551 695 km² (3ème pays d\'Europe). ~68 millions d\'habitants. 13 régions métropolitaines + 5 DROM. 101 départements. ~35 000 communes.',
+            '<strong>Frontières :</strong> 8 pays voisins (Belgique, Luxembourg, Allemagne, Suisse, Italie, Monaco, Espagne, Andorre). Manche (nord), Atlantique (ouest), Méditerranée (sud).',
+            '<strong>5 grands fleuves :</strong> Loire (1 013 km), Seine (775 km, traverse Paris), Rhône (812 km), Garonne (650 km), Rhin (1 230 km).',
+            '<strong>France dans le monde :</strong> 7ème puissance économique. 1er pays touristique (~90 M visiteurs/an). 2ème ZEE maritime. Membre permanent du Conseil de sécurité de l\'ONU.',
+            '<strong>Culture :</strong> 52 sites UNESCO. Gastronomie classée UNESCO (2010). ~300 millions de francophones dans le monde. 5ème langue mondiale.',
+          ],
+          en: [
+            '<strong>Metropolitan France:</strong> 551,695 km² (3rd country in Europe). ~68 million inhabitants. 13 metropolitan regions + 5 overseas regions (DROM). 101 departments. ~35,000 municipalities.',
+            '<strong>Borders:</strong> 8 neighbouring countries (Belgium, Luxembourg, Germany, Switzerland, Italy, Monaco, Spain, Andorra). English Channel (north), Atlantic (west), Mediterranean (south).',
+            '<strong>5 major rivers:</strong> Loire (1,013 km), Seine (775 km — flows through Paris), Rhône (812 km), Garonne (650 km), Rhine (1,230 km).',
+            '<strong>France in the world:</strong> 7th economic power. 1st tourist destination (~90 M visitors/year). 2nd largest maritime EEZ. Permanent UN Security Council member.',
+            '<strong>Culture:</strong> 52 UNESCO sites. Gastronomy listed by UNESCO (2010). ~300 million French speakers worldwide. 5th most spoken language.',
+          ],
+          zh: [
+            '<strong>法国本土：</strong>551,695平方公里（欧洲第三大国）。约6800万居民。13个本土大区 + 5个海外省大区（DROM）。101个省。约35,000个市镇。',
+            '<strong>边界：</strong>8个邻国（比利时、卢森堡、德国、瑞士、意大利、摩纳哥、西班牙、安道尔）。英吉利海峡（北）、大西洋（西）、地中海（南）。',
+            '<strong>5条主要河流：</strong>卢瓦尔河（1,013公里）、塞纳河（775公里，流经巴黎）、罗讷河（812公里）、加伦河（650公里）、莱茵河（1,230公里）。',
+            '<strong>法国在世界上：</strong>世界第七经济大国。第一旅游目的地（约9000万游客/年）。第二大海洋经济专属区。联合国安理会常任理事国。',
+            '<strong>文化：</strong>52处联合国教科文组织遗址。美食被联合国教科文组织列为非物质文化遗产（2010年）。全球约3亿法语使用者。世界第五大语言。',
+          ],
+          ar: [
+            '<strong>فرنسا الأوروبية:</strong> 551,695 كم² (ثالث دولة في أوروبا). نحو 68 مليون ساكن. 13 جهة أوروبية + 5 مناطق وأقسام ما وراء البحار. 101 قسم إداري. نحو 35,000 بلدية.',
+            '<strong>الحدود:</strong> 8 دول مجاورة (بلجيكا، لوكسمبورغ، ألمانيا، سويسرا، إيطاليا، موناكو، إسبانيا، أندورا). القنال الإنجليزي (شمالاً)، المحيط الأطلسي (غرباً)، البحر الأبيض المتوسط (جنوباً).',
+            '<strong>5 أنهار كبرى:</strong> اللوار (1,013 كم)، السين (775 كم — يخترق باريس)، الرون (812 كم)، الغارون (650 كم)، الراين (1,230 كم).',
+            '<strong>فرنسا في العالم:</strong> القوة الاقتصادية السابعة. الوجهة السياحية الأولى (~90 مليون زائر/سنة). ثاني أكبر منطقة اقتصادية خالصة. عضو دائم في مجلس الأمن الأممي.',
+            '<strong>الثقافة:</strong> 52 موقعاً مدرجاً في اليونسكو. المطبخ الفرنسي مصنَّف في اليونسكو (2010). نحو 300 مليون متحدث بالفرنسية في العالم. خامس لغة عالمياً.',
+          ]
+        }
       },
     ]
   },
@@ -339,80 +562,152 @@ const MATERIALS = [
     icon: '🏠',
     sections: [
       {
-        heading: 'Démarches administratives essentielles',
-        content: [
-          '<strong>Domiciliation :</strong> Avoir une adresse officielle est indispensable pour toutes démarches (listes électorales, banque, aides sociales...). Sans logement fixe : CCAS (Centre Communal d\'Action Sociale) de la mairie ou association agréée.',
-          '<strong>Compte bancaire :</strong> Obligatoire pour recevoir son salaire, payer son loyer. Si une banque refuse, le <strong>droit au compte</strong> permet de saisir la Banque de France qui désigne une banque. Services de base gratuits.',
-          '<strong>Permis de conduire étranger :</strong> Permis UE → échange automatique. Permis hors UE avec accord bilatéral → échange dans l\'année suivant l\'obtention du titre de séjour. Permis hors UE sans accord → passer le permis français complet (code + conduite).',
-          '<strong>Code de la route :</strong> QCM de 40 questions — il faut obtenir au moins 35 bonnes réponses. Permis probatoire : 6 points au départ, jusqu\'à 12 points possibles.',
-          '<strong>Assurance obligatoire :</strong> L\'assurance automobile (responsabilité civile) est obligatoire avant de conduire. L\'assurance habitation est obligatoire pour tout locataire.',
-          '<strong>Impôts :</strong> Toute personne résidant en France et percevant des revenus doit les déclarer (impots.gouv.fr, avril-juin). Prélèvement à la source depuis 2019. TVA : 20% (normal), 5,5% (alimentation), 10% (restaurant).',
-        ]
+        heading: { fr:'Démarches administratives', en:'Administrative procedures', zh:'行政手续', ar:'الإجراءات الإدارية' },
+        content: {
+          fr: [
+            '<strong>Compte bancaire :</strong> Indispensable pour recevoir son salaire. Si une banque refuse, le <strong>droit au compte</strong> permet de saisir la Banque de France — services de base gratuits.',
+            '<strong>Permis de conduire :</strong> Permis UE → échange automatique. Hors UE avec accord → échange dans l\'année du titre de séjour. Sans accord → passer le permis français complet (40 questions — 35 bonnes réponses pour réussir).',
+            '<strong>Assurances obligatoires :</strong> Assurance automobile (avant de conduire) et assurance habitation pour tout locataire.',
+            '<strong>Impôts :</strong> Déclaration de revenus annuelle obligatoire (impots.gouv.fr, avril-juin). Prélèvement à la source depuis 2019. TVA : 20% (normal), 5,5% (alimentation), 10% (restaurant).',
+            '<strong>Titre de séjour :</strong> Carte temporaire (1 an) → Carte pluriannuelle/CSP (2-4 ans) → Carte de résident (10 ans). Renouveler AVANT expiration.',
+            '<strong>Naturalisation :</strong> 5 ans de résidence + niveau B1 en français + réussite de l\'examen civique + aucune condamnation grave. Double nationalité autorisée.',
+          ],
+          en: [
+            '<strong>Bank account:</strong> Essential for receiving wages. If a bank refuses, the <strong>right to an account</strong> allows you to contact the Banque de France — basic services free of charge.',
+            '<strong>Driving licence:</strong> EU licence → automatic exchange. Non-EU with bilateral agreement → exchange within one year of residence permit. Without agreement → must sit French driving test (40 questions — 35 correct to pass).',
+            '<strong>Mandatory insurance:</strong> Car insurance (before driving) and home insurance for all tenants.',
+            '<strong>Taxes:</strong> Annual income declaration mandatory (impots.gouv.fr, April–June). Tax deducted at source since 2019. VAT: 20% (standard), 5.5% (food), 10% (restaurants).',
+            '<strong>Residence permit:</strong> Temporary card (1 year) → Multi-year/CSP (2-4 years) → Resident card (10 years). Renew BEFORE expiry.',
+            '<strong>Naturalisation:</strong> 5 years\' residence + B1 French level + pass civic exam + no serious criminal record. Dual nationality permitted.',
+          ],
+          zh: [
+            '<strong>银行账户：</strong>领取工资必不可少。如果银行拒绝，<strong>账户权</strong>允许您联系法兰西银行——基本服务免费。',
+            '<strong>驾驶执照：</strong>欧盟驾照→自动兑换。与法国有双边协议的非欧盟驾照→在获得居留证一年内兑换。无协议→必须参加法国完整驾驶考试（40题——需答对35题）。',
+            '<strong>强制保险：</strong>汽车保险（开车前必须购买）和房屋保险（所有租客必须购买）。',
+            '<strong>税收：</strong>每年必须申报收入（impots.gouv.fr，4-6月）。2019年起实行预扣税。增值税：20%（标准）、5.5%（食品）、10%（餐厅）。',
+            '<strong>居留证：</strong>临时证（1年）→多年/CSP证（2-4年）→居民证（10年）。必须在到期前续签。',
+            '<strong>入籍：</strong>5年居住 + 法语B1水平 + 通过公民考试 + 无严重犯罪记录。允许双重国籍。',
+          ],
+          ar: [
+            '<strong>الحساب البنكي:</strong> ضروري لاستلام الراتب. إذا رفض بنك فتح حساب، يتيح <strong>الحق في الحساب</strong> اللجوءَ إلى بنك فرنسا — الخدمات الأساسية مجانية.',
+            '<strong>رخصة القيادة:</strong> رخصة الاتحاد الأوروبي → تبادل تلقائي. خارج الاتحاد الأوروبي مع اتفاقية → تبادل في غضون سنة من الحصول على تصريح الإقامة. بدون اتفاقية → اجتياز الاختبار الفرنسي الكامل (40 سؤالاً — يجب الإجابة الصحيحة عن 35 سؤالاً).',
+            '<strong>التأمينات الإلزامية:</strong> تأمين السيارة (قبل القيادة) وتأمين المسكن لكل المستأجرين.',
+            '<strong>الضرائب:</strong> التصريح السنوي بالدخل إلزامي (impots.gouv.fr، أبريل-يونيو). الاستقطاع من المصدر منذ 2019. ضريبة القيمة المضافة: 20% (عادي)، 5.5% (غذاء)، 10% (مطعم).',
+            '<strong>تصريح الإقامة:</strong> بطاقة مؤقتة (سنة) → متعددة السنوات/CSP (2-4 سنوات) → بطاقة مقيم (10 سنوات). التجديد قبل انتهاء الصلاحية.',
+            '<strong>التجنيس:</strong> 5 سنوات إقامة + مستوى B1 في الفرنسية + اجتياز الامتحان المدني + بدون سوابق جنائية خطيرة. الجنسية المزدوجة مسموح بها.',
+          ]
+        }
       },
       {
-        heading: 'Séjour et nationalité française',
-        content: [
-          '<strong>Types de titres de séjour :</strong> Carte temporaire (1 an), Carte pluriannuelle / CSP (2-4 ans — nécessite examen civique), Carte de résident (10 ans — après 5 ans de résidence régulière), Carte de résident longue durée UE.',
-          '<strong>Renouvellement :</strong> La demande doit être faite AVANT expiration. Un récépissé est remis pendant l\'instruction. Ne pas renouveler = infraction passible d\'une OQTF (Obligation de Quitter le Territoire).',
-          '<strong>Naturalisation :</strong> 5 ans de résidence régulière (réduit à 2 ans pour diplôme d\'université française) + niveau B1 en français + réussite de l\'examen civique + bonne intégration + aucune condamnation grave.',
-          '<strong>Nationalité par mariage :</strong> 4 ans de mariage avec un(e) Français(e) (5 ans si pas de vie commune en France).',
-          '<strong>Droit du sol :</strong> Enfant né en France de parents étrangers → nationalité française à 18 ans, si résidence habituelle en France pendant 5 ans depuis ses 11 ans.',
-          '<strong>Double nationalité :</strong> Autorisée en France.',
-        ]
+        heading: { fr:'Santé', en:'Health', zh:'医疗卫生', ar:'الصحة' },
+        content: {
+          fr: [
+            '<strong>Médecin traitant :</strong> À déclarer sur ameli.fr. Premier recours pour tout problème de santé. Oriente vers les spécialistes. Sans médecin traitant → remboursements réduits.',
+            '<strong>PUMa :</strong> Protection Universelle Maladie — accès aux soins pour toute personne résidant régulièrement en France. À demander à la CPAM.',
+            '<strong>CSS :</strong> Complémentaire Santé Solidaire — complémentaire gratuite ou à faible coût pour les personnes à faibles revenus.',
+            '<strong>AME :</strong> Aide Médicale d\'État — soins de base pour les étrangers en situation irrégulière (résidant depuis + 3 mois).',
+            '<strong>Maternité :</strong> Suivi de grossesse pris en charge à 100%. Congé maternité : min. 16 semaines. Congé paternité : 25 jours (11 obligatoires).',
+            '<strong>Santé mentale :</strong> 3114 (prévention suicide 24h/24). CMP (Centres Médico-Psychologiques — gratuits). Mon Soutien Psy = 12 séances remboursées.',
+          ],
+          en: [
+            '<strong>GP/treating doctor:</strong> Must be declared on ameli.fr. First point of contact for health problems. Refers to specialists. Without a GP, reimbursements are reduced.',
+            '<strong>PUMa:</strong> Universal Health Protection — healthcare access for all people legally residing in France. Apply at the CPAM.',
+            '<strong>CSS:</strong> Solidarity Health Supplement — free or low-cost complementary health cover for people on low incomes.',
+            '<strong>AME:</strong> State Medical Aid — basic healthcare for undocumented foreigners who have been in France for more than 3 months.',
+            '<strong>Maternity:</strong> Pregnancy monitoring covered 100%. Maternity leave: min. 16 weeks. Paternity leave: 25 days (11 mandatory).',
+            '<strong>Mental health:</strong> 3114 (suicide prevention 24/7). CMP (free psychiatric/psychological consultations). Mon Soutien Psy = 12 reimbursed psychology sessions.',
+          ],
+          zh: [
+            '<strong>主治医生：</strong>必须在ameli.fr上登记。处理健康问题的第一联系人。转介专科医生。没有主治医生→报销减少。',
+            '<strong>PUMa：</strong>全民医疗保障——为所有合法居住在法国的人提供医疗保障。向CPAM申请。',
+            '<strong>CSS：</strong>团结医疗补充保险——为低收入人群提供免费或低成本的补充医疗保险。',
+            '<strong>AME：</strong>国家医疗援助——为在法国居住超过3个月的无证外国人提供基本医疗服务。',
+            '<strong>生育：</strong>产检100%报销。产假：最少16周。陪产假：25天（其中11天为强制性）。',
+            '<strong>心理健康：</strong>3114（24小时自杀预防热线）。CMP（免费精神科/心理咨询）。心理支持项目 = 12次报销心理咨询。',
+          ],
+          ar: [
+            '<strong>الطبيب المعالج:</strong> يجب التصريح به على ameli.fr. الجهة الأولى لأي مشكلة صحية. يُحيل إلى المختصين. بدون طبيب معالج → انخفاض في التعويضات.',
+            '<strong>PUMa:</strong> الحماية الصحية الشاملة — تغطية صحية لكل شخص يقيم بصفة قانونية في فرنسا. الطلب يقدَّم إلى CPAM.',
+            '<strong>CSS:</strong> التكملة الصحية التضامنية — تغطية صحية تكميلية مجانية أو منخفضة التكلفة للأشخاص ذوي الدخل المحدود.',
+            '<strong>AME:</strong> المساعدة الطبية للدولة — رعاية صحية أساسية للأجانب في وضع غير نظامي (مقيمون منذ أكثر من 3 أشهر).',
+            '<strong>الأمومة:</strong> متابعة الحمل مشمولة 100%. إجازة الأمومة: 16 أسبوعاً على الأقل. إجازة الأبوة: 25 يوماً (11 يوماً إلزامية).',
+            '<strong>الصحة النفسية:</strong> 3114 (الوقاية من الانتحار 24ساعة/7أيام). CMP (استشارات نفسية مجانية). Mon Soutien Psy = 12 جلسة علاج نفسي مُعوَّض عنها.',
+          ]
+        }
       },
       {
-        heading: 'État civil — Naissance, mariage, PACS, divorce',
-        content: [
-          '<strong>Déclaration de naissance :</strong> Dans les 5 jours suivant la naissance (le jour de naissance ne compte pas). À la mairie du lieu d\'accouchement. Documents : certificat d\'accouchement + pièces d\'identité des parents.',
-          '<strong>Mariage civil :</strong> Seul mariage reconnu par la loi française. Célébré en mairie. Consentement libre obligatoire. Dossier déposé 10 jours minimum avant la date. Mariage entre personnes de même sexe autorisé depuis le 17 mai 2013.',
-          '<strong>PACS :</strong> Pacte Civil de Solidarité — contrat entre deux personnes majeures (peu importe le sexe) pour organiser leur vie commune. Signé en mairie ou chez un notaire. Droits proches du mariage (fiscalité, succession) mais moins étendus. Peut être rompu par déclaration en mairie.',
-          '<strong>Divorce :</strong> Divorce par consentement mutuel (chez un notaire — sans juge), pour altération du lien conjugal (séparation > 2 ans), ou pour faute.',
-        ]
+        heading: { fr:'Emploi et droits des salariés', en:'Employment and workers\' rights', zh:'就业与劳动者权利', ar:'التوظيف وحقوق العمال' },
+        content: {
+          fr: [
+            '<strong>France Travail :</strong> (ex-Pôle Emploi). Inscription en ligne sur francetravail.fr. Accompagnement personnalisé, offres d\'emploi, formations, allocations chômage.',
+            '<strong>Types de contrats :</strong> CDI (sans date de fin — le plus protecteur) | CDD (max 18 mois, prime de précarité 10% à la fin) | Intérim (via une agence).',
+            '<strong>SMIC 2025 :</strong> ~11,88 €/h brut = ~1 800 € brut/mois pour 35h/semaine. Revalorisé chaque 1er janvier.',
+            '<strong>Durée légale :</strong> 35h/semaine. Congés payés : 5 semaines/an. Repos quotidien : 11h. Repos hebdomadaire : 24h.',
+            '<strong>Allocation chômage (ARE) :</strong> Conditions : 6 mois de travail sur les 24 derniers mois + licenciement involontaire + inscrit à France Travail. Durée : 6 à 24 mois.',
+            '<strong>Retraite :</strong> Âge minimum 64 ans depuis 2023. 172 trimestres (43 ans) pour le taux plein.',
+          ],
+          en: [
+            '<strong>France Travail:</strong> (formerly Pôle Emploi). Register online at francetravail.fr. Personalised job-search support, job listings, training, unemployment benefits.',
+            '<strong>Types of contract:</strong> CDI (open-ended — most protective) | CDD (max 18 months, 10% precariousness bonus at end) | Interim (through an agency).',
+            '<strong>SMIC 2025:</strong> ~€11.88/h gross = ~€1,800 gross/month for a 35h week. Reviewed every 1 January.',
+            '<strong>Legal working hours:</strong> 35h/week. Paid leave: 5 weeks/year. Daily rest: 11h. Weekly rest: 24h.',
+            '<strong>Unemployment benefit (ARE):</strong> Conditions: 6 months worked in the last 24 months + involuntary redundancy + registered with France Travail. Duration: 6 to 24 months.',
+            '<strong>Retirement:</strong> Minimum retirement age 64 since 2023. 172 quarters (43 years) for full pension.',
+          ],
+          zh: [
+            '<strong>法国就业服务机构（France Travail）：</strong>（原法国就业局Pôle Emploi）。在francetravail.fr在线注册。个性化求职支持、职位列表、培训、失业金。',
+            '<strong>合同类型：</strong>无固定期限合同CDI（无截止日期——最受保护）| 固定期限合同CDD（最长18个月，结束时有10%不稳定奖金）| 劳务派遣（通过中介机构）。',
+            '<strong>2025年最低工资SMIC：</strong>约11.88欧元/小时毛工资 = 每周35小时约1,800欧元/月毛工资。每年1月1日调整。',
+            '<strong>法定工作时间：</strong>每周35小时。带薪年假：5周/年。每日休息：11小时。每周休息：24小时。',
+            '<strong>失业救济金（ARE）：</strong>条件：过去24个月内工作6个月 + 非自愿失业 + 在France Travail注册。期限：6至24个月。',
+            '<strong>退休：</strong>自2023年起最低退休年龄为64岁。需缴纳172个季度（43年）才能获得全额养老金。',
+          ],
+          ar: [
+            '<strong>France Travail:</strong> (سابقاً Pôle Emploi). التسجيل عبر الإنترنت على francetravail.fr. دعم شخصي للبحث عن عمل، عروض وظيفية، تدريب، تعويضات البطالة.',
+            '<strong>أنواع العقود:</strong> CDI (غير محدد المدة — الأكثر حماية) | CDD (الحد الأقصى 18 شهراً، مكافأة هشاشة 10% عند الانتهاء) | عقد مؤقت عبر وكالة.',
+            '<strong>الحد الأدنى للأجور 2025:</strong> نحو 11.88 يورو/ساعة إجمالي = نحو 1,800 يورو/شهر إجمالي لـ35 ساعة أسبوعياً. يُراجَع كل 1 يناير.',
+            '<strong>ساعات العمل القانونية:</strong> 35 ساعة/أسبوع. إجازة مدفوعة الأجر: 5 أسابيع/سنة. راحة يومية: 11 ساعة. راحة أسبوعية: 24 ساعة.',
+            '<strong>تعويض البطالة (ARE):</strong> الشروط: 6 أشهر عمل في آخر 24 شهراً + فصل غير إرادي + التسجيل في France Travail. المدة: 6 إلى 24 شهراً.',
+            '<strong>التقاعد:</strong> سن التقاعد الأدنى 64 سنة منذ 2023. 172 ربعاً (43 سنة) للحصول على معاش كامل.',
+          ]
+        }
       },
       {
-        heading: 'Santé — Parcours de soins et couvertures',
-        content: [
-          '<strong>Médecin traitant :</strong> À déclarer sur ameli.fr. Premier recours pour tout problème de santé non urgent. Oriente vers les spécialistes. Sans médecin traitant → remboursements réduits.',
-          '<strong>Spécialistes en accès direct :</strong> Gynécologues, ophtalmologues, psychiatres, pédiatres (sans ordonnance du médecin traitant).',
-          '<strong>Urgences :</strong> 15 (SAMU), 18 (pompiers), 112 (européen). Pour trouver un médecin de garde : appeler le 116 117. Pour une pharmacie de garde : 3237.',
-          '<strong>Assurance Maladie (Sécu) :</strong> Système d\'assurance maladie obligatoire. La <strong>carte Vitale</strong> facilite les remboursements. Consultation chez le médecin traitant remboursée à 70%.',
-          '<strong>PUMa :</strong> Protection Universelle Maladie — garantit l\'accès aux soins à toute personne résidant régulièrement en France. À demander à la CPAM.',
-          '<strong>CSS :</strong> Complémentaire Santé Solidaire (ex-CMU-C) — complémentaire gratuite ou à faible coût pour les personnes aux revenus modestes.',
-          '<strong>AME :</strong> Aide Médicale d\'État — soins de base pour les étrangers en situation irrégulière (résidant depuis + 3 mois). Renouvelable annuellement.',
-          '<strong>Maternité :</strong> Suivi de grossesse pris en charge à 100% depuis la déclaration. Congé maternité : 16 semaines minimum. Congé paternité : 25 jours (11 obligatoires depuis 2021).',
-          '<strong>Droits du patient :</strong> Droit à l\'information, au consentement éclairé, au secret médical, à l\'accès au dossier médical, à un interprète.',
-          '<strong>Santé mentale :</strong> 3114 = prévention du suicide (24h/24). CMP (Centres Médico-Psychologiques) = consultations gratuites. Mon Soutien Psy = 12 séances remboursées chez un psychologue.',
-        ]
-      },
-      {
-        heading: 'Emploi et droits des salariés',
-        content: [
-          '<strong>France Travail :</strong> (ex-Pôle Emploi, renommé 2024). Inscription en ligne ou en agence. Accompagnement personnalisé, offres d\'emploi, formations, allocations chômage. Inscription automatique possible lors d\'une fin de contrat.',
-          '<strong>Formation linguistique :</strong> Tout signataire d\'un CIR a droit à des cours de français gratuits (OFII) pour atteindre le niveau A1 ou A2.',
-          '<strong>Reconnaissance des diplômes étrangers :</strong> UE → reconnaissance automatique. Hors UE → attestation de comparabilité (Centre ENIC-NARIC France). VAE (Validation des Acquis de l\'Expérience) = obtenir un diplôme grâce à son expérience professionnelle (minimum 1 an d\'expérience).',
-          '<strong>Types de contrats :</strong> CDI (sans date de fin — le plus protecteur), CDD (durée limitée, max 18 mois renouvelable 2 fois — prime de précarité 10% à la fin), Intérim (via une agence), Apprentissage/Professionnalisation (alternance théorie + pratique).',
-          '<strong>SMIC 2025 :</strong> ~11,88 €/h brut = ~1 800 € brut/mois pour 35h/semaine. Revalorisé chaque 1er janvier.',
-          '<strong>Durée légale du travail :</strong> 35 heures/semaine. Heures supplémentaires majorées : +25% (8 premières h), +50% (au-delà). Repos quotidien : 11h. Repos hebdomadaire : 24h (généralement dimanche).',
-          '<strong>Congés payés :</strong> 5 semaines/an (2,5 jours par mois travaillé). 11 jours fériés par an.',
-          '<strong>Fiche de paie :</strong> Contient salaire brut, cotisations sociales, salaire net. À conserver (droits à la retraite).',
-          '<strong>Allocation chômage (ARE) :</strong> Conditions : avoir travaillé 6 mois sur les 24 derniers mois + licenciement involontaire + inscrit à France Travail. Montant ≈ 57-75% du salaire brut antérieur. Durée : 6 à 24 mois (36 mois pour les seniors).',
-          '<strong>Retraite :</strong> Âge minimum 64 ans depuis 2023. 172 trimestres (43 ans) pour taux plein. Système par répartition (les actifs cotisent pour les retraités actuels).',
-          '<strong>Protection au travail :</strong> Accident du travail couvert à 100%. Harcèlement moral et sexuel interdit et punissable. Le conseil de prud\'hommes règle les conflits employeur/salarié.',
-        ]
-      },
-      {
-        heading: 'Parentalité et éducation',
-        content: [
-          '<strong>Convention internationale des droits de l\'enfant (CIDE) :</strong> Signée par la France en 1990. Garantit : droit à l\'identité, à la santé, à l\'éducation, à la protection contre les abus, à la vie familiale, à l\'expression, aux loisirs.',
-          '<strong>Autorité parentale :</strong> Exercée conjointement par les deux parents. Comprend : obligation d\'entretien, d\'éducation, de soins et de scolarisation. En cas de séparation : autorité parentale généralement maintenue conjointement. Retrait possible par le juge en cas de violences graves ou négligences.',
-          '<strong>Modes de garde (0-3 ans) :</strong> Crèche (collective), assistante maternelle agréée (CMG = aide CAF), garde à domicile, micro-crèche, halte-garderie. Aides disponibles : PSU (CAF), CMG, crédit d\'impôt (50% des frais).',
-          '<strong>Système éducatif :</strong> Maternelle (3-6 ans) → Élémentaire (6-11 ans, CP à CM2) → Collège (11-15 ans, 6ème à 3ème) → Lycée (15-18 ans, Baccalauréat) → Enseignement supérieur (université, BTS, IUT, Grandes Écoles).',
-          '<strong>Scolarité obligatoire :</strong> De 3 à 16 ans pour TOUS les enfants résidant en France, quelle que soit la nationalité ou la situation des parents.',
-          '<strong>UPE2A :</strong> Unités Pédagogiques pour Élèves Allophones Arrivants — cours intensifs de français pour les enfants non francophones, en parallèle d\'une intégration progressive en classe ordinaire.',
-          '<strong>OEPRE :</strong> Ouvrir l\'École aux Parents pour la Réussite des Enfants — cours de français gratuits dans les écoles pour les parents étrangers. Aborde aussi le fonctionnement de l\'école française et les valeurs républicaines.',
-          '<strong>Droits des parents :</strong> Être informés des résultats, rencontrer les enseignants, participer aux conseils de classe, être représentants de parents d\'élèves.',
-          '<strong>Diplômes :</strong> Brevet des collèges (DNB — fin de 3ème), Baccalauréat (fin de lycée — donne accès à l\'enseignement supérieur), CAP/BEP (lycée professionnel).',
-        ]
+        heading: { fr:'Parentalité et éducation', en:'Parenthood and education', zh:'育儿与教育', ar:'الأبوة والتعليم' },
+        content: {
+          fr: [
+            '<strong>CIDE :</strong> Convention internationale des droits de l\'enfant — signée par la France en 1990. Garantit : droit à l\'identité, à la santé, à l\'éducation, à la protection contre les abus.',
+            '<strong>Scolarité obligatoire :</strong> De 3 à 16 ans pour TOUS les enfants résidant en France, quelle que soit la nationalité ou la situation des parents.',
+            '<strong>Système éducatif :</strong> Maternelle (3-6) → Élémentaire (6-11) → Collège (11-15, brevet DNB) → Lycée (15-18, baccalauréat) → Enseignement supérieur.',
+            '<strong>UPE2A :</strong> Cours intensifs de français pour les enfants non francophones. Intégration progressive en classe ordinaire.',
+            '<strong>OEPRE :</strong> Cours de français gratuits dans les écoles pour les parents étrangers. Aborde aussi le fonctionnement de l\'école française et les valeurs républicaines.',
+            '<strong>Modes de garde (0-3 ans) :</strong> Crèche, assistante maternelle (agréée), garde à domicile, micro-crèche. Aides CAF disponibles (PSU, CMG, crédit d\'impôt 50%).',
+          ],
+          en: [
+            '<strong>UNCRC:</strong> UN Convention on the Rights of the Child — signed by France in 1990. Guarantees: right to identity, health, education, protection from abuse.',
+            '<strong>Compulsory schooling:</strong> From age 3 to 16 for ALL children residing in France, regardless of nationality or parents\' situation.',
+            '<strong>Education system:</strong> Nursery (3-6) → Primary (6-11) → Middle school (11-15, brevet DNB) → High school (15-18, baccalauréat) → Higher education.',
+            '<strong>UPE2A:</strong> Intensive French classes for non-French-speaking children. Gradual integration into mainstream classes.',
+            '<strong>OEPRE:</strong> Free French classes in schools for foreign parents. Also covers how the French school system works and republican values.',
+            '<strong>Childcare (0-3 years):</strong> Nursery (crèche), registered childminder, home childcare, micro-nursery. CAF financial assistance available (PSU, CMG, 50% tax credit).',
+          ],
+          zh: [
+            '<strong>联合国儿童权利公约（CIDE）：</strong>法国于1990年签署。保障：身份权、健康权、教育权、免受虐待保护权。',
+            '<strong>义务教育：</strong>3至16岁，适用于所有居住在法国的儿童，不论国籍或父母情况。',
+            '<strong>教育体系：</strong>幼儿园（3-6岁）→ 小学（6-11岁）→ 初中（11-15岁，结业证书DNB）→ 高中（15-18岁，高中毕业会考）→ 高等教育。',
+            '<strong>UPE2A：</strong>为不会法语的儿童提供强化法语课程。逐步融入普通班级。',
+            '<strong>OEPRE：</strong>在学校为外国父母提供免费法语课程。还涵盖法国学校体系的运作和共和国价值观。',
+            '<strong>0-3岁托育方式：</strong>托儿所（crèche）、认证育儿保姆、家庭保姆、微型托儿所。CAF财政援助可申请（PSU、CMG、50%税收抵免）。',
+          ],
+          ar: [
+            '<strong>اتفاقية حقوق الطفل (CIDE):</strong> وقَّعت عليها فرنسا عام 1990. تضمن: الحق في الهوية والصحة والتعليم والحماية من الإساءة.',
+            '<strong>التعليم الإلزامي:</strong> من سن 3 إلى 16 لجميع الأطفال المقيمين في فرنسا، بصرف النظر عن الجنسية أو وضع الوالدين.',
+            '<strong>النظام التعليمي:</strong> الروضة (3-6) → الابتدائي (6-11) → الإعدادي (11-15، شهادة DNB) → الثانوي (15-18، البكالوريا) → التعليم العالي.',
+            '<strong>UPE2A:</strong> دروس مكثَّفة في الفرنسية للأطفال غير الناطقين بها. اندماج تدريجي في الفصول العادية.',
+            '<strong>OEPRE:</strong> دروس فرنسية مجانية في المدارس للآباء الأجانب. تتناول أيضاً طريقة عمل المدرسة الفرنسية والقيم الجمهورية.',
+            '<strong>رعاية الأطفال (0-3 سنوات):</strong> حضانة جماعية، مربية معتمَدة، جليسة أطفال في المنزل، حضانة صغيرة. مساعدات CAF متاحة (PSU، CMG، إعفاء ضريبي 50%).',
+          ]
+        }
       },
     ]
   }

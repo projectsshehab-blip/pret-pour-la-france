@@ -34,10 +34,11 @@ window.addEventListener('beforeunload', (e) => {
 
 // ── Language ─────────────────────────────────────────────────────────────────
 function applyLang(lang) {
-  const valid = ['fr','en','zh'];
+  const valid = ['fr','en','zh','ar'];
   currentLang = valid.includes(lang) ? lang : 'fr';
   localStorage.setItem('pplf_lang', currentLang);
   document.documentElement.lang = currentLang;
+  document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
   document.querySelectorAll('.lang-btn').forEach(b => {
     b.classList.toggle('active', b.dataset.lang === currentLang);
   });
@@ -165,14 +166,39 @@ function renderHome() {
 }
 
 // ── Study ─────────────────────────────────────────────────────────────────────
-function renderStudy() {
+let studyLang = null; // null = follow UI lang
+
+function getStudyLang() {
+  return studyLang || currentLang;
+}
+
+function getSectionText(val, lang) {
+  if (typeof val === 'string') return val;
+  return val[lang] || val['fr'] || '';
+}
+
+function getSectionContent(content, lang) {
+  if (Array.isArray(content)) return content;
+  return content[lang] || content['fr'] || [];
+}
+
+function renderStudy(preserveOpen) {
   const el = document.getElementById('view-study');
   if (!el) return;
+  const lang = getStudyLang();
   const topicNames = [t('topic_1'),t('topic_2'),t('topic_3'),t('topic_4'),t('topic_5')];
+  const langLabels = { fr:'FR', en:'EN', zh:'中文', ar:'ع' };
+  const langNames  = { fr:'Français', en:'English', zh:'中文', ar:'العربية' };
+
+  // collect open accordions before re-render
+  const openIds = preserveOpen
+    ? Array.from(el.querySelectorAll('.accordion-item.open')).map(i => i.id)
+    : [];
+
   const items = MATERIALS.map((mat, idx) => `
-    <div class="accordion-item" id="acc-${mat.id}">
+    <div class="accordion-item ${openIds.includes('acc-'+mat.id)?'open':''}" id="acc-${mat.id}">
       <div class="accordion-header" data-id="${mat.id}" role="button" tabindex="0"
-           aria-expanded="false">
+           aria-expanded="${openIds.includes('acc-'+mat.id)}">
         <div class="accordion-header__left">
           <span class="accordion-header__icon">${mat.icon}</span>
           <span class="accordion-header__title">${topicNames[idx]}</span>
@@ -182,11 +208,11 @@ function renderStudy() {
           <span class="accordion-chevron">▾</span>
         </div>
       </div>
-      <div class="accordion-body">
+      <div class="accordion-body" ${openIds.includes('acc-'+mat.id)?'':'style="display:none"'}>
         ${mat.sections.map(sec => `
-          <div class="accordion-section">
-            <h4>${sec.heading}</h4>
-            <ul>${sec.content.map(c => `<li>${c}</li>`).join('')}</ul>
+          <div class="accordion-section" dir="${lang==='ar'?'rtl':'ltr'}">
+            <h4>${getSectionText(sec.heading, lang)}</h4>
+            <ul>${getSectionContent(sec.content, lang).map(c => `<li>${c}</li>`).join('')}</ul>
           </div>`).join('')}
         <div class="accordion-source">
           ${t('study_source')} formation-civique.interieur.gouv.fr — Licence Ouverte 2.0 (Etalab)
@@ -197,12 +223,25 @@ function renderStudy() {
   el.innerHTML = `
     <div class="page-title">${t('study_title')}</div>
     <div class="page-subtitle">${t('study_subtitle')}</div>
+    <div class="study-lang-toggle">
+      <span class="study-lang-toggle__label">${t('study_lang_label')||'Langue :'}</span>
+      ${['fr','en','zh','ar'].map(l => `
+        <button class="study-lang-btn ${getStudyLang()===l?'active':''}" data-slang="${l}" dir="${l==='ar'?'rtl':'ltr'}">${langNames[l]}</button>
+      `).join('')}
+    </div>
     <div class="accordion">${items}</div>`;
+
+  el.querySelectorAll('.study-lang-btn').forEach(btn => btn.addEventListener('click', () => {
+    studyLang = btn.dataset.slang;
+    renderStudy(true);
+  }));
 
   el.querySelectorAll('.accordion-header').forEach(h => {
     const toggle = () => {
       const item = document.getElementById('acc-' + h.dataset.id);
+      const body = item.querySelector('.accordion-body');
       const open = item.classList.toggle('open');
+      body.style.display = open ? 'block' : 'none';
       h.setAttribute('aria-expanded', open);
     };
     h.addEventListener('click', toggle);
@@ -485,16 +524,22 @@ function renderResults() {
 function renderTC() {
   const el = document.getElementById('view-tc');
   if (!el) return;
-  const langs = [{code:'fr',label:'Français'},{code:'en',label:'English'},{code:'zh',label:'中文'}];
+  const langs = [
+    {code:'fr',label:'Français'},
+    {code:'en',label:'English'},
+    {code:'zh',label:'中文'},
+    {code:'ar',label:'العربية', rtl:true}
+  ];
   const activeTC = currentLang;
   el.innerHTML = `
     <div class="page-title">${t('tc_title')}</div>
     <div class="tc-lang-tabs">
-      ${langs.map(l=>`<button class="tc-tab ${activeTC===l.code?'active':''}" data-tclang="${l.code}">${l.label}</button>`).join('')}
+      ${langs.map(l=>`<button class="tc-tab ${activeTC===l.code?'active':''}" data-tclang="${l.code}" ${l.rtl?'dir="rtl"':''}>${l.label}</button>`).join('')}
     </div>
     <div id="tc-content-fr" class="tc-content ${activeTC==='fr'?'active':''}"><div class="tc-body">${TC_FR}</div></div>
     <div id="tc-content-en" class="tc-content ${activeTC==='en'?'active':''}"><div class="tc-body">${TC_EN}</div></div>
-    <div id="tc-content-zh" class="tc-content ${activeTC==='zh'?'active':''}"><div class="tc-body">${TC_ZH}</div></div>`;
+    <div id="tc-content-zh" class="tc-content ${activeTC==='zh'?'active':''}"><div class="tc-body">${TC_ZH}</div></div>
+    <div id="tc-content-ar" class="tc-content ${activeTC==='ar'?'active':''}"><div class="tc-body" dir="rtl">${TC_AR}</div></div>`;
 
   el.querySelectorAll('.tc-tab').forEach(tab => tab.addEventListener('click', () => {
     el.querySelectorAll('.tc-tab').forEach(t=>t.classList.remove('active'));
@@ -601,6 +646,37 @@ const TC_EN = `
 </ul>
 <div style="margin-top:1.5rem;padding:1rem;background:var(--surface);border-radius:6px;font-size:.82rem;color:var(--text-muted)">
   <strong>Attribution:</strong> Educational content adapted from formation-civique.interieur.gouv.fr — Ministère de l'Intérieur, Parcours d'Intégration Républicaine, under Licence Ouverte 2.0 (Etalab). Last content review: April 2026. This application is an independent study tool, not affiliated with the French government.
+</div>`;
+
+const TC_AR = `
+<div class="tc-header-block" dir="rtl">
+  <div>الجمهورية الفرنسية — الحرية · المساواة · الأخوة</div>
+  <h1>شروط الاستخدام</h1>
+  <div>Prêt pour la France — ProjMSP</div>
+  <div class="tc-meta">الإصدار 1.0 — ساري المفعول منذ 11 أبريل 2026 | القانون المطبق: القانون الفرنسي</div>
+</div>
+<p><strong>مقدمة.</strong> تحكم هذه الوثيقة الوصول إلى تطبيق <em>Prêt pour la France</em> (يُشار إليه بـ"التطبيق")، الذي طوّره مطور مستقل باسم <strong>ProjMSP</strong>، بهدف مساعدة الأفراد على الاستعداد للامتحان المدني المطلوب في إطار عقد الاندماج الجمهوري (CIR). باستخدامك للتطبيق، فإنك توافق على هذه الشروط.</p>
+<h2>1. طبيعة التطبيق</h2>
+<p>التطبيق أداة دراسة <strong>مستقلة وغير رسمية</strong>. لا يرتبط بوزارة الداخلية الفرنسية أو OFII أو أي سلطة عامة فرنسية، ولا يحل محل برنامج التكوين المدني الإجباري المؤلف من 4 أيام.</p>
+<h2>2. الملكية الفكرية والمحتوى</h2>
+<p>تم اقتباس المحتوى التعليمي من الموقع الرسمي <a href="https://formation-civique.interieur.gouv.fr" target="_blank">formation-civique.interieur.gouv.fr</a>، المتاح بموجب <strong>رخصة Licence Ouverte 2.0 (Etalab)</strong>. تُجيز هذه الرخصة إعادة الاستخدام والتكييف والتوزيع، بما في ذلك للأغراض التجارية، شريطة الإشارة إلى المصدر.</p>
+<h2>3. إخلاء المسؤولية</h2>
+<p>يُقدَّم التطبيق "كما هو". لا تضمن ProjMSP اكتمال المحتوى أو دقته أو حداثته، ولا تضمن الحصول على درجة معينة في الامتحان الرسمي.</p>
+<h2>4. حدود المسؤولية</h2>
+<p>لا تتحمل ProjMSP أي مسؤولية عن: الرسوب في الامتحان المدني الرسمي، أو القرارات الإدارية أو القانونية المبنية على محتوى التطبيق، أو أي أخطاء أو إغفالات.</p>
+<h2>5. البيانات الشخصية</h2>
+<p>لا يجمع التطبيق أي بيانات شخصية. يتم تخزين تفضيل اللغة فقط محلياً في المتصفح (localStorage). لا تُرسل أي بيانات إلى أطراف ثالثة.</p>
+<h2>6. القانون المطبق</h2>
+<p>تخضع هذه الشروط للقانون الفرنسي. يُحال أي نزاع إلى المحاكم المختصة في فرنسا.</p>
+<h2>7. التواصل</h2>
+<p>لأي استفسار بخصوص هذه الشروط:</p>
+<ul>
+  <li><strong>المطور:</strong> ProjMSP</li>
+  <li><strong>البريد الإلكتروني:</strong> projects.shehab@gmail.com</li>
+  <li><strong>الموقع:</strong> https://pretpourlafrance.com</li>
+</ul>
+<div style="margin-top:1.5rem;padding:1rem;background:var(--surface);border-radius:6px;font-size:.82rem;color:var(--text-muted)">
+  <strong>الإسناد:</strong> تم اقتباس المحتوى التعليمي من formation-civique.interieur.gouv.fr — وزارة الداخلية الفرنسية، برنامج الاندماج الجمهوري، بموجب رخصة Licence Ouverte 2.0 (Etalab). آخر مراجعة للمحتوى: أبريل 2026. هذا التطبيق أداة دراسية مستقلة وغير تابعة للحكومة الفرنسية.
 </div>`;
 
 const TC_ZH = `
