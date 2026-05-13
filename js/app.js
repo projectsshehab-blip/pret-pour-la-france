@@ -34,7 +34,7 @@ window.addEventListener('beforeunload', (e) => {
 
 // ── Language ─────────────────────────────────────────────────────────────────
 function applyLang(lang) {
-  const valid = ['fr','en','zh','ar'];
+  const valid = ['fr','en','zh','ar','es'];
   currentLang = valid.includes(lang) ? lang : 'fr';
   localStorage.setItem('pplf_lang', currentLang);
   document.documentElement.lang = currentLang;
@@ -188,7 +188,7 @@ function renderStudy(preserveOpen) {
   const lang = getStudyLang();
   const topicNames = [t('topic_1'),t('topic_2'),t('topic_3'),t('topic_4'),t('topic_5')];
   const langLabels = { fr:'FR', en:'EN', zh:'中文', ar:'ع' };
-  const langNames  = { fr:'Français', en:'English', zh:'中文', ar:'العربية' };
+  const langNames  = { fr:'Français', en:'English', zh:'中文', ar:'العربية', es:'Español' };
 
   // collect open accordions before re-render
   const openIds = preserveOpen
@@ -224,7 +224,7 @@ function renderStudy(preserveOpen) {
     <div class="page-title">${t('study_title')}</div>
     <div class="page-subtitle">${t('study_subtitle')}</div>
     <div class="study-lang-toggle">
-${['fr','en','zh','ar'].map(l => `
+${['fr','en','zh','ar','es'].map(l => `
         <button class="study-lang-btn ${getStudyLang()===l?'active':''}" data-slang="${l}" dir="${l==='ar'?'rtl':'ltr'}">${langNames[l]}</button>
       `).join('')}
     </div>

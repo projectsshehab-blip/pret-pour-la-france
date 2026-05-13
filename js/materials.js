@@ -1,6 +1,6 @@
 'use strict';
 
-// Each section heading and content support 4 languages: fr, en, zh, ar
+// Each section heading and content support 5 languages: fr, en, zh, ar, es
 // French is always the fallback. MCQ questions remain in French only.
 
 const MATERIALS = [
@@ -14,7 +14,8 @@ const MATERIALS = [
           fr: 'La laïcité — Définition et principes',
           en: 'Secularism — Definition and principles',
           zh: '世俗主义——定义与原则',
-          ar: 'العلمانية — التعريف والمبادئ'
+          ar: 'العلمانية — التعريف والمبادئ',
+          es: 'El laicismo — Definición y principios'
         },
         content: {
           fr: [
@@ -48,6 +49,14 @@ const MATERIALS = [
             '<strong>حرية الممارسة الدينية:</strong> يحق لكل شخص ممارسة دينه ضمن حدود النظام العام. لا يمكن إجبار أحد على اتباع تعاليم دينية.',
             '<strong>قانون 1905:</strong> قانون الفصل بين الكنائس والدولة (9 ديسمبر 1905) هو أساس العلمانية الفرنسية.',
             '<strong>العلمانية ليست رأياً:</strong> إنها مبدأ دستوري يلزم الجميع.',
+          ],
+          es: [
+            '<strong>Definición:</strong> El laicismo (laïcité) garantiza la libertad de conciencia para todos — cada persona es libre de tener o no una religión, de cambiarla o abandonarla.',
+            '<strong>Artículo 1 de la Constitución (1958):</strong> "Francia es una República indivisible, <em>laica</em>, democrática y social."',
+            '<strong>El Estado es neutral:</strong> El Estado francés no reconoce ninguna religión ni financia ninguna institución religiosa.',
+            '<strong>Libertad de práctica:</strong> Cualquier persona puede practicar su religión dentro del respeto al orden público. Nadie puede ser obligado a seguir preceptos religiosos.',
+            '<strong>Ley de 1905:</strong> La ley de separación de las Iglesias y el Estado del 9 de diciembre de 1905 es el fundamento del laicismo francés.',
+            '<strong>El laicismo no es una opinión:</strong> Es un principio constitucional que obliga a todos.',
           ]
         }
       },
@@ -56,7 +65,8 @@ const MATERIALS = [
           fr: 'Histoire de la laïcité — Dates clés',
           en: 'History of secularism — Key dates',
           zh: '世俗主义历史——重要日期',
-          ar: 'تاريخ العلمانية — التواريخ الرئيسية'
+          ar: 'تاريخ العلمانية — التواريخ الرئيسية',
+          es: 'Historia del laicismo — Fechas clave'
         },
         content: {
           fr: [
@@ -90,6 +100,14 @@ const MATERIALS = [
             '<strong>2004:</strong> قانون يحظر الرموز الدينية الظاهرة في المدارس العامة.',
             '<strong>2010:</strong> قانون يحظر إخفاء الوجه في الأماكن العامة.',
             '<strong>2021:</strong> قانون يعزز العلمانية والحياد في الخدمات العامة.',
+          ],
+          es: [
+            '<strong>1789:</strong> La Declaración de Derechos del Hombre y del Ciudadano establece la libertad de conciencia y de religión.',
+            '<strong>1882:</strong> Jules Ferry hace la escuela primaria pública obligatoria, gratuita e independiente de la Iglesia.',
+            '<strong>1905:</strong> Ley de separación de la Iglesia y el Estado — el Estado es independiente de todas las religiones.',
+            '<strong>2004:</strong> Ley que prohíbe los signos religiosos ostensibles en las escuelas públicas (primaria, secundaria y bachillerato).',
+            '<strong>2010:</strong> Ley que prohíbe la ocultación del rostro en los espacios públicos.',
+            '<strong>2021:</strong> Ley que refuerza el laicismo y la neutralidad en los servicios públicos.',
           ]
         }
       },
@@ -98,7 +116,8 @@ const MATERIALS = [
           fr: 'La laïcité dans la vie quotidienne',
           en: 'Secularism in daily life',
           zh: '日常生活中的世俗主义',
-          ar: 'العلمانية في الحياة اليومية'
+          ar: 'العلمانية في الحياة اليومية',
+          es: 'El laicismo en la vida cotidiana'
         },
         content: {
           fr: [
@@ -132,6 +151,14 @@ const MATERIALS = [
             '<strong>المدرسة العامة:</strong> لا يحق للتلاميذ ارتداء رموز دينية ظاهرة. يلتزم المعلمون بالحياد المطلق.',
             '<strong>التبشير:</strong> مسموح به في فرنسا لكنه محظور في المدارس والخدمات العامة والمستشفيات.',
             '<strong>التجديف:</strong> ليس مخالفاً للقانون في فرنسا. أما التحريض على الكراهية الدينية وإنكار المحرقة فهما جريمتان جنائيتان.',
+          ],
+          es: [
+            '<strong>Espacio público:</strong> Cualquier persona puede llevar símbolos religiosos (velo, kipá, cruz...) en calles, restaurantes y transporte.',
+            '<strong>Servicios públicos:</strong> Los funcionarios no pueden expresar sus convicciones religiosas durante el ejercicio de su cargo.',
+            '<strong>Sector privado:</strong> Un empleado puede expresar sus convicciones, salvo que ello perturbe el funcionamiento de la empresa.',
+            '<strong>Escuela pública:</strong> Los alumnos no pueden llevar signos religiosos ostensibles. Los profesores están sometidos al principio de neutralidad absoluta.',
+            '<strong>Proselitismo:</strong> Permitido en Francia, pero prohibido en escuelas públicas, servicios públicos y hospitales.',
+            '<strong>Blasfemia:</strong> No es ilegal en Francia. Sin embargo, la incitación al odio religioso y la negación del Holocausto son delitos penales.',
           ]
         }
       },
@@ -140,7 +167,8 @@ const MATERIALS = [
           fr: 'Les symboles de la République',
           en: 'Symbols of the Republic',
           zh: '共和国的象征',
-          ar: 'رموز الجمهورية'
+          ar: 'رموز الجمهورية',
+          es: 'Los símbolos de la República'
         },
         content: {
           fr: [
@@ -170,6 +198,13 @@ const MATERIALS = [
             '<strong>لا مارسييز:</strong> النشيد الوطني المؤلَّف عام 1792، اعتُمد رسمياً عام 1879.',
             '<strong>الديك الغالي:</strong> رمز غير رسمي لكنه بارز. يُستخدم على قمصان المنتخبات الوطنية.',
             '<strong>العيد الوطني — 14 يوليو:</strong> يحيي ذكرى اقتحام الباستيل (1789). عرض عسكري على الشانزليزيه. ألعاب نارية في كل أنحاء فرنسا.',
+          ],
+          es: [
+            '<strong>Bandera tricolor:</strong> Azul, blanca y roja. Nació en 1789, oficial desde 1794. Insultar o destruir la bandera en público es un delito penal.',
+            '<strong>Marianne:</strong> Símbolo femenino de la República desde la Revolución. Lleva el gorro frigio. Presente en todos los ayuntamientos, sellos y monedas.',
+            '<strong>La Marsellesa:</strong> Himno nacional compuesto en 1792, adoptado oficialmente en 1879.',
+            '<strong>El gallo galo:</strong> Símbolo no oficial pero emblemático. Utilizado en las camisetas de los equipos deportivos nacionales.',
+            '<strong>Fiesta Nacional — 14 de julio:</strong> Conmemora la toma de la Bastilla (1789). Desfile militar en los Campos Elíseos. Fuegos artificiales en toda Francia.',
           ]
         }
       },
@@ -178,7 +213,8 @@ const MATERIALS = [
           fr: 'La devise et l\'engagement républicain',
           en: 'The motto and republican commitment',
           zh: '国家格言与共和国承诺',
-          ar: 'الشعار والالتزام الجمهوري'
+          ar: 'الشعار والالتزام الجمهوري',
+          es: 'El lema y el compromiso republicano'
         },
         content: {
           fr: [
@@ -212,6 +248,14 @@ const MATERIALS = [
             '<strong>المساواة بين الجنسين:</strong> مكرَّسة في مقدمة دستور 1946. قانون 2000 يُلزم بالمناصفة في الترشح السياسي.',
             '<strong>الأخوة:</strong> التضامن الجماعي (الضمان الاجتماعي)، التضامن بين الأجيال (معاشات التقاعد)، والعمل التطوعي.',
             '<strong>عقد الالتزام الجمهوري:</strong> يجب أن يوقّعه كل أجنبي عند طلب تصريح الإقامة. يلتزم بموجبه باحترام العلمانية والمساواة والكرامة ورموز الجمهورية وحدودها.',
+          ],
+          es: [
+            '<strong>Lema:</strong> "Libertad, Igualdad, Fraternidad" — oficial desde 1848, inscrito en la Constitución de 1958.',
+            '<strong>Libertad:</strong> Cada persona puede pensar, expresarse y vivir como desee dentro del respeto a las leyes.',
+            '<strong>Igualdad:</strong> La ley es la misma para todos. Más de 26 criterios de discriminación están prohibidos (origen, sexo, religión, discapacidad, edad...).',
+            '<strong>Igualdad entre mujeres y hombres:</strong> Inscrita en el Preámbulo de la Constitución de 1946. Ley de 2000 sobre la paridad política.',
+            '<strong>Fraternidad:</strong> Solidaridad colectiva (Seguridad Social, RSA), entre generaciones (pensiones) y compromiso asociativo.',
+            '<strong>Contrato de compromiso republicano:</strong> Todo extranjero debe firmarlo al solicitar un permiso de residencia. Compromete a respetar el laicismo, la igualdad, la dignidad, los símbolos y las fronteras de la República.',
           ]
         }
       },
@@ -224,7 +268,7 @@ const MATERIALS = [
     icon: '⚖️',
     sections: [
       {
-        heading: { fr:'La démocratie et la République', en:'Democracy and the Republic', zh:'民主与共和国', ar:'الديمقراطية والجمهورية' },
+        heading: { fr:'La démocratie et la République', en:'Democracy and the Republic', zh:'民主与共和国', ar:'الديمقراطية والجمهورية', es:'La democracia y la República' },
         content: {
           fr: [
             '<strong>Démocratie :</strong> Du grec "Demos Kratos" = "Pouvoir du peuple". Régime où le pouvoir appartient au peuple. La Constitution de 1958 dit : "gouvernement du peuple, par le peuple et pour le peuple".',
@@ -249,11 +293,17 @@ const MATERIALS = [
             '<strong>الجمهورية:</strong> من اللاتينية "Res Publica" = "الشأن العام". السلطة تمارَس من قِبَل ممثلين منتخَبين. تقابل الملكية.',
             '<strong>الجمهورية الخامسة:</strong> أسسها الجنرال ديغول عام 1958. اعتُمد الدستور باستفتاء (82%). لا يزال سارياً حتى اليوم.',
             '<strong>شروط التصويت:</strong> الجنسية الفرنسية + 18 سنة + الحقوق المدنية + التسجيل في قوائم الناخبين.',
+          ],
+          es: [
+            '<strong>Democracia:</strong> Del griego "Demos Kratos" = "Poder del pueblo". Sistema donde el poder pertenece al pueblo. La Constitución de 1958 dice: "gobierno del pueblo, por el pueblo y para el pueblo".',
+            '<strong>República:</strong> Del latín "Res Publica" = "cosa pública". El poder lo ejercen representantes elegidos. Se opone a la monarquía.',
+            '<strong>Quinta República:</strong> Fundada en 1958 por el general de Gaulle. Constitución aprobada por referéndum (82%). Todavía en vigor.',
+            '<strong>Para votar:</strong> Nacionalidad francesa + 18 años + derechos cívicos + inscrito en el censo electoral.',
           ]
         }
       },
       {
-        heading: { fr:'L\'État de droit et la séparation des pouvoirs', en:'Rule of law and separation of powers', zh:'法治与权力分立', ar:'دولة القانون وفصل السلطات' },
+        heading: { fr:'L\'État de droit et la séparation des pouvoirs', en:'Rule of law and separation of powers', zh:'法治与权力分立', ar:'دولة القانون وفصل السلطات', es:'El Estado de derecho y la separación de poderes' },
         content: {
           fr: [
             '<strong>État de droit :</strong> La loi est la même pour tous, y compris pour l\'État. Fondé sur 6 principes : primauté du droit, égalité devant la loi, séparation des pouvoirs, légalité, sécurité juridique, protection juridictionnelle.',
@@ -278,11 +328,17 @@ const MATERIALS = [
             '<strong>السلطة التشريعية:</strong> البرلمان (الجمعية الوطنية + مجلس الشيوخ). يُصوّت على القوانين ويُراقب الحكومة.',
             '<strong>السلطة التنفيذية:</strong> رئيس الجمهورية (قصر الإليزيه) + الحكومة (رئيس الوزراء في فندق ماتينيون). تُطبِّق القوانين وتُنفِّذها.',
             '<strong>السلطة القضائية:</strong> قضاة ومحاكم مستقلة. تُقيم العدل. لا أحد فوق القانون.',
+          ],
+          es: [
+            '<strong>Estado de derecho:</strong> La ley es la misma para todos, incluido el Estado. Se basa en 6 principios: primacía del derecho, igualdad ante la ley, separación de poderes, legalidad, seguridad jurídica, protección jurisdiccional.',
+            '<strong>Poder LEGISLATIVO:</strong> El Parlamento (Asamblea Nacional + Senado). Vota las leyes y controla al gobierno.',
+            '<strong>Poder EJECUTIVO:</strong> El presidente de la República (Palacio del Elíseo) + el gobierno (Primer Ministro en el Hôtel de Matignon). Aplica y hace respetar las leyes.',
+            '<strong>Autoridad JUDICIAL:</strong> Jueces y magistrados independientes. Imparte justicia. Nadie está por encima de las leyes.',
           ]
         }
       },
       {
-        heading: { fr:'Les institutions et les élections', en:'Institutions and elections', zh:'机构与选举', ar:'المؤسسات والانتخابات' },
+        heading: { fr:'Les institutions et les élections', en:'Institutions and elections', zh:'机构与选举', ar:'المؤسسات والانتخابات', es:'Las instituciones y las elecciones' },
         content: {
           fr: [
             '<strong>Président :</strong> Élu pour 5 ans au suffrage universel direct (depuis 1962). Nomme le Premier ministre. Chef des armées. Réside au palais de l\'Élysée.',
@@ -311,11 +367,18 @@ const MATERIALS = [
             '<strong>أنواع الانتخابات:</strong> رئاسية (كل 5 سنوات)، تشريعية (5 سنوات)، بلدية/إقليمية (6 سنوات)، أوروبية (5 سنوات).',
             '<strong>الاقتراع العام:</strong> جميع المواطنين الفرنسيين من 18 سنة فأكثر، المتمتعين بحقوقهم المدنية والمسجَّلين في القوائم الانتخابية، يحق لهم التصويت. التصويت شخصي وحر وسري.',
             '<strong>مواطنو الاتحاد الأوروبي:</strong> يمكنهم التصويت في الانتخابات البلدية (بعد 6 أشهر إقامة) والانتخابات الأوروبية.',
+          ],
+          es: [
+            '<strong>Presidente:</strong> Elegido por 5 años por sufragio universal directo (desde 1962). Nombra al Primer Ministro. Jefe de las fuerzas armadas. Reside en el Palacio del Elíseo.',
+            '<strong>Parlamento:</strong> 577 diputados (mandato de 5 años) + 348 senadores (mandato de 6 años). Vota las leyes.',
+            '<strong>Tipos de elecciones:</strong> Presidenciales (cada 5 años), legislativas (5 años), municipales/departamentales/regionales (6 años), europeas (5 años).',
+            '<strong>Sufragio universal:</strong> Todos los ciudadanos franceses mayores de 18 años, con derechos cívicos e inscritos en el censo electoral, pueden votar. El voto es personal, libre y secreto.',
+            '<strong>Ciudadanos de la UE:</strong> Pueden votar en elecciones municipales (tras 6 meses de residencia) y en las europeas.',
           ]
         }
       },
       {
-        heading: { fr:'L\'organisation administrative et l\'Union européenne', en:'Administrative organisation and the European Union', zh:'行政组织与欧盟', ar:'التنظيم الإداري والاتحاد الأوروبي' },
+        heading: { fr:'L\'organisation administrative et l\'Union européenne', en:'Administrative organisation and the European Union', zh:'行政组织与欧盟', ar:'التنظيم الإداري والاتحاد الأوروبي', es:'La organización administrativa y la Unión Europea' },
         content: {
           fr: [
             '<strong>Communes :</strong> ~35 000 en France. Gèrent l\'urbanisme, les écoles primaires et maternelles. Dirigées par le maire.',
@@ -344,6 +407,13 @@ const MATERIALS = [
             '<strong>الجهات:</strong> 18 جهة (13 في البر الرئيسي + 5 في ما وراء البحار). تُدير الثانويات والتنمية الاقتصادية.',
             '<strong>الاتحاد الأوروبي:</strong> 27 دولة عضو. أُسِّس بموجب معاهدة ماستريخت (1992). الشعار: "متحدون في التنوع". النشيد: نشيد الفرح. يوم أوروبا: 9 مايو. اليورو مستخدَم في فرنسا منذ 2002.',
             '<strong>مؤسسات الاتحاد الأوروبي:</strong> المجلس الأوروبي (بروكسل — 27 رئيس دولة)، المفوضية الأوروبية (بروكسل — 27 مفوضاً)، البرلمان الأوروبي (ستراسبورغ — 720 نائباً)، محكمة العدل (لوكسمبورغ).',
+          ],
+          es: [
+            '<strong>Municipios:</strong> ~35.000 en Francia. Gestionan el urbanismo y las escuelas primarias y de infantil. Dirigidos por el alcalde.',
+            '<strong>Departamentos:</strong> 101 en total. Gestionan la ayuda social, los institutos de secundaria (collèges) y las carreteras. El prefecto representa al Estado.',
+            '<strong>Regiones:</strong> 18 en total (13 metropolitanas + 5 de ultramar). Gestionan los institutos (lycées) y el desarrollo económico.',
+            '<strong>Unión Europea:</strong> 27 Estados miembros. Fundada por el Tratado de Maastricht (1992). Lema: "Unidos en la diversidad". Himno: Oda a la Alegría. Día de Europa: 9 de mayo. El euro se utiliza en Francia desde 2002.',
+            '<strong>Instituciones UE:</strong> Consejo Europeo (Bruselas — 27 jefes de Estado), Comisión Europea (Bruselas — 27 comisarios), Parlamento Europeo (Estrasburgo — 720 diputados), Tribunal de Justicia (Luxemburgo).',
           ]
         }
       },
@@ -356,7 +426,7 @@ const MATERIALS = [
     icon: '📜',
     sections: [
       {
-        heading: { fr:'Les droits fondamentaux — Trois catégories', en:'Fundamental rights — Three categories', zh:'基本权利——三种类别', ar:'الحقوق الأساسية — ثلاث فئات' },
+        heading: { fr:'Les droits fondamentaux — Trois catégories', en:'Fundamental rights — Three categories', zh:'基本权利——三种类别', ar:'الحقوق الأساسية — ثلاث فئات', es:'Los derechos fundamentales — Tres categorías' },
         content: {
           fr: [
             '<strong>Catégorie 1 — Droits liés à la personne :</strong> Égalité devant la loi, liberté, sûreté, résistance à l\'oppression, présomption d\'innocence, droit à un avocat, liberté d\'expression, de culte, de grève, droit de propriété.',
@@ -377,11 +447,16 @@ const MATERIALS = [
             '<strong>الفئة 1 — الحقوق الشخصية:</strong> المساواة أمام القانون، الحرية، الأمن، مقاومة الاضطهاد، قرينة البراءة، الحق في محامٍ، حرية التعبير والعبادة والإضراب، حق الملكية.',
             '<strong>الفئة 2 — الحقوق الاقتصادية والاجتماعية:</strong> الحق في العمل والصحة والتعليم المجاني والسكن والضمان الاجتماعي. تستلزم هذه الحقوق تدخل الدولة.',
             '<strong>الفئة 3 — حقوق "الجيل الثالث":</strong> حقوق جماعية: الحق في السلام، البيئة الصحية، والمساعدة للأجيال القادمة.',
+          ],
+          es: [
+            '<strong>Categoría 1 — Derechos vinculados a la persona:</strong> Igualdad ante la ley, libertad, seguridad, resistencia a la opresión, presunción de inocencia, derecho a un abogado, libertad de expresión, de culto, de huelga, derecho a la propiedad.',
+            '<strong>Categoría 2 — Derechos económicos y sociales:</strong> Derecho al trabajo, a la salud, a la educación gratuita, a la vivienda, a la seguridad social. Estos derechos requieren la intervención del Estado.',
+            '<strong>Categoría 3 — Derechos de "tercera generación":</strong> Derechos colectivos: derecho a la paz, a un medio ambiente sano, ayuda a las generaciones futuras.',
           ]
         }
       },
       {
-        heading: { fr:'Les grands textes fondateurs', en:'The founding texts', zh:'重要创始文件', ar:'النصوص التأسيسية الكبرى' },
+        heading: { fr:'Les grands textes fondateurs', en:'The founding texts', zh:'重要创始文件', ar:'النصوص التأسيسية الكبرى', es:'Los grandes textos fundadores' },
         content: {
           fr: [
             '<strong>DDHC 1789 :</strong> 17 articles. "Les Hommes naissent et demeurent libres et égaux en droits" (art. 1). Droits naturels = liberté, propriété, sûreté, résistance à l\'oppression (art. 2). Liberté d\'expression (art. 10-11).',
@@ -402,11 +477,16 @@ const MATERIALS = [
             '<strong>إعلان حقوق الإنسان والمواطن 1789:</strong> 17 مادة. "يولد الناس ويظلون أحراراً ومتساوين في الحقوق" (المادة 1). الحقوق الطبيعية = الحرية والملكية والأمن ومقاومة الاضطهاد (المادة 2). حرية التعبير (المادتان 10-11).',
             '<strong>دستور 1958:</strong> يتألف <strong>الكتلة الدستورية</strong> من دستور 1958 + مقدمة دستور 1946 + إعلان 1789 + ميثاق البيئة 2004. يجب أن تمتثل جميع القوانين الفرنسية لها.',
             '<strong>ميثاق البيئة (2004):</strong> "لكل شخص الحق في العيش في بيئة متوازنة تحترم الصحة." أُدرج في الدستور عام 2005.',
+          ],
+          es: [
+            '<strong>DDHC 1789:</strong> 17 artículos. "Los hombres nacen y permanecen libres e iguales en derechos" (art. 1). Derechos naturales = libertad, propiedad, seguridad, resistencia a la opresión (art. 2). Libertad de expresión (art. 10-11).',
+            '<strong>Constitución de 1958:</strong> El <strong>bloque de constitucionalidad</strong> = Constitución 1958 + Preámbulo de 1946 + DDHC 1789 + Carta del Medioambiente 2004. Todas las leyes francesas deben respetarlo.',
+            '<strong>Carta del Medioambiente (2004):</strong> "Toda persona tiene derecho a vivir en un entorno equilibrado y respetuoso con la salud." Integrada en la Constitución en 2005.',
           ]
         }
       },
       {
-        heading: { fr:'Obligations, infractions et numéros d\'urgence', en:'Obligations, offences and emergency numbers', zh:'义务、违法行为和急救号码', ar:'الالتزامات والمخالفات وأرقام الطوارئ' },
+        heading: { fr:'Obligations, infractions et numéros d\'urgence', en:'Obligations, offences and emergency numbers', zh:'义务、违法行为和急救号码', ar:'الالتزامات والمخالفات وأرقام الطوارئ', es:'Obligaciones, infracciones y números de emergencia' },
         content: {
           fr: [
             '<strong>Obligations de tout résident :</strong> Payer des impôts, être en situation régulière, assister toute personne en danger, défendre l\'environnement.',
@@ -431,6 +511,12 @@ const MATERIALS = [
             '<strong>أنواع المخالفات الجنائية الثلاثة:</strong> مخالفة بسيطة (غرامة قصوى 3,000 يورو، بدون سجن — محكمة الشرطة) | جنحة (غرامة ≥ 3,750 يورو + شهرين إلى 10 سنوات سجناً — المحكمة الجنائية) | جريمة (15 سنة إلى السجن المؤبد — محكمة الجنايات).',
             '<strong>15 — SAMU</strong> (الطوارئ الطبية) | <strong>17 — الشرطة</strong> | <strong>18 — المطافئ</strong> | <strong>112</strong> (الطوارئ الأوروبية)',
             '<strong>115</strong> (الإيواء الطارئ) | <strong>119</strong> (حماية الطفولة) | <strong>3919</strong> (العنف الزوجي) | <strong>3114</strong> (الوقاية من الانتحار)',
+          ],
+          es: [
+            '<strong>Obligaciones de todo residente:</strong> Pagar impuestos, tener situación regular, asistir a cualquier persona en peligro, defender el medioambiente.',
+            '<strong>Los 3 tipos de infracciones:</strong> Contravención (multa máx. 3.000 €, sin prisión — tribunal de policía) | Delito (multa ≥ 3.750 € + 2 meses a 10 años de prisión — tribunal correccional) | Crimen (≥ 15 años a cadena perpetua — tribunal de asizes).',
+            '<strong>15 — SAMU</strong> (urgencias médicas) | <strong>17 — Policía</strong> | <strong>18 — Bomberos</strong> | <strong>112</strong> (europeo universal)',
+            '<strong>115</strong> (alojamiento de urgencia) | <strong>119</strong> (protección de menores) | <strong>3919</strong> (violencia de género) | <strong>3114</strong> (prevención del suicidio)',
           ]
         }
       },
@@ -443,7 +529,7 @@ const MATERIALS = [
     icon: '🗺️',
     sections: [
       {
-        heading: { fr:'Chronologie des régimes politiques', en:'Chronology of political regimes', zh:'政治体制年表', ar:'تسلسل الأنظمة السياسية' },
+        heading: { fr:'Chronologie des régimes politiques', en:'Chronology of political regimes', zh:'政治体制年表', ar:'تسلسل الأنظمة السياسية', es:'Cronología de los regímenes políticos' },
         content: {
           fr: [
             '<strong>Avant 1789 — Ancien Régime :</strong> Monarchie absolue. Société en 3 ordres : Clergé, Noblesse, Tiers État (paysans = 80%).',
@@ -484,11 +570,21 @@ const MATERIALS = [
             '<strong>1870-1940 — الجمهورية الثالثة:</strong> قوانين جول فيري (1881-1882). الفصل بين الكنيسة والدولة (1905). الحرب العالمية الأولى. الجبهة الشعبية (1936).',
             '<strong>1940-1944 — نظام فيشي:</strong> المارشال بيتان. التعاون مع ألمانيا النازية. مداهمة Vél d\'Hiv (16-17 يوليو 1942).',
             '<strong>1958 ← الجمهورية الخامسة:</strong> دستور 4 أكتوبر 1958. انتخاب الرئيس بالاقتراع العام المباشر منذ 1962. لا يزال سارياً.',
+          ],
+          es: [
+            '<strong>Antes de 1789 — Antiguo Régimen:</strong> Monarquía absoluta. Sociedad en 3 órdenes: Clero, Nobleza, Tercer Estado (campesinos = 80%).',
+            '<strong>1789 — Revolución francesa:</strong> Toma de la Bastilla (14 de julio). Declaración de Derechos del Hombre (26 de agosto). Fin de la monarquía absoluta.',
+            '<strong>1792-1804 — 1ª República:</strong> El Terror (Robespierre), el Directorio, el Consulado (Napoleón).',
+            '<strong>1804 — 1er Imperio:</strong> Napoleón I como Emperador. Código Civil, prefectos, Banco de Francia. Derrota en Waterloo (1815).',
+            '<strong>1848 — 2ª República:</strong> Sufragio universal masculino. Abolición de la esclavitud (27 de abril de 1848).',
+            '<strong>1870-1940 — 3ª República:</strong> Leyes Jules Ferry (1881-1882). Separación Iglesia-Estado (1905). Primera Guerra Mundial. Frente Popular (1936).',
+            '<strong>1940-1944 — Régimen de Vichy:</strong> Mariscal Pétain. Colaboración con la Alemania nazi. Redada del Vél d\'Hiv (16-17 de julio de 1942).',
+            '<strong>1958 → 5ª República:</strong> Constitución del 4 de octubre de 1958. Presidente elegido por sufragio universal directo desde 1962. Todavía en vigor.',
           ]
         }
       },
       {
-        heading: { fr:'La Ve République et les conflits mondiaux', en:'The Fifth Republic and the world wars', zh:'第五共和国与世界大战', ar:'الجمهورية الخامسة والحروب العالمية' },
+        heading: { fr:'La Ve République et les conflits mondiaux', en:'The Fifth Republic and the world wars', zh:'第五共和国与世界大战', ar:'الجمهورية الخامسة والحروب العالمية', es:'La Quinta República y los conflictos mundiales' },
         content: {
           fr: [
             '<strong>Présidents notables :</strong> de Gaulle (fondateur 1959-1969), Mitterrand (abolition peine de mort 1981), Hollande (mariage pour tous 2013), Macron (IVG dans la Constitution 2024).',
@@ -517,11 +613,18 @@ const MATERIALS = [
             '<strong>الحرب العالمية الثانية (1939-1945):</strong> نداء ديغول من لندن في 18 يونيو 1940. إنزال النورماندي (6 يونيو 1944). تحرير باريس (25 أغسطس 1944). استسلام ألمانيا (8 مايو 1945).',
             '<strong>المحرقة (الشواه):</strong> إبادة جماعية لـ6 ملايين يهودي أوروبي نظَّمها النازيون (1941-1945). إنكار المحرقة جريمة جنائية في فرنسا (قانون غاسو 1990).',
             '<strong>جان مولان:</strong> الرمز الأبرز للمقاومة الفرنسية، لقي حتفه تحت التعذيب عام 1943.',
+          ],
+          es: [
+            '<strong>Presidentes destacados:</strong> de Gaulle (fundador 1959-1969), Mitterrand (abolición de la pena de muerte 1981), Hollande (matrimonio para todos 2013), Macron (derecho al aborto en la Constitución 2024).',
+            '<strong>1ª Guerra Mundial (1914-1918):</strong> Armisticio el 11 de noviembre de 1918. ~10 millones de soldados muertos. Francia recupera Alsacia-Lorena.',
+            '<strong>2ª Guerra Mundial (1939-1945):</strong> Llamada del 18 de junio de 1940 (de Gaulle desde Londres). Desembarco en Normandía (6 de junio de 1944). Liberación de París (25 de agosto de 1944). Capitulación de Alemania (8 de mayo de 1945).',
+            '<strong>La Shoah:</strong> Genocidio de 6 millones de judíos europeos organizado por los nazis (1941-1945). Negar la Shoah es un delito en Francia (ley Gayssot 1990).',
+            '<strong>Jean Moulin:</strong> Figura emblemática de la Resistencia francesa, muerto bajo tortura en 1943.',
           ]
         }
       },
       {
-        heading: { fr:'Géographie et culture françaises', en:'French geography and culture', zh:'法国地理与文化', ar:'الجغرافيا والثقافة الفرنسية' },
+        heading: { fr:'Géographie et culture françaises', en:'French geography and culture', zh:'法国地理与文化', ar:'الجغرافيا والثقافة الفرنسية', es:'Geografía y cultura francesas' },
         content: {
           fr: [
             '<strong>France métropolitaine :</strong> 551 695 km² (3ème pays d\'Europe). ~68 millions d\'habitants. 13 régions métropolitaines + 5 DROM. 101 départements. ~35 000 communes.',
@@ -550,6 +653,13 @@ const MATERIALS = [
             '<strong>5 أنهار كبرى:</strong> اللوار (1,013 كم)، السين (775 كم — يخترق باريس)، الرون (812 كم)، الغارون (650 كم)، الراين (1,230 كم).',
             '<strong>فرنسا في العالم:</strong> القوة الاقتصادية السابعة. الوجهة السياحية الأولى (~90 مليون زائر/سنة). ثاني أكبر منطقة اقتصادية خالصة. عضو دائم في مجلس الأمن الأممي.',
             '<strong>الثقافة:</strong> 52 موقعاً مدرجاً في اليونسكو. المطبخ الفرنسي مصنَّف في اليونسكو (2010). نحو 300 مليون متحدث بالفرنسية في العالم. خامس لغة عالمياً.',
+          ],
+          es: [
+            '<strong>Francia metropolitana:</strong> 551.695 km² (3er país de Europa). ~68 millones de habitantes. 13 regiones metropolitanas + 5 DROM. 101 departamentos. ~35.000 municipios.',
+            '<strong>Fronteras:</strong> 8 países vecinos (Bélgica, Luxemburgo, Alemania, Suiza, Italia, Mónaco, España, Andorra). Canal de la Mancha (norte), Atlántico (oeste), Mediterráneo (sur).',
+            '<strong>5 grandes ríos:</strong> Loira (1.013 km), Sena (775 km, atraviesa París), Ródano (812 km), Garona (650 km), Rin (1.230 km).',
+            '<strong>Francia en el mundo:</strong> 7ª potencia económica. 1er destino turístico (~90 M de visitantes/año). 2ª ZEE marítima. Miembro permanente del Consejo de Seguridad de la ONU.',
+            '<strong>Cultura:</strong> 52 sitios UNESCO. Gastronomía clasificada por la UNESCO (2010). ~300 millones de francoparlantes en el mundo. 5ª lengua mundial.',
           ]
         }
       },
@@ -562,7 +672,7 @@ const MATERIALS = [
     icon: '🏠',
     sections: [
       {
-        heading: { fr:'Démarches administratives', en:'Administrative procedures', zh:'行政手续', ar:'الإجراءات الإدارية' },
+        heading: { fr:'Démarches administratives', en:'Administrative procedures', zh:'行政手续', ar:'الإجراءات الإدارية', es:'Trámites administrativos' },
         content: {
           fr: [
             '<strong>Compte bancaire :</strong> Indispensable pour recevoir son salaire. Si une banque refuse, le <strong>droit au compte</strong> permet de saisir la Banque de France — services de base gratuits.',
@@ -595,11 +705,19 @@ const MATERIALS = [
             '<strong>الضرائب:</strong> التصريح السنوي بالدخل إلزامي (impots.gouv.fr، أبريل-يونيو). الاستقطاع من المصدر منذ 2019. ضريبة القيمة المضافة: 20% (عادي)، 5.5% (غذاء)، 10% (مطعم).',
             '<strong>تصريح الإقامة:</strong> بطاقة مؤقتة (سنة) → متعددة السنوات/CSP (2-4 سنوات) → بطاقة مقيم (10 سنوات). التجديد قبل انتهاء الصلاحية.',
             '<strong>التجنيس:</strong> 5 سنوات إقامة + مستوى B1 في الفرنسية + اجتياز الامتحان المدني + بدون سوابق جنائية خطيرة. الجنسية المزدوجة مسموح بها.',
+          ],
+          es: [
+            '<strong>Cuenta bancaria:</strong> Indispensable para recibir el salario. Si un banco se niega, el <strong>derecho a una cuenta</strong> permite dirigirse al Banco de Francia — servicios básicos gratuitos.',
+            '<strong>Permiso de conducir:</strong> Permiso de la UE → canje automático. Fuera de la UE con acuerdo → canje dentro del primer año del permiso de residencia. Sin acuerdo → superar el examen de conducir francés completo (40 preguntas — 35 respuestas correctas para aprobar).',
+            '<strong>Seguros obligatorios:</strong> Seguro de automóvil (antes de conducir) y seguro de hogar para todo arrendatario.',
+            '<strong>Impuestos:</strong> Declaración de la renta anual obligatoria (impots.gouv.fr, abril-junio). Retención en la fuente desde 2019. IVA: 20% (normal), 5,5% (alimentación), 10% (restaurante).',
+            '<strong>Permiso de residencia:</strong> Tarjeta temporal (1 año) → Tarjeta plurianual/CSP (2-4 años) → Tarjeta de residente (10 años). Renovar ANTES de que caduque.',
+            '<strong>Naturalización:</strong> 5 años de residencia + nivel B1 de francés + superar el examen cívico + ninguna condena grave. Doble nacionalidad autorizada.',
           ]
         }
       },
       {
-        heading: { fr:'Santé', en:'Health', zh:'医疗卫生', ar:'الصحة' },
+        heading: { fr:'Santé', en:'Health', zh:'医疗卫生', ar:'الصحة', es:'Salud' },
         content: {
           fr: [
             '<strong>Médecin traitant :</strong> À déclarer sur ameli.fr. Premier recours pour tout problème de santé. Oriente vers les spécialistes. Sans médecin traitant → remboursements réduits.',
@@ -632,11 +750,19 @@ const MATERIALS = [
             '<strong>AME:</strong> المساعدة الطبية للدولة — رعاية صحية أساسية للأجانب في وضع غير نظامي (مقيمون منذ أكثر من 3 أشهر).',
             '<strong>الأمومة:</strong> متابعة الحمل مشمولة 100%. إجازة الأمومة: 16 أسبوعاً على الأقل. إجازة الأبوة: 25 يوماً (11 يوماً إلزامية).',
             '<strong>الصحة النفسية:</strong> 3114 (الوقاية من الانتحار 24ساعة/7أيام). CMP (استشارات نفسية مجانية). Mon Soutien Psy = 12 جلسة علاج نفسي مُعوَّض عنها.',
+          ],
+          es: [
+            '<strong>Médico de cabecera:</strong> Debe declararse en ameli.fr. Primer recurso para cualquier problema de salud. Deriva a especialistas. Sin médico de cabecera → reembolsos reducidos.',
+            '<strong>PUMa:</strong> Protección Universal de Enfermedad — acceso a la atención sanitaria para toda persona que resida regularmente en Francia. Solicitarlo en la CPAM.',
+            '<strong>CSS:</strong> Complemento de Salud Solidario — complementario gratuito o de bajo coste para personas con bajos ingresos.',
+            '<strong>AME:</strong> Ayuda Médica del Estado — atención sanitaria básica para extranjeros en situación irregular (residentes desde hace más de 3 meses).',
+            '<strong>Maternidad:</strong> Seguimiento del embarazo cubierto al 100%. Baja por maternidad: mín. 16 semanas. Baja por paternidad: 25 días (11 obligatorios).',
+            '<strong>Salud mental:</strong> 3114 (prevención del suicidio 24h/24). CMP (Centros Médico-Psicológicos — gratuitos). Mon Soutien Psy = 12 sesiones de psicología reembolsadas.',
           ]
         }
       },
       {
-        heading: { fr:'Emploi et droits des salariés', en:'Employment and workers\' rights', zh:'就业与劳动者权利', ar:'التوظيف وحقوق العمال' },
+        heading: { fr:'Emploi et droits des salariés', en:'Employment and workers\' rights', zh:'就业与劳动者权利', ar:'التوظيف وحقوق العمال', es:'Empleo y derechos de los trabajadores' },
         content: {
           fr: [
             '<strong>France Travail :</strong> (ex-Pôle Emploi). Inscription en ligne sur francetravail.fr. Accompagnement personnalisé, offres d\'emploi, formations, allocations chômage.',
@@ -669,11 +795,19 @@ const MATERIALS = [
             '<strong>ساعات العمل القانونية:</strong> 35 ساعة/أسبوع. إجازة مدفوعة الأجر: 5 أسابيع/سنة. راحة يومية: 11 ساعة. راحة أسبوعية: 24 ساعة.',
             '<strong>تعويض البطالة (ARE):</strong> الشروط: 6 أشهر عمل في آخر 24 شهراً + فصل غير إرادي + التسجيل في France Travail. المدة: 6 إلى 24 شهراً.',
             '<strong>التقاعد:</strong> سن التقاعد الأدنى 64 سنة منذ 2023. 172 ربعاً (43 سنة) للحصول على معاش كامل.',
+          ],
+          es: [
+            '<strong>France Travail:</strong> (antes Pôle Emploi). Inscripción en línea en francetravail.fr. Acompañamiento personalizado, ofertas de empleo, formaciones, prestaciones por desempleo.',
+            '<strong>Tipos de contratos:</strong> CDI (sin fecha de fin — el más protector) | CDD (máx. 18 meses, prima de precariedad del 10% al final) | Interinidad (a través de una agencia).',
+            '<strong>SMIC 2025:</strong> ~11,88 €/h bruto = ~1.800 € bruto/mes para 35h/semana. Revalorizado cada 1 de enero.',
+            '<strong>Duración legal:</strong> 35h/semana. Vacaciones pagadas: 5 semanas/año. Descanso diario: 11h. Descanso semanal: 24h.',
+            '<strong>Prestación por desempleo (ARE):</strong> Condiciones: 6 meses trabajados en los últimos 24 meses + despido involuntario + inscrito en France Travail. Duración: 6 a 24 meses.',
+            '<strong>Jubilación:</strong> Edad mínima de jubilación 64 años desde 2023. 172 trimestres (43 años) para la pensión completa.',
           ]
         }
       },
       {
-        heading: { fr:'Parentalité et éducation', en:'Parenthood and education', zh:'育儿与教育', ar:'الأبوة والتعليم' },
+        heading: { fr:'Parentalité et éducation', en:'Parenthood and education', zh:'育儿与教育', ar:'الأبوة والتعليم', es:'Parentalidad y educación' },
         content: {
           fr: [
             '<strong>CIDE :</strong> Convention internationale des droits de l\'enfant — signée par la France en 1990. Garantit : droit à l\'identité, à la santé, à l\'éducation, à la protection contre les abus.',
@@ -706,6 +840,14 @@ const MATERIALS = [
             '<strong>UPE2A:</strong> دروس مكثَّفة في الفرنسية للأطفال غير الناطقين بها. اندماج تدريجي في الفصول العادية.',
             '<strong>OEPRE:</strong> دروس فرنسية مجانية في المدارس للآباء الأجانب. تتناول أيضاً طريقة عمل المدرسة الفرنسية والقيم الجمهورية.',
             '<strong>رعاية الأطفال (0-3 سنوات):</strong> حضانة جماعية، مربية معتمَدة، جليسة أطفال في المنزل، حضانة صغيرة. مساعدات CAF متاحة (PSU، CMG، إعفاء ضريبي 50%).',
+          ],
+          es: [
+            '<strong>CIDE:</strong> Convención Internacional sobre los Derechos del Niño — firmada por Francia en 1990. Garantiza: derecho a la identidad, a la salud, a la educación, a la protección contra los abusos.',
+            '<strong>Escolaridad obligatoria:</strong> De 3 a 16 años para TODOS los niños que residan en Francia, independientemente de la nacionalidad o situación de los padres.',
+            '<strong>Sistema educativo:</strong> Infantil (3-6) → Primaria (6-11) → Secundaria (11-15, brevet DNB) → Bachillerato (15-18, baccalauréat) → Educación superior.',
+            '<strong>UPE2A:</strong> Clases intensivas de francés para niños no francófonos. Integración progresiva en clase ordinaria.',
+            '<strong>OEPRE:</strong> Clases de francés gratuitas en las escuelas para padres extranjeros. También trata el funcionamiento del sistema escolar francés y los valores republicanos.',
+            '<strong>Modalidades de cuidado (0-3 años):</strong> Guardería (crèche), asistente maternal (homologada), cuidado a domicilio, micro-guardería. Ayudas de la CAF disponibles (PSU, CMG, crédito fiscal del 50%).',
           ]
         }
       },
