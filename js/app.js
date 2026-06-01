@@ -15,6 +15,7 @@ const EXAM_DURATION   = 45 * 60; // 45 minutes in seconds (official duration)
 
 let examTimeLeft     = EXAM_DURATION;
 let examTimerInterval = null;
+let examMode         = 'review'; // 'review' | 'immediate'
 
 // ── Boot ─────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
@@ -266,6 +267,21 @@ function renderExamSetup() {
         <div class="level-card__desc">${t('exam_setup_cr_desc')}</div>
       </div>
     </div>
+    <div class="exam-mode-section">
+      <div class="exam-mode-title">${t('exam_mode_title')}</div>
+      <div class="exam-setup-grid">
+        <div class="mode-card ${examMode==='immediate'?'selected':''}" data-mode="immediate">
+          <div class="mode-card__icon">⚡</div>
+          <div class="mode-card__title">${t('exam_mode_immediate')}</div>
+          <div class="mode-card__desc">${t('exam_mode_immediate_desc')}</div>
+        </div>
+        <div class="mode-card ${examMode==='review'?'selected':''}" data-mode="review">
+          <div class="mode-card__icon">📋</div>
+          <div class="mode-card__title">${t('exam_mode_review')}</div>
+          <div class="mode-card__desc">${t('exam_mode_review_desc')}</div>
+        </div>
+      </div>
+    </div>
     <div class="exam-info-bar">ℹ️ ${t('exam_setup_info')}</div>
     <div style="text-align:center">
       <button class="btn btn--primary btn--lg" id="start-exam-btn">${t('exam_setup_btn')} →</button>
@@ -274,6 +290,11 @@ function renderExamSetup() {
   el.querySelectorAll('.level-card').forEach(c => c.addEventListener('click', () => {
     examLevel = c.dataset.level;
     el.querySelectorAll('.level-card').forEach(x => x.classList.remove('selected'));
+    c.classList.add('selected');
+  }));
+  el.querySelectorAll('.mode-card').forEach(c => c.addEventListener('click', () => {
+    examMode = c.dataset.mode;
+    el.querySelectorAll('.mode-card').forEach(x => x.classList.remove('selected'));
     c.classList.add('selected');
   }));
   el.querySelector('#start-exam-btn').addEventListener('click', startExam);
@@ -406,11 +427,30 @@ function renderExamPage() {
 
   // Option selection
   el.querySelectorAll('.option-item').forEach(opt => opt.addEventListener('click', () => {
-    const qid = opt.closest('.question-card').dataset.qid;
+    if (opt.classList.contains('locked')) return;
+    const card = opt.closest('.question-card');
+    const qid  = card.dataset.qid;
     const val  = +opt.dataset.idx;
     examAnswers[qid] = val;
-    opt.closest('.options-list').querySelectorAll('.option-item').forEach(o => o.classList.remove('selected'));
-    opt.classList.add('selected');
+
+    if (examMode === 'immediate') {
+      const q = examQuestions.find(qq => qq.id === qid);
+      const isCorrect = val === q.displayAnswer;
+      card.querySelectorAll('.option-item').forEach(o => {
+        o.classList.add('locked');
+        const idx = +o.dataset.idx;
+        if (idx === q.displayAnswer) o.classList.add('correct');
+        else if (idx === val && !isCorrect) o.classList.add('incorrect');
+      });
+      const fb = document.createElement('div');
+      fb.className = `inline-feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+      fb.innerHTML = `<span class="inline-feedback__badge">${isCorrect ? t('results_correct_badge') : t('results_incorrect_badge')}</span><span class="inline-feedback__text">💡 ${t('results_explanation')} ${q.explanation}</span>`;
+      card.appendChild(fb);
+    } else {
+      opt.closest('.options-list').querySelectorAll('.option-item').forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+    }
+
     // update progress bar & dot
     const answered2 = Object.keys(examAnswers).length;
     const prog2 = Math.round((answered2 / TOTAL_Q) * 100);
@@ -422,7 +462,7 @@ function renderExamPage() {
     const sub = el.querySelector('#btn-submit');
     if (sub) sub.style.opacity = answered2===TOTAL_Q ? '1':'0.5';
     // mark dot answered
-    const qIdx = examQuestions.findIndex(q=>q.id===qid);
+    const qIdx = examQuestions.findIndex(qq => qq.id === qid);
     const dot = el.querySelectorAll('.q-dot')[qIdx];
     if (dot && !dot.classList.contains('current')) dot.classList.add('answered');
   }));
@@ -437,21 +477,43 @@ function renderExamPage() {
 
 function renderQuestionCard(q, globalIdx) {
   const savedAnswer = examAnswers[q.id];
+  const isAnswered  = savedAnswer !== undefined;
   const topicName   = t('topic_' + q.topic);
   const letters     = ['A','B','C','D'];
+  const isImmediate = examMode === 'immediate';
+
+  const optionsHtml = q.displayOptions.map((opt, i) => {
+    let cls = '';
+    if (isImmediate && isAnswered) {
+      if (i === q.displayAnswer)             cls = 'locked correct';
+      else if (i === savedAnswer)            cls = 'locked incorrect';
+      else                                   cls = 'locked';
+    } else if (!isImmediate && savedAnswer === i) {
+      cls = 'selected';
+    }
+    return `
+          <div class="option-item ${cls}" data-idx="${i}">
+            <div class="option-radio"></div>
+            <span class="option-letter">${letters[i]}.</span>
+            <span class="option-text">${opt}</span>
+          </div>`;
+  }).join('');
+
+  const feedbackHtml = (isImmediate && isAnswered) ? `
+      <div class="inline-feedback ${savedAnswer === q.displayAnswer ? 'correct' : 'incorrect'}">
+        <span class="inline-feedback__badge">${savedAnswer === q.displayAnswer ? t('results_correct_badge') : t('results_incorrect_badge')}</span>
+        <span class="inline-feedback__text">💡 ${t('results_explanation')} ${q.explanation}</span>
+      </div>` : '';
+
   return `
     <div class="question-card" data-qid="${q.id}">
       <div class="question-topic-badge">📌 ${t('exam_topic_label')} ${q.topic} — ${topicName}</div>
       <div class="question-number">Q${globalIdx+1}</div>
       <div class="question-text">${q.q}</div>
       <div class="options-list">
-        ${q.displayOptions.map((opt, i) => `
-          <div class="option-item ${savedAnswer===i?'selected':''}" data-idx="${i}">
-            <div class="option-radio"></div>
-            <span class="option-letter">${letters[i]}.</span>
-            <span class="option-text">${opt}</span>
-          </div>`).join('')}
+        ${optionsHtml}
       </div>
+      ${feedbackHtml}
     </div>`;
 }
 
