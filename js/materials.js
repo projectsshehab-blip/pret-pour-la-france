@@ -259,6 +259,52 @@ const MATERIALS = [
           ]
         }
       },
+      {
+        heading: {
+          fr: 'L\'IVG dans la Constitution — Mise à jour 2026',
+          en: 'Abortion rights in the Constitution — 2026 update',
+          zh: '宪法中的人工终止妊娠权——2026年更新',
+          ar: 'حق الإجهاض في الدستور — تحديث 2026',
+          es: 'El derecho al aborto en la Constitución — Actualización 2026'
+        },
+        content: {
+          fr: [
+            '<strong>Réforme du 4 mars 2024 :</strong> La liberté garantie à la femme d\'avoir recours à l\'IVG est désormais inscrite dans l\'article 34 de la Constitution. La France est le premier pays au monde à inscrire ce droit dans sa Constitution.',
+            '<strong>Portée :</strong> Ce droit constitutionnel ne peut pas être remis en cause par une loi ordinaire.',
+            '<strong>Délai légal :</strong> L\'IVG est légale jusqu\'à 14 semaines de grossesse (délai allongé de 12 à 14 semaines depuis 2022).',
+            '<strong>Accès et remboursement :</strong> L\'IVG est remboursée à 100% par la Sécurité sociale pour toutes les femmes. Elle peut être pratiquée en hôpital, clinique ou cabinet médical.',
+            '<strong>Historique :</strong> Loi Veil de 1975 → légalisation. Loi de 2001 → allongement du délai. Réforme constitutionnelle de 2024 → consécration définitive.',
+          ],
+          en: [
+            '<strong>Reform of 4 March 2024:</strong> The guaranteed freedom for women to have access to abortion (IVG) is now enshrined in Article 34 of the Constitution. France is the first country in the world to explicitly enshrine this right in its Constitution.',
+            '<strong>Scope:</strong> This constitutional right cannot be overturned by an ordinary law.',
+            '<strong>Legal deadline:</strong> Abortion is legal up to 14 weeks of pregnancy (extended from 12 to 14 weeks in 2022).',
+            '<strong>Access and reimbursement:</strong> Abortion is 100% reimbursed by Social Security for all women. It can be performed in hospitals, clinics or medical practices.',
+            '<strong>History:</strong> Veil Act 1975 → legalisation. 2001 law → extended deadline. 2024 constitutional reform → permanent enshrinement.',
+          ],
+          zh: [
+            '<strong>2024年3月4日改革：</strong>保障女性进行人工终止妊娠（IVG）的自由现已写入宪法第34条。法国成为世界上第一个在宪法中明确载入这一权利的国家。',
+            '<strong>意义：</strong>这一宪法权利不能被普通法律所废除。',
+            '<strong>法定期限：</strong>人工流产在怀孕14周内合法（2022年从12周延长至14周）。',
+            '<strong>获取与报销：</strong>社会保障为所有女性100%报销人工流产费用，可在医院、诊所或诊疗室进行。',
+            '<strong>历史：</strong>1975年《维尔法》→合法化。2001年法律→延长期限。2024年宪法改革→永久确立。',
+          ],
+          ar: [
+            '<strong>إصلاح 4 مارس 2024:</strong> باتت حرية المرأة في اللجوء إلى الإجهاض الاختياري (IVG) مكرَّسة في المادة 34 من الدستور. وتُعدّ فرنسا أول دولة في العالم تُدرج هذا الحق صراحةً في دستورها.',
+            '<strong>النطاق:</strong> لا يمكن إلغاء هذا الحق الدستوري بقانون عادي.',
+            '<strong>المهلة القانونية:</strong> الإجهاض قانوني حتى 14 أسبوعاً من الحمل (تمديد من 12 إلى 14 أسبوعاً منذ 2022).',
+            '<strong>الوصول والتعويض:</strong> يُعوَّض الإجهاض بالكامل (100%) من قِبل الضمان الاجتماعي لجميع النساء. يمكن إجراؤه في المستشفيات والعيادات.',
+            '<strong>التاريخ:</strong> قانون فيل 1975 → التشريع. قانون 2001 → تمديد المهلة. الإصلاح الدستوري 2024 → التكريس النهائي.',
+          ],
+          es: [
+            '<strong>Reforma del 4 de marzo de 2024:</strong> La libertad garantizada a la mujer de recurrir al aborto (IVG) queda inscrita en el artículo 34 de la Constitución. Francia es el primer país del mundo en consagrar explícitamente este derecho en su Constitución.',
+            '<strong>Alcance:</strong> Este derecho constitucional no puede ser suprimido por una ley ordinaria.',
+            '<strong>Plazo legal:</strong> El aborto es legal hasta las 14 semanas de embarazo (ampliado de 12 a 14 semanas desde 2022).',
+            '<strong>Acceso y reembolso:</strong> El aborto es reembolsado al 100% por la Seguridad Social para todas las mujeres. Puede realizarse en hospitales, clínicas o consultas médicas.',
+            '<strong>Historia:</strong> Ley Veil 1975 → legalización. Ley de 2001 → ampliación del plazo. Reforma constitucional 2024 → consagración definitiva.',
+          ]
+        }
+      },
     ]
   },
 
@@ -517,6 +563,57 @@ const MATERIALS = [
             '<strong>Los 3 tipos de infracciones:</strong> Contravención (multa máx. 3.000 €, sin prisión — tribunal de policía) | Delito (multa ≥ 3.750 € + 2 meses a 10 años de prisión — tribunal correccional) | Crimen (≥ 15 años a cadena perpetua — tribunal de asizes).',
             '<strong>15 — SAMU</strong> (urgencias médicas) | <strong>17 — Policía</strong> | <strong>18 — Bomberos</strong> | <strong>112</strong> (europeo universal)',
             '<strong>115</strong> (alojamiento de urgencia) | <strong>119</strong> (protección de menores) | <strong>3919</strong> (violencia de género) | <strong>3114</strong> (prevención del suicidio)',
+          ]
+        }
+      },
+      {
+        heading: {
+          fr: 'SNU et majorité numérique — Nouveautés 2026',
+          en: 'SNU and digital age of majority — 2026 updates',
+          zh: 'SNU与数字成年年龄——2026年新内容',
+          ar: 'SNU وسن الرشد الرقمي — مستجدات 2026',
+          es: 'SNU y mayoría de edad digital — Novedades 2026'
+        },
+        content: {
+          fr: [
+            '<strong>SNU — Service National Universel :</strong> Programme de cohésion nationale destiné aux jeunes de 15 à 17 ans, créé en 2019.',
+            '<strong>Phase 1 — Séjour de cohésion :</strong> 2 semaines en internat avec des jeunes de toute la France. Activités sportives, civiques et culturelles.',
+            '<strong>Phase 2 — Mission d\'intérêt général :</strong> 84 heures de bénévolat dans une association, une collectivité ou un service de l\'État.',
+            '<strong>Objectifs du SNU :</strong> Renforcer le lien entre jeunes de milieux différents, développer le sens civique et la culture de l\'engagement républicain.',
+            '<strong>Majorité numérique à 15 ans :</strong> Depuis 2024, les mineurs de moins de 15 ans ne peuvent s\'inscrire seuls sur les réseaux sociaux — le consentement parental est obligatoire.',
+            '<strong>Objectif :</strong> Protéger les enfants des risques liés à une utilisation précoce et non encadrée d\'internet et des réseaux sociaux.',
+          ],
+          en: [
+            '<strong>SNU — Universal National Service:</strong> A national cohesion programme for young people aged 15–17, created in 2019.',
+            '<strong>Phase 1 — Cohesion stay:</strong> 2 weeks in a residential setting with young people from across France. Sports, civic and cultural activities.',
+            '<strong>Phase 2 — Public-interest mission:</strong> 84 hours of volunteering with an association, local authority or State service.',
+            '<strong>SNU objectives:</strong> Strengthen bonds between young people from different backgrounds, develop civic awareness and a culture of republican engagement.',
+            '<strong>Digital age of majority at 15:</strong> Since 2024, minors under 15 cannot register on social networks without parental consent — it is mandatory.',
+            '<strong>Objective:</strong> Protect children from the risks of early, unsupervised internet and social media use.',
+          ],
+          zh: [
+            '<strong>SNU——全国通用服务：</strong>2019年创建，面向15至17岁青少年的国家凝聚力项目。',
+            '<strong>第一阶段——集结住宿：</strong>与来自全国各地的青少年共同住宿2周，开展体育、公民和文化活动。',
+            '<strong>第二阶段——公益使命：</strong>在协会、地方当局或国家机构进行84小时志愿服务。',
+            '<strong>SNU目标：</strong>加强不同背景青年之间的联系，培养公民意识和共和国参与文化。',
+            '<strong>15岁数字成年年龄：</strong>自2024年起，15岁以下未成年人不得独自注册社交网络，必须获得家长同意。',
+            '<strong>目标：</strong>保护儿童免受早期、无监管使用互联网和社交媒体的风险。',
+          ],
+          ar: [
+            '<strong>SNU — الخدمة الوطنية الشاملة:</strong> برنامج تماسك وطني للشباب بين 15 و17 عاماً، أُنشئ عام 2019.',
+            '<strong>المرحلة 1 — إقامة التماسك:</strong> أسبوعان في بيئة داخلية مع شباب من مختلف أنحاء فرنسا. أنشطة رياضية ومدنية وثقافية.',
+            '<strong>المرحلة 2 — مهمة ذات منفعة عامة:</strong> 84 ساعة تطوعية في جمعية أو جماعة محلية أو مرفق حكومي.',
+            '<strong>أهداف SNU:</strong> تعزيز الروابط بين شباب من خلفيات مختلفة، وتنمية الوعي المدني وثقافة الالتزام الجمهوري.',
+            '<strong>سن الرشد الرقمي عند 15 عاماً:</strong> منذ 2024، لا يجوز للقاصرين دون 15 عاماً التسجيل في شبكات التواصل الاجتماعي دون موافقة الوالدين — وهي إلزامية.',
+            '<strong>الهدف:</strong> حماية الأطفال من مخاطر الاستخدام المبكر وغير المراقب للإنترنت ووسائل التواصل الاجتماعي.',
+          ],
+          es: [
+            '<strong>SNU — Servicio Nacional Universal:</strong> Programa de cohesión nacional para jóvenes de 15 a 17 años, creado en 2019.',
+            '<strong>Fase 1 — Estancia de cohesión:</strong> 2 semanas en régimen de internado con jóvenes de toda Francia. Actividades deportivas, cívicas y culturales.',
+            '<strong>Fase 2 — Misión de interés general:</strong> 84 horas de voluntariado en una asociación, entidad local o servicio del Estado.',
+            '<strong>Objetivos del SNU:</strong> Reforzar los vínculos entre jóvenes de distintos orígenes, desarrollar el espíritu cívico y la cultura del compromiso republicano.',
+            '<strong>Mayoría de edad digital a los 15 años:</strong> Desde 2024, los menores de 15 años no pueden registrarse en redes sociales sin el consentimiento de sus padres — es obligatorio.',
+            '<strong>Objetivo:</strong> Proteger a los menores de los riesgos del uso temprano y sin supervisión de internet y las redes sociales.',
           ]
         }
       },
@@ -848,6 +945,57 @@ const MATERIALS = [
             '<strong>UPE2A:</strong> Clases intensivas de francés para niños no francófonos. Integración progresiva en clase ordinaria.',
             '<strong>OEPRE:</strong> Clases de francés gratuitas en las escuelas para padres extranjeros. También trata el funcionamiento del sistema escolar francés y los valores republicanos.',
             '<strong>Modalidades de cuidado (0-3 años):</strong> Guardería (crèche), asistente maternal (homologada), cuidado a domicilio, micro-guardería. Ayudas de la CAF disponibles (PSU, CMG, crédito fiscal del 50%).',
+          ]
+        }
+      },
+      {
+        heading: {
+          fr: 'Tabac et nouveautés santé 2026',
+          en: 'Tobacco and 2026 health updates',
+          zh: '烟草与2026年卫生新规',
+          ar: 'التبغ ومستجدات الصحة 2026',
+          es: 'Tabaco y novedades sanitarias 2026'
+        },
+        content: {
+          fr: [
+            '<strong>Extension de l\'interdiction de fumer (2026) :</strong> L\'interdiction de fumer est étendue aux abords immédiats des établissements scolaires, des hôpitaux et des parcs publics.',
+            '<strong>Espaces sans tabac :</strong> En plus des lieux déjà protégés (lieux de travail fermés, transports, lieux publics couverts), de nouveaux espaces extérieurs sont désormais concernés.',
+            '<strong>Interdictions existantes :</strong> Il est interdit de fumer dans tous les lieux de travail fermés et couverts, les transports en commun, les espaces scolaires, les hôpitaux et la plupart des lieux publics.',
+            '<strong>Cigarette électronique :</strong> Soumise aux mêmes restrictions que la cigarette classique dans les lieux publics. Vente interdite aux mineurs.',
+            '<strong>Aide à l\'arrêt :</strong> Tabac Info Service : 3989. Des substituts nicotiniques sont remboursés par l\'Assurance maladie sur prescription.',
+            '<strong>Alcool :</strong> La vente d\'alcool est interdite aux mineurs de moins de 18 ans. La conduite avec un taux d\'alcoolémie ≥ 0,5 g/L (0,2 g/L pour les jeunes conducteurs) est un délit.',
+          ],
+          en: [
+            '<strong>Extended smoking ban (2026):</strong> The smoking ban has been extended to the immediate surroundings of schools, hospitals and public parks.',
+            '<strong>Smoke-free areas:</strong> In addition to already-protected spaces (enclosed workplaces, transport, covered public spaces), new outdoor areas are now included.',
+            '<strong>Existing bans:</strong> Smoking is already banned in all enclosed workplaces, public transport, school premises, hospitals and most public indoor spaces.',
+            '<strong>E-cigarettes:</strong> Subject to the same restrictions as regular cigarettes in public places. Sale to minors is prohibited.',
+            '<strong>Quitting support:</strong> Tabac Info Service: 3989. Nicotine replacement therapies are reimbursed by health insurance on prescription.',
+            '<strong>Alcohol:</strong> Sale of alcohol to under-18s is prohibited. Driving with a blood alcohol level ≥ 0.5 g/L (0.2 g/L for young drivers) is a criminal offence.',
+          ],
+          zh: [
+            '<strong>扩大禁烟范围（2026年）：</strong>禁烟令扩展至学校、医院和公共公园的周边区域。',
+            '<strong>无烟区域：</strong>除原有受保护场所（封闭工作场所、交通工具、有顶公共场所）外，新的户外区域现已纳入。',
+            '<strong>现有禁令：</strong>在所有封闭工作场所、公共交通、校园、医院和大多数室内公共场所禁止吸烟。',
+            '<strong>电子烟：</strong>在公共场所受到与普通香烟相同的限制，禁止向未成年人销售。',
+            '<strong>戒烟帮助：</strong>烟草信息服务：3989。尼古丁替代品凭处方可由医疗保险报销。',
+            '<strong>酒精：</strong>禁止向18岁以下未成年人销售酒精。血液酒精含量≥0.5 g/L（年轻驾驶员为0.2 g/L）属违法行为。',
+          ],
+          ar: [
+            '<strong>توسيع حظر التدخين (2026):</strong> تم توسيع حظر التدخين ليشمل المناطق المجاورة مباشرة للمدارس والمستشفيات والحدائق العامة.',
+            '<strong>المناطق الخالية من التبغ:</strong> إضافةً إلى الأماكن المحمية مسبقاً (أماكن العمل المغلقة، المواصلات، الأماكن العامة المسقوفة)، باتت مساحات خارجية جديدة مشمولة.',
+            '<strong>الحظر القائم:</strong> يُحظر التدخين في جميع أماكن العمل المغلقة، ووسائل النقل العام، والمدارس، والمستشفيات، ومعظم الأماكن العامة الداخلية.',
+            '<strong>السيجارة الإلكترونية:</strong> تخضع لنفس القيود المفروضة على السيجارة العادية في الأماكن العامة. يُحظر بيعها للقاصرين.',
+            '<strong>المساعدة على الإقلاع:</strong> Tabac Info Service: 3989. يُعوَّض عن بدائل النيكوتين من التأمين الصحي بوصفة طبية.',
+            '<strong>الكحول:</strong> يُحظر بيع الكحول لمن هم دون 18 سنة. قيادة السيارة بنسبة كحول ≥ 0.5 غ/ل (0.2 غ/ل للسائقين الشباب) تُعدّ جريمة.',
+          ],
+          es: [
+            '<strong>Ampliación de la prohibición de fumar (2026):</strong> La prohibición de fumar se extiende a los alrededores inmediatos de centros escolares, hospitales y parques públicos.',
+            '<strong>Espacios sin humo:</strong> Además de los ya protegidos (lugares de trabajo cerrados, transporte, espacios públicos cubiertos), se incluyen ahora nuevas áreas exteriores.',
+            '<strong>Prohibiciones vigentes:</strong> Fumar está prohibido en todos los lugares de trabajo cerrados, transporte público, recintos escolares, hospitales y la mayoría de espacios públicos interiores.',
+            '<strong>Cigarrillo electrónico:</strong> Sujeto a las mismas restricciones que el cigarrillo convencional en lugares públicos. Venta prohibida a menores.',
+            '<strong>Ayuda para dejar de fumar:</strong> Tabac Info Service: 3989. Los sustitutos de nicotina son reembolsados por el seguro de salud con receta médica.',
+            '<strong>Alcohol:</strong> La venta de alcohol a menores de 18 años está prohibida. Conducir con una tasa de alcoholemia ≥ 0,5 g/L (0,2 g/L para conductores jóvenes) es un delito.',
           ]
         }
       },

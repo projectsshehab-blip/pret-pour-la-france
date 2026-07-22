@@ -589,7 +589,8 @@ function renderTC() {
     {code:'fr',label:'Français'},
     {code:'en',label:'English'},
     {code:'zh',label:'中文'},
-    {code:'ar',label:'العربية', rtl:true}
+    {code:'ar',label:'العربية', rtl:true},
+    {code:'es',label:'Español'}
   ];
   const activeTC = currentLang;
   el.innerHTML = `
@@ -600,7 +601,8 @@ function renderTC() {
     <div id="tc-content-fr" class="tc-content ${activeTC==='fr'?'active':''}"><div class="tc-body">${TC_FR}</div></div>
     <div id="tc-content-en" class="tc-content ${activeTC==='en'?'active':''}"><div class="tc-body">${TC_EN}</div></div>
     <div id="tc-content-zh" class="tc-content ${activeTC==='zh'?'active':''}"><div class="tc-body">${TC_ZH}</div></div>
-    <div id="tc-content-ar" class="tc-content ${activeTC==='ar'?'active':''}"><div class="tc-body" dir="rtl">${TC_AR}</div></div>`;
+    <div id="tc-content-ar" class="tc-content ${activeTC==='ar'?'active':''}"><div class="tc-body" dir="rtl">${TC_AR}</div></div>
+    <div id="tc-content-es" class="tc-content ${activeTC==='es'?'active':''}"><div class="tc-body">${TC_ES}</div></div>`;
 
   el.querySelectorAll('.tc-tab').forEach(tab => tab.addEventListener('click', () => {
     el.querySelectorAll('.tc-tab').forEach(t=>t.classList.remove('active'));
@@ -769,4 +771,35 @@ const TC_ZH = `
 </ul>
 <div style="margin-top:1.5rem;padding:1rem;background:var(--surface);border-radius:6px;font-size:.82rem;color:var(--text-muted)">
   <strong>版权声明：</strong>教育内容改编自 formation-civique.interieur.gouv.fr — 法国内政部，共和国融合路径，依据 Licence Ouverte 2.0 (Etalab)。内容最后审查：2026年4月。本应用是独立学习工具，与法国政府无关联。
+</div>`;
+
+const TC_ES = `
+<div class="tc-header-block">
+  <div>REPÚBLICA FRANCESA — Libertad · Igualdad · Fraternidad</div>
+  <h1>Términos y Condiciones de Uso</h1>
+  <div>Prêt pour la France — ProjMSP</div>
+  <div class="tc-meta">Versión 1.0 — En vigor desde el 11 de abril de 2026 | Ley aplicable: Derecho francés</div>
+</div>
+<p><strong>Preámbulo.</strong> El presente documento regula el acceso y el uso de la aplicación <em>Prêt pour la France</em> (en adelante "la Aplicación"), desarrollada y operada por <strong>ProjMSP</strong>, desarrollador independiente, con el único objetivo de ayudar a las personas a prepararse para el examen cívico exigido en el marco del Contrato de Integración Republicana (CIR). Al acceder a la Aplicación, usted acepta estos términos.</p>
+<h2>1. Naturaleza de la Aplicación</h2>
+<p>La Aplicación es una herramienta de estudio <strong>independiente y no oficial</strong>. No está afiliada al Ministerio del Interior francés, al OFII ni a ninguna autoridad pública francesa. No sustituye al programa obligatorio de formación cívica de 4 días.</p>
+<h2>2. Propiedad intelectual y contenido</h2>
+<p>El contenido educativo está adaptado del sitio oficial <a href="https://formation-civique.interieur.gouv.fr" target="_blank">formation-civique.interieur.gouv.fr</a>, publicado bajo la <strong>Licence Ouverte 2.0 (Etalab)</strong>. Esta licencia permite la reproducción, adaptación y redistribución, incluso con fines comerciales, siempre que se cite la fuente. La formulación de las preguntas, la interfaz y el código son obras originales de ProjMSP.</p>
+<h2>3. Ausencia de garantía</h2>
+<p>La Aplicación se proporciona "tal cual". ProjMSP no garantiza la exhaustividad, exactitud o actualidad del contenido, ni la obtención de una puntuación determinada en el examen oficial.</p>
+<h2>4. Limitación de responsabilidad</h2>
+<p>ProjMSP no acepta ninguna responsabilidad por: el suspenso en el examen cívico oficial; las decisiones administrativas o jurídicas tomadas en base al contenido de la Aplicación; ni cualquier error u omisión.</p>
+<h2>5. Datos personales</h2>
+<p>La Aplicación no recoge ningún dato personal. Solo se almacena localmente en el navegador la preferencia de idioma (localStorage). No se transmite ningún dato a terceros.</p>
+<h2>6. Ley aplicable</h2>
+<p>Los presentes términos se rigen por el derecho francés. Cualquier litigio será sometido a los tribunales competentes de Francia.</p>
+<h2>7. Contacto</h2>
+<p>Para cualquier pregunta relativa a estos términos:</p>
+<ul>
+  <li><strong>Desarrollador:</strong> ProjMSP</li>
+  <li><strong>Email:</strong> projects.shehab@gmail.com</li>
+  <li><strong>Sitio web:</strong> https://pretpourlafrance.com</li>
+</ul>
+<div style="margin-top:1.5rem;padding:1rem;background:var(--surface);border-radius:6px;font-size:.82rem;color:var(--text-muted)">
+  <strong>Atribución:</strong> Contenido educativo adaptado de formation-civique.interieur.gouv.fr — Ministère de l'Intérieur, Parcours d'Intégration Républicaine, bajo Licence Ouverte 2.0 (Etalab). Última revisión del contenido: abril de 2026. Esta aplicación es una herramienta de estudio independiente, no afiliada al gobierno francés.
 </div>`;
