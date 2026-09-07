@@ -55,6 +55,52 @@ function resetExamState() {
   examAnswers   = {};
   examQuestions = [];
   examTimeLeft  = EXAM_DURATION;
+  clearExamState();
+}
+
+// ── Exam persistence (local only — no cookies, no network) ────────────────────
+// Lets a user resume after an accidental refresh/close. Stored on-device in
+// localStorage and wiped the moment the exam is submitted or abandoned.
+const EXAM_SAVE_KEY = 'pplf_exam';
+
+function persistExamState() {
+  if (!isExamActive()) return;
+  try {
+    localStorage.setItem(EXAM_SAVE_KEY, JSON.stringify({
+      level: examLevel, mode: examMode, page: examPage,
+      timeLeft: examTimeLeft, answers: examAnswers,
+      questions: examQuestions, savedAt: Date.now()
+    }));
+  } catch (e) { /* storage full or blocked — non-fatal */ }
+}
+
+function loadExamState() {
+  try {
+    const raw = localStorage.getItem(EXAM_SAVE_KEY);
+    if (!raw) return null;
+    const s = JSON.parse(raw);
+    if (!s || !Array.isArray(s.questions) || s.questions.length !== TOTAL_Q) return null;
+    if (typeof s.timeLeft !== 'number' || s.timeLeft <= 0) return null;
+    return s;
+  } catch (e) { return null; }
+}
+
+function clearExamState() {
+  try { localStorage.removeItem(EXAM_SAVE_KEY); } catch (e) {}
+}
+
+function resumeExam() {
+  const s = loadExamState();
+  if (!s) { renderExamSetup(); return; }
+  examLevel     = s.level;
+  examMode      = s.mode;
+  examQuestions = s.questions;
+  examAnswers   = s.answers || {};
+  examPage      = s.page || 0;
+  examTimeLeft  = s.timeLeft;
+  stopTimer();
+  startTimer();
+  renderExamPage();
 }
 
 function navigateTo(view) {
@@ -92,13 +138,38 @@ function renderAll() {
   renderFooter();
 }
 
+// ── Icons (inline SVG, Lucide-style stroke set) ───────────────────────────────
+// Professional line icons that inherit currentColor. No external files/CDN.
+const ICONS = {
+  home:  '<path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/>',
+  study: '<path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/>',
+  exam:  '<rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/>',
+  tc:    '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M8 13h8"/><path d="M8 17h8"/><path d="M8 9h1"/>',
+  timer: '<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M5 3 2 6"/><path d="m22 6-3-3"/>',
+  bulb:  '<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/>',
+  bolt:  '<path d="M13 2 3 14h9l-1 8 10-12h-9z"/>',
+  list:  '<path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/>',
+  info:  '<circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/>',
+  refresh: '<path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/>',
+  // Study-topic icons
+  landmark: '<line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/>',
+  scale: '<path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/>',
+  scroll: '<path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/>',
+  map: '<path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/>',
+  community: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+};
+function icon(name, size) {
+  const s = size || 22;
+  return `<svg class="icon" width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name] || ''}</svg>`;
+}
+
 // ── Nav ───────────────────────────────────────────────────────────────────────
 function renderNav() {
   const items = [
-    { view:'home',  icon:'🏠', key:'nav_home'  },
-    { view:'study', icon:'📚', key:'nav_study' },
-    { view:'exam',  icon:'✏️', key:'nav_exam'  },
-    { view:'tc',    icon:'📄', key:'nav_tc'    },
+    { view:'home',  icon:'home',  key:'nav_home'  },
+    { view:'study', icon:'study', key:'nav_study' },
+    { view:'exam',  icon:'exam',  key:'nav_exam'  },
+    { view:'tc',    icon:'tc',    key:'nav_tc'    },
   ];
   const sidebarNav = document.getElementById('sidebar-nav');
   const mobileNav  = document.getElementById('mobile-nav-items');
@@ -106,13 +177,13 @@ function renderNav() {
 
   sidebarNav.innerHTML = `<div class="sidebar__nav-label">Menu</div>` + items.map(i => `
     <button class="nav-item ${currentView===i.view?'active':''}" data-view="${i.view}" aria-current="${currentView===i.view?'page':'false'}">
-      <span class="nav-item__icon-wrap"><span class="nav-item__icon">${i.icon}</span></span>
+      <span class="nav-item__icon-wrap"><span class="nav-item__icon">${icon(i.icon)}</span></span>
       <span class="nav-item__label">${t(i.key)}</span>
     </button>`).join('');
 
   mobileNav.innerHTML = items.map(i => `
     <button class="mobile-nav__item ${currentView===i.view?'active':''}" data-view="${i.view}">
-      <span class="mobile-nav__item__icon">${i.icon}</span>
+      <span class="mobile-nav__item__icon">${icon(i.icon)}</span>
       <span>${t(i.key)}</span>
     </button>`).join('');
 
@@ -129,6 +200,7 @@ function renderHome() {
   if (!el) return;
   el.innerHTML = `
     <div class="home-hero">
+      <div class="home-hero__chevrons"><span></span><span></span></div>
       <div class="home-hero__welcome">${t('home_welcome')}</div>
       <div class="home-hero__title">${t('site_name')}</div>
       <div class="home-hero__sub">${t('home_subtitle')}</div>
@@ -137,7 +209,7 @@ function renderHome() {
     <div class="home-cards">
       <div class="home-card" tabindex="0" role="button" data-goto="study">
         <div class="card">
-          <div class="home-card__icon">📚</div>
+          <div class="home-card__icon">${icon('study', 30)}</div>
           <div class="home-card__title">${t('home_card_study_title')}</div>
           <div class="home-card__desc">${t('home_card_study_desc')}</div>
           <button class="btn btn--primary btn--sm">${t('home_card_study_btn')}</button>
@@ -145,7 +217,7 @@ function renderHome() {
       </div>
       <div class="home-card" tabindex="0" role="button" data-goto="exam">
         <div class="card">
-          <div class="home-card__icon">✏️</div>
+          <div class="home-card__icon">${icon('exam', 30)}</div>
           <div class="home-card__title">${t('home_card_exam_title')}</div>
           <div class="home-card__desc">${t('home_card_exam_desc')}</div>
           <button class="btn btn--red btn--sm">${t('home_card_exam_btn')}</button>
@@ -153,7 +225,7 @@ function renderHome() {
       </div>
     </div>
     <div class="tip-box">
-      <div class="tip-box__icon">💡</div>
+      <div class="tip-box__icon">${icon('bulb', 22)}</div>
       <div>
         <div class="tip-box__title">${t('home_tip_title')}</div>
         <div class="tip-box__text">${t('home_tip_text')}</div>
@@ -201,7 +273,7 @@ function renderStudy(preserveOpen) {
       <div class="accordion-header" data-id="${mat.id}" role="button" tabindex="0"
            aria-expanded="${openIds.includes('acc-'+mat.id)}">
         <div class="accordion-header__left">
-          <span class="accordion-header__icon">${mat.icon}</span>
+          <span class="accordion-header__icon">${icon(mat.icon, 22)}</span>
           <span class="accordion-header__title">${topicNames[idx]}</span>
         </div>
         <div style="display:flex;align-items:center;gap:.5rem">
@@ -253,15 +325,30 @@ ${['fr','en','zh','ar','es'].map(l => `
 function renderExamSetup() {
   const el = document.getElementById('view-exam');
   if (!el) return;
+  const saved = loadExamState();
+  const resumeBanner = saved ? `
+    <div class="resume-banner">
+      <div class="resume-banner__icon">${icon('refresh', 22)}</div>
+      <div class="resume-banner__text">
+        <div class="resume-banner__title">${t('exam_resume_title')}</div>
+        <div class="resume-banner__meta">${saved.level} · ${Object.keys(saved.answers||{}).length}/${TOTAL_Q} · ${formatTime(saved.timeLeft)}</div>
+      </div>
+      <div class="resume-banner__actions">
+        <button class="btn btn--primary btn--sm" id="resume-exam-btn">${t('exam_resume_btn')}</button>
+        <button class="btn btn--outline btn--sm" id="discard-exam-btn">${t('exam_discard_btn')}</button>
+      </div>
+    </div>` : '';
+
   el.innerHTML = `
     <div class="page-title">${t('exam_setup_title')}</div>
-    <div class="exam-setup-grid">
-      <div class="level-card ${examLevel==='CSP'?'selected':''}" data-level="CSP">
+    ${resumeBanner}
+    <div class="exam-setup-grid" role="radiogroup" aria-label="${t('exam_setup_title')}">
+      <div class="level-card ${examLevel==='CSP'?'selected':''}" data-level="CSP" role="radio" aria-checked="${examLevel==='CSP'}" tabindex="0">
         <div class="level-card__badge">CSP</div>
         <div class="level-card__title">${t('exam_setup_csp_title')}</div>
         <div class="level-card__desc">${t('exam_setup_csp_desc')}</div>
       </div>
-      <div class="level-card ${examLevel==='CR'?'selected':''}" data-level="CR">
+      <div class="level-card ${examLevel==='CR'?'selected':''}" data-level="CR" role="radio" aria-checked="${examLevel==='CR'}" tabindex="0">
         <div class="level-card__badge">CR</div>
         <div class="level-card__title">${t('exam_setup_cr_title')}</div>
         <div class="level-card__desc">${t('exam_setup_cr_desc')}</div>
@@ -269,35 +356,48 @@ function renderExamSetup() {
     </div>
     <div class="exam-mode-section">
       <div class="exam-mode-title">${t('exam_mode_title')}</div>
-      <div class="exam-setup-grid">
-        <div class="mode-card ${examMode==='immediate'?'selected':''}" data-mode="immediate">
-          <div class="mode-card__icon">⚡</div>
+      <div class="exam-setup-grid" role="radiogroup" aria-label="${t('exam_mode_title')}">
+        <div class="mode-card ${examMode==='immediate'?'selected':''}" data-mode="immediate" role="radio" aria-checked="${examMode==='immediate'}" tabindex="0">
+          <div class="mode-card__icon">${icon('bolt', 26)}</div>
           <div class="mode-card__title">${t('exam_mode_immediate')}</div>
           <div class="mode-card__desc">${t('exam_mode_immediate_desc')}</div>
         </div>
-        <div class="mode-card ${examMode==='review'?'selected':''}" data-mode="review">
-          <div class="mode-card__icon">📋</div>
+        <div class="mode-card ${examMode==='review'?'selected':''}" data-mode="review" role="radio" aria-checked="${examMode==='review'}" tabindex="0">
+          <div class="mode-card__icon">${icon('list', 26)}</div>
           <div class="mode-card__title">${t('exam_mode_review')}</div>
           <div class="mode-card__desc">${t('exam_mode_review_desc')}</div>
         </div>
       </div>
     </div>
-    <div class="exam-info-bar">ℹ️ ${t('exam_setup_info')}</div>
+    <div class="exam-info-bar">${icon('info', 16)} ${t('exam_setup_info')}</div>
     <div style="text-align:center">
       <button class="btn btn--primary btn--lg" id="start-exam-btn">${t('exam_setup_btn')} →</button>
     </div>`;
 
-  el.querySelectorAll('.level-card').forEach(c => c.addEventListener('click', () => {
-    examLevel = c.dataset.level;
-    el.querySelectorAll('.level-card').forEach(x => x.classList.remove('selected'));
-    c.classList.add('selected');
-  }));
-  el.querySelectorAll('.mode-card').forEach(c => c.addEventListener('click', () => {
-    examMode = c.dataset.mode;
-    el.querySelectorAll('.mode-card').forEach(x => x.classList.remove('selected'));
-    c.classList.add('selected');
-  }));
+  const pick = (card, group, apply) => {
+    apply(card.dataset);
+    el.querySelectorAll(group).forEach(x => {
+      const sel = x === card;
+      x.classList.toggle('selected', sel);
+      x.setAttribute('aria-checked', sel ? 'true' : 'false');
+    });
+  };
+  el.querySelectorAll('.level-card').forEach(c => {
+    const act = () => pick(c, '.level-card', d => examLevel = d.level);
+    c.addEventListener('click', act);
+    c.addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); act(); } });
+  });
+  el.querySelectorAll('.mode-card').forEach(c => {
+    const act = () => pick(c, '.mode-card', d => examMode = d.mode);
+    c.addEventListener('click', act);
+    c.addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); act(); } });
+  });
   el.querySelector('#start-exam-btn').addEventListener('click', startExam);
+
+  const resumeBtn = el.querySelector('#resume-exam-btn');
+  const discardBtn = el.querySelector('#discard-exam-btn');
+  if (resumeBtn)  resumeBtn.addEventListener('click', resumeExam);
+  if (discardBtn) discardBtn.addEventListener('click', () => { clearExamState(); renderExamSetup(); });
 }
 
 // ── Exam logic ────────────────────────────────────────────────────────────────
@@ -337,14 +437,17 @@ function startExam() {
   stopTimer();
   startTimer();
   renderExamPage();
+  persistExamState();
 }
 
 function startTimer() {
   examTimerInterval = setInterval(() => {
     examTimeLeft--;
     updateTimerDisplay();
+    if (examTimeLeft % 5 === 0) persistExamState(); // keep saved time fresh
     if (examTimeLeft <= 0) {
       stopTimer();
+      clearExamState();
       alert(t('exam_time_up'));
       renderResults();
     }
@@ -397,7 +500,7 @@ function renderExamPage() {
         <span class="exam-answered">${t('exam_progress')} ${answered}/${TOTAL_Q}</span>
       </div>
       <div class="exam-timer ${timerClass}" title="${t('exam_time_left')}">
-        <span class="exam-timer__icon">⏱</span>
+        <span class="exam-timer__icon">${icon('timer', 18)}</span>
         <span id="exam-timer">${formatTime(examTimeLeft)}</span>
       </div>
     </div>
@@ -406,7 +509,7 @@ function renderExamPage() {
         const pg = Math.floor(i / PER_PAGE);
         const isCur = (i >= start && i < start + PER_PAGE);
         const isAns = examAnswers[q.id] !== undefined;
-        return `<div class="q-dot ${isCur?'current':''} ${isAns&&!isCur?'answered':''}" data-goto-page="${pg}">${i+1}</div>`;
+        return `<div class="q-dot ${isCur?'current':''} ${isAns&&!isCur?'answered':''}" data-goto-page="${pg}" role="button" tabindex="0" aria-label="${t('exam_page_label')} ${pg+1}, Q${i+1}${isAns?' — ✓':''}">${i+1}</div>`;
       }).join('')}
     </div>
     ${pageQs.map((q, pi) => renderQuestionCard(q, start + pi)).join('')}
@@ -420,52 +523,28 @@ function renderExamPage() {
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  // Dot navigation
-  el.querySelectorAll('.q-dot').forEach(d => d.addEventListener('click', () => {
-    examPage = +d.dataset.gotoPage; renderExamPage();
-  }));
+  // Dot navigation (click + keyboard)
+  el.querySelectorAll('.q-dot').forEach(d => {
+    const go = () => { examPage = +d.dataset.gotoPage; renderExamPage(); };
+    d.addEventListener('click', go);
+    d.addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); go(); } });
+  });
 
-  // Option selection
-  el.querySelectorAll('.option-item').forEach(opt => opt.addEventListener('click', () => {
-    if (opt.classList.contains('locked')) return;
-    const card = opt.closest('.question-card');
-    const qid  = card.dataset.qid;
-    const val  = +opt.dataset.idx;
-    examAnswers[qid] = val;
-
-    if (examMode === 'immediate') {
-      const q = examQuestions.find(qq => qq.id === qid);
-      const isCorrect = val === q.displayAnswer;
-      card.querySelectorAll('.option-item').forEach(o => {
-        o.classList.add('locked');
-        const idx = +o.dataset.idx;
-        if (idx === q.displayAnswer) o.classList.add('correct');
-        else if (idx === val && !isCorrect) o.classList.add('incorrect');
-      });
-      const fb = document.createElement('div');
-      fb.className = `inline-feedback ${isCorrect ? 'correct' : 'incorrect'}`;
-      fb.innerHTML = `<span class="inline-feedback__badge">${isCorrect ? t('results_correct_badge') : t('results_incorrect_badge')}</span><span class="inline-feedback__text">💡 ${t('results_explanation')} ${q.explanation}</span>`;
-      card.appendChild(fb);
-    } else {
-      opt.closest('.options-list').querySelectorAll('.option-item').forEach(o => o.classList.remove('selected'));
-      opt.classList.add('selected');
-    }
-
-    // update progress bar & dot
-    const answered2 = Object.keys(examAnswers).length;
-    const prog2 = Math.round((answered2 / TOTAL_Q) * 100);
-    const fill = el.querySelector('.progress-bar-fill');
-    if (fill) fill.style.width = prog2 + '%';
-    const countEl = el.querySelector('.exam-answered');
-    if (countEl) countEl.textContent = `${t('exam_progress')} ${answered2}/${TOTAL_Q}`;
-    // update submit button
-    const sub = el.querySelector('#btn-submit');
-    if (sub) sub.style.opacity = answered2===TOTAL_Q ? '1':'0.5';
-    // mark dot answered
-    const qIdx = examQuestions.findIndex(qq => qq.id === qid);
-    const dot = el.querySelectorAll('.q-dot')[qIdx];
-    if (dot && !dot.classList.contains('current')) dot.classList.add('answered');
-  }));
+  // Option selection (click + keyboard, with roving focus inside each radiogroup)
+  el.querySelectorAll('.option-item').forEach(opt => {
+    opt.addEventListener('click', () => selectOption(opt, el));
+    opt.addEventListener('keydown', e => {
+      const group = Array.from(opt.closest('.options-list').querySelectorAll('.option-item'));
+      const idx = group.indexOf(opt);
+      if (e.key==='Enter' || e.key===' ') {
+        e.preventDefault(); selectOption(opt, el);
+      } else if (e.key==='ArrowDown' || e.key==='ArrowRight') {
+        e.preventDefault(); const n = group[(idx+1)%group.length]; if (n.tabIndex!==-1) n.focus();
+      } else if (e.key==='ArrowUp' || e.key==='ArrowLeft') {
+        e.preventDefault(); const p = group[(idx-1+group.length)%group.length]; if (p.tabIndex!==-1) p.focus();
+      }
+    });
+  });
 
   const prevBtn = el.querySelector('#btn-prev');
   const nextBtn = el.querySelector('#btn-next');
@@ -473,6 +552,56 @@ function renderExamPage() {
   if (prevBtn) prevBtn.addEventListener('click', () => { examPage--; renderExamPage(); });
   if (nextBtn) nextBtn.addEventListener('click', () => { examPage++; renderExamPage(); });
   if (subBtn)  subBtn.addEventListener('click', submitExam);
+
+  persistExamState();
+}
+
+// Shared selection logic for click + keyboard, both feedback modes
+function selectOption(opt, el) {
+  if (opt.classList.contains('locked')) return;
+  const card = opt.closest('.question-card');
+  const list = opt.closest('.options-list');
+  const qid  = card.dataset.qid;
+  const val  = +opt.dataset.idx;
+  examAnswers[qid] = val;
+
+  // aria-checked + roving tabindex across the group
+  list.querySelectorAll('.option-item').forEach(o => {
+    const sel = o === opt;
+    o.setAttribute('aria-checked', sel ? 'true' : 'false');
+    o.tabIndex = sel ? 0 : -1;
+  });
+
+  if (examMode === 'immediate') {
+    const q = examQuestions.find(qq => qq.id === qid);
+    const isCorrect = val === q.displayAnswer;
+    list.querySelectorAll('.option-item').forEach(o => {
+      o.classList.add('locked');
+      o.tabIndex = -1;
+      const idx = +o.dataset.idx;
+      if (idx === q.displayAnswer) o.classList.add('correct');
+      else if (idx === val && !isCorrect) o.classList.add('incorrect');
+    });
+    const slot = card.querySelector('.feedback-slot');
+    if (slot) slot.innerHTML = feedbackMarkup(q, val);
+  } else {
+    list.querySelectorAll('.option-item').forEach(o => o.classList.remove('selected'));
+    opt.classList.add('selected');
+  }
+
+  // update progress bar, count, submit button, dot
+  const answered2 = Object.keys(examAnswers).length;
+  const fill = el.querySelector('.progress-bar-fill');
+  if (fill) fill.style.width = Math.round((answered2 / TOTAL_Q) * 100) + '%';
+  const countEl = el.querySelector('.exam-answered');
+  if (countEl) countEl.textContent = `${t('exam_progress')} ${answered2}/${TOTAL_Q}`;
+  const sub = el.querySelector('#btn-submit');
+  if (sub) sub.style.opacity = answered2===TOTAL_Q ? '1':'0.5';
+  const qIdx = examQuestions.findIndex(qq => qq.id === qid);
+  const dot = el.querySelectorAll('.q-dot')[qIdx];
+  if (dot && !dot.classList.contains('current')) dot.classList.add('answered');
+
+  persistExamState();
 }
 
 function renderQuestionCard(q, globalIdx) {
@@ -491,30 +620,38 @@ function renderQuestionCard(q, globalIdx) {
     } else if (!isImmediate && savedAnswer === i) {
       cls = 'selected';
     }
+    const checked = savedAnswer === i;
+    const locked  = isImmediate && isAnswered;
     return `
-          <div class="option-item ${cls}" data-idx="${i}">
+          <div class="option-item ${cls}" data-idx="${i}" role="radio"
+               aria-checked="${checked}" tabindex="${locked ? -1 : (checked || (savedAnswer===undefined && i===0) ? 0 : -1)}">
             <div class="option-radio"></div>
             <span class="option-letter">${letters[i]}.</span>
             <span class="option-text">${opt}</span>
           </div>`;
   }).join('');
 
-  const feedbackHtml = (isImmediate && isAnswered) ? `
-      <div class="inline-feedback ${savedAnswer === q.displayAnswer ? 'correct' : 'incorrect'}">
-        <span class="inline-feedback__badge">${savedAnswer === q.displayAnswer ? t('results_correct_badge') : t('results_incorrect_badge')}</span>
-        <span class="inline-feedback__text">💡 ${t('results_explanation')} ${q.explanation}</span>
-      </div>` : '';
+  const feedbackHtml = (isImmediate && isAnswered) ? feedbackMarkup(q, savedAnswer) : '';
 
   return `
     <div class="question-card" data-qid="${q.id}">
-      <div class="question-topic-badge">📌 ${t('exam_topic_label')} ${q.topic} — ${topicName}</div>
+      <div class="question-topic-badge">${t('exam_topic_label')} ${q.topic} — ${topicName}</div>
       <div class="question-number">Q${globalIdx+1}</div>
-      <div class="question-text">${q.q}</div>
-      <div class="options-list">
+      <div class="question-text" id="qtext-${q.id}">${q.q}</div>
+      <div class="options-list" role="radiogroup" aria-labelledby="qtext-${q.id}">
         ${optionsHtml}
       </div>
-      ${feedbackHtml}
+      <div class="feedback-slot" aria-live="polite">${feedbackHtml}</div>
     </div>`;
+}
+
+function feedbackMarkup(q, chosen) {
+  const correct = chosen === q.displayAnswer;
+  return `
+      <div class="inline-feedback ${correct ? 'correct' : 'incorrect'}">
+        <span class="inline-feedback__badge">${correct ? t('results_correct_badge') : t('results_incorrect_badge')}</span>
+        <span class="inline-feedback__text">${t('results_explanation')} ${q.explanation}</span>
+      </div>`;
 }
 
 function submitExam() {
@@ -522,6 +659,7 @@ function submitExam() {
   if (answered < TOTAL_Q) { alert(t('exam_unanswered')); return; }
   if (!confirm(t('exam_submit_confirm'))) return;
   stopTimer();
+  clearExamState();
   renderResults();
 }
 
@@ -554,11 +692,13 @@ function renderResults() {
       <button class="btn btn--primary" id="btn-retry">${t('results_retry')}</button>
       <button class="btn btn--outline" id="btn-home">${t('results_back_home')}</button>
     </div>
-    <div class="review-title">${t('results_review_title')}</div>
+    <div class="review-title">${examMode==='immediate' ? t('results_review_wrong_title') : t('results_review_title')}</div>
     <div class="review-list">
       ${examQuestions.map((q, i) => {
         const userAns = examAnswers[q.id];
         const correct = userAns === q.displayAnswer;
+        // In immediate mode the user already saw every answer inline — show wrong ones only.
+        if (examMode === 'immediate' && correct) return '';
         const userText = q.displayOptions[userAns] || '—';
         const corrText = q.displayOptions[q.displayAnswer];
         return `
@@ -570,10 +710,11 @@ function renderResults() {
             <div class="review-item__body">
               ${!correct ? `<div class="review-answer your-wrong"><span>${t('results_your_answer')}</span> ${letters[userAns]}. ${userText}</div>` : ''}
               <div class="review-answer correct-ans"><span>${t('results_correct_answer')}</span> ${letters[q.displayAnswer]}. ${corrText}</div>
-              <div class="review-explanation">💡 ${t('results_explanation')} ${q.explanation}</div>
+              <div class="review-explanation">${t('results_explanation')} ${q.explanation}</div>
             </div>
           </div>`;
       }).join('')}
+      ${examMode==='immediate' && score===TOTAL_Q ? `<div class="review-allcorrect">${t('results_all_correct')}</div>` : ''}
     </div>`;
 
   el.querySelector('#btn-retry').addEventListener('click', () => { renderExamSetup(); });
@@ -666,7 +807,7 @@ const TC_FR = `
 <h2>4. Limitation de responsabilité</h2>
 <p>ProjMSP décline toute responsabilité pour l'échec à l'examen civique officiel, les décisions administratives ou juridiques prises sur la base du contenu de l'Application, ou toute erreur ou omission.</p>
 <h2>5. Données personnelles</h2>
-<p>L'Application ne collecte aucune donnée personnelle. Seule la préférence de langue est stockée localement dans le navigateur (localStorage). Aucune donnée n'est transmise à des tiers.</p>
+<p>L'Application ne collecte aucune donnée personnelle et n'utilise aucun cookie. Seules la préférence de langue et, le cas échéant, la progression d'un examen en cours sont stockées localement dans votre navigateur (localStorage), sur votre appareil uniquement. La progression de l'examen est automatiquement effacée lors de la soumission ou de l'abandon. Aucune donnée n'est transmise à des tiers ni à un serveur.</p>
 <h2>6. Droit applicable</h2>
 <p>Les présentes CGU sont régies par le droit français. Tout litige sera soumis aux juridictions compétentes de France.</p>
 <h2>7. Contact</h2>
@@ -697,7 +838,7 @@ const TC_EN = `
 <h2>4. Limitation of Liability</h2>
 <p>ProjMSP accepts no responsibility for failure to pass the official civic exam, administrative or legal decisions taken based on the Application's content, or any errors or omissions.</p>
 <h2>5. Personal Data</h2>
-<p>The Application collects no personal data. Only the language preference is stored locally in the browser (localStorage). No data is transmitted to third parties.</p>
+<p>The Application collects no personal data and uses no cookies. Only your language preference and, where applicable, the progress of an exam in progress are stored locally in your browser (localStorage), on your device only. Exam progress is automatically erased on submission or abandonment. No data is transmitted to third parties or to any server.</p>
 <h2>6. Governing Law</h2>
 <p>These Terms are governed by French law. Any dispute shall be submitted to the competent courts of France.</p>
 <h2>7. Contact</h2>
@@ -728,7 +869,7 @@ const TC_AR = `
 <h2>4. حدود المسؤولية</h2>
 <p>لا تتحمل ProjMSP أي مسؤولية عن: الرسوب في الامتحان المدني الرسمي، أو القرارات الإدارية أو القانونية المبنية على محتوى التطبيق، أو أي أخطاء أو إغفالات.</p>
 <h2>5. البيانات الشخصية</h2>
-<p>لا يجمع التطبيق أي بيانات شخصية. يتم تخزين تفضيل اللغة فقط محلياً في المتصفح (localStorage). لا تُرسل أي بيانات إلى أطراف ثالثة.</p>
+<p>لا يجمع التطبيق أي بيانات شخصية ولا يستخدم أي ملفات تعريف ارتباط (Cookies). يتم تخزين تفضيل اللغة فقط، وعند الاقتضاء تقدُّم الامتحان الجاري، محلياً في متصفحك (localStorage) وعلى جهازك فقط. يُمحى تقدُّم الامتحان تلقائياً عند التسليم أو الإلغاء. لا تُرسل أي بيانات إلى أطراف ثالثة أو إلى أي خادم.</p>
 <h2>6. القانون المطبق</h2>
 <p>تخضع هذه الشروط للقانون الفرنسي. يُحال أي نزاع إلى المحاكم المختصة في فرنسا.</p>
 <h2>7. التواصل</h2>
@@ -759,7 +900,7 @@ const TC_ZH = `
 <h2>4. 责任限制</h2>
 <p>ProjMSP对以下情况不承担责任：未能通过官方公民考试；基于本应用内容做出的行政或法律决定；任何错误或遗漏。</p>
 <h2>5. 个人数据</h2>
-<p>本应用不收集任何个人数据。仅将语言偏好本地存储在浏览器中（localStorage）。不向第三方传输任何数据。</p>
+<p>本应用不收集任何个人数据，也不使用任何 Cookie。仅将您的语言偏好以及（如有）正在进行的考试进度本地存储在您的浏览器中（localStorage），且仅保存在您的设备上。考试进度在提交或放弃时会自动清除。不向第三方或任何服务器传输任何数据。</p>
 <h2>6. 适用法律</h2>
 <p>本条款受法国法律管辖。任何争议应提交法国有管辖权的法院解决。</p>
 <h2>7. 联系方式</h2>
@@ -790,7 +931,7 @@ const TC_ES = `
 <h2>4. Limitación de responsabilidad</h2>
 <p>ProjMSP no acepta ninguna responsabilidad por: el suspenso en el examen cívico oficial; las decisiones administrativas o jurídicas tomadas en base al contenido de la Aplicación; ni cualquier error u omisión.</p>
 <h2>5. Datos personales</h2>
-<p>La Aplicación no recoge ningún dato personal. Solo se almacena localmente en el navegador la preferencia de idioma (localStorage). No se transmite ningún dato a terceros.</p>
+<p>La Aplicación no recoge ningún dato personal y no utiliza cookies. Solo se almacenan localmente en tu navegador (localStorage), y únicamente en tu dispositivo, la preferencia de idioma y, en su caso, el progreso de un examen en curso. El progreso del examen se borra automáticamente al enviarlo o abandonarlo. No se transmite ningún dato a terceros ni a ningún servidor.</p>
 <h2>6. Ley aplicable</h2>
 <p>Los presentes términos se rigen por el derecho francés. Cualquier litigio será sometido a los tribunales competentes de Francia.</p>
 <h2>7. Contacto</h2>

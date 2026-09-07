@@ -3,12 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; frame-ancestors 'none';">
-  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'none';">
+
+  <!-- ── Favicon ── -->
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="apple-touch-icon" href="./favicon.svg">
 
   <!-- ── Primary SEO ── -->
   <title>Prêt pour la France — Préparez l'examen civique CIR (CSP &amp; CR)</title>
-  <meta name="description" content="Préparez gratuitement l'examen civique du Contrat d'Intégration Républicaine (CIR). Plus de 250 questions officielles QCM, fiches de révision sur 5 thèmes, niveaux CSP et Carte de Résident. Disponible en français, anglais et chinois.">
+  <meta name="description" content="Préparez gratuitement l'examen civique du Contrat d'Intégration Républicaine (CIR). Plus de 250 questions officielles QCM, fiches de révision sur 5 thèmes, niveaux CSP et Carte de Résident. Disponible en français, anglais, chinois, arabe et espagnol.">
   <meta name="keywords" content="examen civique, formation civique, CIR, CSP, carte de séjour pluriannuelle, carte de résident, QCM, quiz, immigration France, intégration républicaine, révision, exam civique 2025 2026">
   <meta name="author" content="ProjMSP">
   <meta name="robots" content="index, follow">
@@ -18,11 +21,13 @@
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="https://pretpourlafrance.com/">
   <meta property="og:title"       content="Prêt pour la France — Examen civique CIR">
-  <meta property="og:description" content="Plus de 250 QCM officiels pour préparer l'examen civique CIR. Niveaux CSP et Carte de Résident. Fiches de révision, minuteur 45 min. Gratuit, en FR / EN / 中文.">
+  <meta property="og:description" content="Plus de 250 QCM officiels pour préparer l'examen civique CIR. Niveaux CSP et Carte de Résident. Fiches de révision, minuteur 45 min. Gratuit, en FR / EN / 中文 / ع / ES.">
   <meta property="og:image"       content="https://pretpourlafrance.com/Image_France_1.jpg">
   <meta property="og:locale"      content="fr_FR">
   <meta property="og:locale:alternate" content="en_GB">
   <meta property="og:locale:alternate" content="zh_CN">
+  <meta property="og:locale:alternate" content="ar_AR">
+  <meta property="og:locale:alternate" content="es_ES">
   <meta property="og:site_name"   content="Prêt pour la France">
 
   <!-- ── Twitter / X Card ── -->
@@ -42,7 +47,7 @@
     "applicationCategory": "EducationApplication",
     "operatingSystem": "Any",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
-    "inLanguage": ["fr", "en", "zh"],
+    "inLanguage": ["fr", "en", "zh", "ar", "es"],
     "author": { "@type": "Person", "name": "ProjMSP" },
     "about": {
       "@type": "Thing",

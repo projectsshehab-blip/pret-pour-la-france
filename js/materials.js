@@ -7,7 +7,7 @@ const MATERIALS = [
   // ─── TOPIC 1 ─────────────────────────────────────────────────────────────────
   {
     id: 1,
-    icon: '🏛️',
+    icon: 'landmark',
     sections: [
       {
         heading: {
@@ -311,7 +311,7 @@ const MATERIALS = [
   // ─── TOPIC 2 ─────────────────────────────────────────────────────────────────
   {
     id: 2,
-    icon: '⚖️',
+    icon: 'scale',
     sections: [
       {
         heading: { fr:'La démocratie et la République', en:'Democracy and the Republic', zh:'民主与共和国', ar:'الديمقراطية والجمهورية', es:'La democracia y la República' },
@@ -469,7 +469,7 @@ const MATERIALS = [
   // ─── TOPIC 3 ─────────────────────────────────────────────────────────────────
   {
     id: 3,
-    icon: '📜',
+    icon: 'scroll',
     sections: [
       {
         heading: { fr:'Les droits fondamentaux — Trois catégories', en:'Fundamental rights — Three categories', zh:'基本权利——三种类别', ar:'الحقوق الأساسية — ثلاث فئات', es:'Los derechos fundamentales — Tres categorías' },
@@ -623,7 +623,7 @@ const MATERIALS = [
   // ─── TOPIC 4 ─────────────────────────────────────────────────────────────────
   {
     id: 4,
-    icon: '🗺️',
+    icon: 'map',
     sections: [
       {
         heading: { fr:'Chronologie des régimes politiques', en:'Chronology of political regimes', zh:'政治体制年表', ar:'تسلسل الأنظمة السياسية', es:'Cronología de los regímenes políticos' },
@@ -766,7 +766,7 @@ const MATERIALS = [
   // ─── TOPIC 5 ─────────────────────────────────────────────────────────────────
   {
     id: 5,
-    icon: '🏠',
+    icon: 'community',
     sections: [
       {
         heading: { fr:'Démarches administratives', en:'Administrative procedures', zh:'行政手续', ar:'الإجراءات الإدارية', es:'Trámites administrativos' },
